@@ -17,14 +17,14 @@ nav_order: 4
 {: toc }
 </details>
 
-## [Jane Dane]
+## Acelya Calin
 
 Contributions
 : Lorem ipsum dolor
 : Consetetur sadipscing elitr
 : ...
 
-## [Joe Doe]
+## Tiberja Gündüz 
 
 Contributions
 : Diam nonumy eirmod

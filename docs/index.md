@@ -8,27 +8,27 @@ nav_order: 0
 >
 > You may delete this `attention` box.
 
-# [Project Name]
+# SkinSense
 
 [Project description]
 
 ## Team members
 
-### [Jane Dane]
+### Acelya Calin
 
 About
 : Some info about Jane
 
 Matr.-Nr.
-: 1234567
+: 77201616162
 
-### [Joe Doe]
+### Tiberja Gündüz
 
 About
 : Some info about Joe
 
 Matr.-Nr.
-: 1234567
+: 77203210029
 
 ## Eidesstattliche Erklärung
 
