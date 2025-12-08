@@ -3,21 +3,16 @@ title: Home
 nav_order: 0
 ---
 
-{: .attention }
-> Any text enclosed by `[ ]` are placeholders, including the opening and closing brackets.
->
-> You may delete this `attention` box.
-
 # SkinSense
 
-[Project description]
+SkinSense ist eine webbasierte Anwendung, die Nutzer/innen unterstützt, die passenden Produkte für ihren Hauttyp zu finden. Die Website bietet einfache, intuitive Benutzeroberflächen und soll langfristig zu einer personalisierten Hautpflegeplattform ausgebaut werden. 
 
 ## Team members
 
 ### Acelya Calin
 
 About
-: Some info about Jane
+: Wirtschaftsinformatikstudentin im 4.Semester 
 
 Matr.-Nr.
 : 77201616162
@@ -25,7 +20,7 @@ Matr.-Nr.
 ### Tiberja Gündüz
 
 About
-: Some info about Joe
+: Wirtschaftsinformatikstudentin im 4.Semester
 
 Matr.-Nr.
 : 77203210029
