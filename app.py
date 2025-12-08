@@ -26,5 +26,4 @@ def products():
 def favorites():
     return "Favorites Screen (placeholder)"       
 
-if __name__ == "__main__":
-    app.run(debug=True)     
+  
