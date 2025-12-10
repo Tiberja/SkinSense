@@ -17,6 +17,6 @@ nav_order: 2
 {: toc }
 </details>
 
-![ERM-Diagramm](/assets/images/data-model.png) 
+![ERM-Diagramm](../assets/images/data-model.png) 
 
 [Visualize and describe the data model(s) of your application. This description should match the actual implementation.]
