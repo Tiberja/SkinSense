@@ -48,14 +48,14 @@ Unsere App richtet sich an:
 
 ## UI Designs 
 
-![Startseite](../../assets/images/Startseite.png)
+![Startseite](/assets/images/Startseite.png)
 
-![Login/Registration](../../assets/images/Login:registrierung.png)
+![Login/Registration](/assets/images/Login:registrierung.png)
 
-![Skintype_auswählen](../../assets/images/skintype_auswählen.png)
+![Skintype_auswählen](/assets/images/skintype_auswählen.png)
 
-![Produktliste](../../assets/images/Produktliste.png)
+![Produktliste](/assets/images/Produktliste.png)
 
-![Navigation](../../assets/images/Navigation.png)
+![Navigation](/assets/images/Navigation.png)
 
-![Favoritenliste](../../assets/images/Favoritenliste.png)
+![Favoritenliste](/assets/images/Favoritenliste.png)
