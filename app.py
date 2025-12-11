@@ -23,10 +23,26 @@ def login():
             flash("Invalid credentials. Please try again.")
     return render_template('login.html')
 
-@app.route('/register')
+@app.route('/register' , methods=['GET', ''POST'])
 def register():
-    return "Register Screen (placeholder)"    
+    if request.method == 'POST':
+        # Handle registration logic here
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
 
+        # prüfen, ob der Benutzer bereits existiert (Platzhalterlogik)
+        if email in users:
+            flash("User with this email already exists.")
+            return redirect(url_for('register'))
+
+        # meuen Nutzer speichern 
+        users [ email ] = { 'username' : username , 'password' : password }
+        flash("Registration successful! Please log in.")
+        return redirect(url_for('login'))
+    return render_template('register.html')    
+    
+   
 @app.route('/skin-type')
 def skin_type():
     return "Select Skin Type Screen (Placeholder)"   
