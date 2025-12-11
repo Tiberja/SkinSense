@@ -51,6 +51,10 @@ def skin_type():
 def products():
     return "Product List Screen (placeholder)"  
 
+@app.route('/product_details')
+def product_details():
+    return "Product_detail Screen (placeholder)"     
+
 @app.route('/favorites')
 def favorites():
     return "Favorites Screen (placeholder)"       
