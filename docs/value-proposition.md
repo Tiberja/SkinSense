@@ -45,3 +45,12 @@ Unsere App richtet sich an:
 ## Customer journey
 
 [Illustrate the customer journey, from the app's entry point to a completed task. You might want to show the customer journey as (schematic) screen flows.]
+
+## UI Designs 
+
+![Startseite](../assets/images/Startseite.png)
+![Login/Registration](../assets/images/Login:registrierung.png)
+![Skintype_auswählen](../assets/images/skintype_auswählen.png)
+![Produktliste](../assets/images/Produktliste.png)
+![Navigation](../assets/images/Navigation.png)
+![Favoritenliste](../assets/images/Favoritenliste.png)
