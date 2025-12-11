@@ -48,7 +48,7 @@ Unsere App richtet sich an:
 
 ## UI Designs 
 
-![Startseite](docs/assets/images/startseite.png)
+![Startseite](../assets/images/startseite.png)
 
 ![Login/Registration](../assets/images/login_registrierung.png)
 
