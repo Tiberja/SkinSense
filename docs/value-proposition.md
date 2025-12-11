@@ -56,6 +56,8 @@ Unsere App richtet sich an:
 
 ![Produktliste](../assets/images/Produktliste.png)
 
+![Produkt_details](../assets/images/produkt_details.png)
+
 ![Navigation](../assets/images/Navigation.png)
 
 ![Favoritenliste](../assets/images/Favoritenliste.png)
