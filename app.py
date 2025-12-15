@@ -4,9 +4,11 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # Needed for flash messages
 
+users = {} 
+
 @app.route('/')
 def index():
-    return "SkinSense - Home Screen (placeholder)"
+    return render_template ('home.html')
 
 @app.route('/login' , methods=['GET', 'POST'])
 def login():
@@ -23,7 +25,7 @@ def login():
             flash("Invalid credentials. Please try again.")
     return render_template('login.html')
 
-@app.route('/register' , methods=['GET', ''POST'])
+@app.route('/register' , methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         # Handle registration logic here
