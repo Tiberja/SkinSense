@@ -45,20 +45,20 @@ def register():
     return render_template('register.html')    
     
    
-@app.route('/skin-type')
+@app.route('/skin_type')
 def skin_type():
-    return "Select Skin Type Screen (Placeholder)"   
+    return "skin_type Screen (Placeholder)"   
 
 @app.route('/products')
 def products():
-    return "Product List Screen (placeholder)"  
+    return "products Screen (placeholder)"  
 
-@app.route('/product_details')
-def product_details():
-    return "Product_detail Screen (placeholder)"     
+@app.route('/product_details/<product_id>')
+def product_details(product_id):
+    return "product_detail Screen for {product_id} (placeholder)"     
 
 @app.route('/favorites')
 def favorites():
-    return "Favorites Screen (placeholder)"       
+    return "favorites Screen (placeholder)"       
 
 
