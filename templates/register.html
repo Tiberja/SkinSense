@@ -1,47 +1,52 @@
 <!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8">
-    <title>Registrieren – SkinSense</title>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>Register – SkinSense</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 
-  <body>
-    <h1>Account erstellen</h1>
-    <p>Erstelle dein SkinSense-Konto, um deine Hautpflege zu personalisieren.</p>
+<body>
 
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-          {% for msg in messages %}
-            <li>{{ msg }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
+  <div class="auth-card">
 
-    <form method="post" action="{{ url_for('register') }}">
-      <label for="username">Vollständiger Name:</label><br>
-      <input type="text" id="username" name="username" placeholder="Dein Name" required><br><br>
+    <h1 class="auth-title">Create an Account</h1>
+    <p class="auth-subtitle">
+      Save your favorites and get personalized recommendations.
+    </p>
 
-      <label for="email">E-Mail-Adresse:</label><br>
-      <input type="email" id="email" name="email" placeholder="you@example.com" required><br><br>
+    <form method="post" action="/register">
 
-      <label for="password">Passwort:</label><br>
-      <input type="password" id="password" name="password" placeholder="********" required><br><br>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="username" placeholder="Your Name" required>
+      </div>
 
-      <label for="password2">Passwort wiederholen:</label><br>
-      <input type="password" id="password2" name="password2" placeholder="********" required><br><br>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </div>
 
-      <label>
-        <input type="checkbox" required> Ich stimme den Nutzungsbedingungen und der Datenschutzerklärung zu
-      </label><br><br>
+      <div class="form-group">
+        <label>Create Password</label>
+        <input type="password" name="password" placeholder="********" required>
+      </div>
 
-      <button type="submit">Account erstellen</button>
+      <label class="checkline">
+        <input type="checkbox" required>
+        <span>
+          I agree to the <a href="#">Terms of Service</a> &
+          <a href="#">Privacy Policy</a>.
+        </span>
+      </label>
+
+      <button class="btn-primary" type="submit">
+        Create Account
+      </button>
+
     </form>
 
-    <p>Schon einen Account? 
-      <a href="{{ url_for('login') }}">Zum Login</a>
-    </p>
-  </body>
-</html>
+  </div>
 
+</body>
+</html>
