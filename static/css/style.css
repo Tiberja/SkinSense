@@ -1,0 +1,124 @@
+/* =========================
+   LOGIN / REGISTER
+========================= */
+
+/* Seite zentrieren */
+body {
+  background-color: #faf7f5;
+}
+
+/* Login-Karte */
+.auth-card {
+  background: #ffffff;
+  max-width: 420px;
+  width: 100%;
+  padding: 40px 45px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Titel */
+.auth-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Formular-Gruppen */
+.form-group {
+  margin-bottom: 18px;
+}
+
+/* Labels */
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+/* Eingabefelder */
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  background-color: #fbf7f4;
+  border: 1px solid #eaded7;
+  border-radius: 10px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #e7c4b4;
+  box-shadow: 0 0 0 3px rgba(231, 196, 180, 0.3);
+}
+
+/* Forgot Password */
+.form-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 22px;
+}
+
+.form-row a {
+  font-size: 13px;
+  color: #d9a993;
+  text-decoration: none;
+}
+
+.form-row a:hover {
+  text-decoration: underline;
+}
+
+/* Login Button */
+.btn-primary {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 999px;
+  background-color: #e7c4b4;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #d9a993;
+}
+
+/* Unterer Text */
+.auth-card p {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+.auth-card p a {
+  color: #d9a993;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-card p a:hover {
+  text-decoration: underline;
+}
+
+/* Flash Messages */
+.flash-messages {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 18px;
+}
+
+.flash-messages li {
+  background-color: #fff0f0;
+  border: 1px solid #ffd2d2;
+  color: #b00020;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
