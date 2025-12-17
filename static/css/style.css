@@ -122,3 +122,38 @@ body {
   border-radius: 10px;
   font-size: 14px;
 }
+
+
+/* =========================
+   REGISTER
+========================= */
+
+.auth-subtitle {
+  font-size: 15px;
+  color: #777;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.checkline {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 16px 0 22px;
+  font-size: 14px;
+  color: #666;
+}
+
+.checkline input[type="checkbox"] {
+  margin-top: 3px;
+}
+
+.checkline a {
+  color: #d9a993;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.checkline a:hover {
+  text-decoration: underline;
+}
