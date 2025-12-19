@@ -1,0 +1,8 @@
+/* für gleiches Aussehen in allen Browsern*/
+/* setzt Browser-Standardwerte zurück */ 
+/* immer einbinden*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
