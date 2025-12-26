@@ -12,17 +12,23 @@ def index():
 
 @app.route('/login' , methods=['GET', 'POST'])
 def login():
+    # Wenn schon eingeloggt → direkt zur Hauptseite
+    if "user_email" in session:
+        return redirect(url_for("index"))
+
     if request.method == 'POST':
-        # Handle login logic here
-        email = request.form['email']
+        email = request.form['email'].strip()
         password = request.form['password']
-       
-        # Authenticate user (placeholder logic)
-        if email == "test @example.com" and password == "123":
+
+        # ✅ Prüfen gegen users-Dict (statt test@example)
+        if email in users and users[email]["password"] == password:
+            session["user_email"] = email
+            session["username"] = users[email]["username"]
             flash("Login successful!")
             return redirect(url_for('index'))
-        else:
-            flash("Invalid credentials. Please try again.")
+
+        flash("Invalid credentials. Please try again.")
+
     return render_template('login.html')
 
 @app.route('/register' , methods=['GET', 'POST'])
