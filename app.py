@@ -31,24 +31,37 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/register' , methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+    # Wenn schon eingeloggt: nicht nochmal registrieren
+    if 'user_email' in session:
+        return redirect(url_for('index'))
+
     if request.method == 'POST':
-        # Handle registration logic here
-        username = request.form['username']
-        email = request.form['email']
+        username = request.form['username'].strip()
+        email = request.form['email'].strip()
         password = request.form['password']
 
-        # prüfen, ob der Benutzer bereits existiert (Platzhalterlogik)
+        # prüfen, ob Benutzer schon existiert
         if email in users:
             flash("User with this email already exists.")
             return redirect(url_for('register'))
 
-        # meuen Nutzer speichern 
-        users [ email ] = { 'username' : username , 'password' : password }
-        flash("Registration successful! Please log in.")
-        return redirect(url_for('login'))
-    return render_template('register.html')    
+        # neuen Nutzer speichern
+        users[email] = {
+            'username': username,
+            'password': password
+        }
+
+        #  automatisch einloggen
+        session['user_email'] = email
+        session['username'] = username
+
+        flash("Registration successful!")
+        return redirect(url_for('index'))  
+
+    return render_template('register.html')
+
     
    
 @app.route('/skin_type')
