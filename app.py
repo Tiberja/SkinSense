@@ -47,7 +47,7 @@ def register():
    
 @app.route('/skin_type')
 def skin_type():
-    return "skin_type Screen (Placeholder)"   
+    return render_template("skin_type.html")  
 
 @app.route('/products')
 def products():
