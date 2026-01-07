@@ -80,6 +80,6 @@ def product_details(product_id):
 
 @app.route('/favorites')
 def favorites():
-    return "favorites Screen (placeholder)"       
+    return render_template("favorites.html")       
 
 
