@@ -8,6 +8,8 @@ users = {}
 
 @app.route('/')
 def index():
+    if 'user_email' not in session:
+        return redirect(url_for('login'))
     return render_template ('home.html')
 
 @app.route('/login' , methods=['GET', 'POST'])
@@ -20,7 +22,7 @@ def login():
         email = request.form['email'].strip()
         password = request.form['password']
 
-        # ✅ Prüfen gegen users-Dict (statt test@example)
+        # prüfen gegen users-Dict (statt test@example)
         if email in users and users[email]["password"] == password:
             session["user_email"] = email
             session["username"] = users[email]["username"]
@@ -66,7 +68,7 @@ def register():
    
 @app.route('/skin_type')
 def skin_type():
-    return render_template("skin_type.html")  
+    return "skin_type Screen (Placeholder)"   
 
 @app.route('/products')
 def products():
