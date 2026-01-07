@@ -13,8 +13,8 @@ def index():
 @app.route('/login' , methods=['GET', 'POST'])
 def login():
     # Wenn schon eingeloggt → direkt zur Hauptseite
-    if "user_email" in session:
-        return redirect(url_for("index"))
+    #if "user_email" in session:
+        #return redirect(url_for("index"))
 
     if request.method == 'POST':
         email = request.form['email'].strip()
@@ -34,8 +34,8 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     # Wenn schon eingeloggt: nicht nochmal registrieren
-    if 'user_email' in session:
-        return redirect(url_for('index'))
+    # if 'user_email' in session:
+        #return redirect(url_for('index'))
 
     if request.method == 'POST':
         username = request.form['username'].strip()
