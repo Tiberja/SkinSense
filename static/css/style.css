@@ -215,9 +215,9 @@ body {
 ========================= */
 
 .skin-page {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 60px 20px;
   text-align: center;
 }
 
@@ -234,10 +234,21 @@ body {
 
 .skin-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-bottom: 50px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+   "left1 . right1"
+   ". center ."
+   "left2 . right2";
+  max-width: 1100px;
+  margin: 0 auto 50px;
 }
+
+.skin-card.left1  { grid-area: left1; }
+.skin-card.right1 { grid-area: right1; }
+.skin-card.center { grid-area: center; }
+.skin-card.left2  { grid-area: left2; }
+.skin-card.right2 { grid-area: right2; }
+
 
 .skin-card {
   padding: 30px; 

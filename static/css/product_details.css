@@ -1,0 +1,164 @@
+/* wenn seite sehr unterschiedlich ist neue Datei -> style_template.css */
+
+body {
+    /*background-color: #faf7f5;*/
+    margin: 0;
+    min-height: 100vh;
+}
+
+.navbar{
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatar{
+      width:44px;
+      height:44px;
+      border-radius: 50%;
+      background: #f0d3c6;
+      display:grid;
+      place-items:center;
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(255,255,255,.8);
+      user-select:none;
+    }
+
+.avatar span{
+      font-size: 20px;
+}
+
+.productpage {
+   padding: 30px 20px;
+   
+   
+}
+
+.product-main {
+    display: flex;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.product-image{
+    width: 360px;
+    max-width: 100%;
+    margin-right: 280px;
+    /*border-radius: 20px;*/
+    /*padding: 50px;*/
+    /*background: #f3ede9;*/
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    width: 100%;
+    flex: 1;
+}
+
+.product-info h1{
+    margin: 0 0 10px;
+    line-height: 1.15;
+    font-size: 40px;
+}
+
+/*.product-info p {
+    margin: 0;
+    line-height: 1.6;
+}*/
+.subtitle {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 26px;
+    font-weight: bold;
+    color: #d28a57;
+    margin-bottom: 20px;
+}
+
+.tags {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.tags span {
+    border-radius: 999px;
+    background-color: #d69e929a;
+    border-color: #d9a79c; 
+    color: #ffffff;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;    
+}
+
+.details {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+details {
+    padding: 15px 0;
+}
+
+summary{
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 18px;
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+    width: 500px;
+}
+
+.d-body {
+    margin-top: 10px;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+.reviews {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+
+}
+
+.review-card{
+    position: relative;
+    padding: 30px; 
+    border-radius: 20px; 
+    border: 2px solid #eee; 
+    background: #fff;  
+    text-align: left;
+    max-width: 400px;
+    margin-bottom: 100px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-stars {
+    color: #e3a23a;       
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.review-date {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    font-size: 12px;
+    color: #999;
+}
+

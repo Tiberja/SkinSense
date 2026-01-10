@@ -63,20 +63,18 @@ def register():
         return redirect(url_for('index'))  
 
     return render_template('register.html')
-
-    
    
 @app.route('/skin_type')
 def skin_type():
-    return "skin_type Screen (Placeholder)"   
+    return render_template('skin_type.html')   
 
 @app.route('/products')
 def products():
     return "products Screen (placeholder)"  
 
-@app.route('/product_details/<product_id>')
-def product_details(product_id):
-    return "product_detail Screen for {product_id} (placeholder)"     
+@app.route('/product_details') #<product_id>
+def product_details(): #product_id in klammer
+    return  render_template("product_details.html") #product_detail Screen for {product_id} (placeholder)" #   
 
 @app.route('/favorites')
 def favorites():
