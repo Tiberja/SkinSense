@@ -27,7 +27,7 @@ def login():
             session["user_email"] = email
             session["username"] = users[email]["username"]
             flash("Login successful!")
-            return redirect(url_for('index'))
+            return redirect(url_for('skin_type'))
 
         flash("Invalid credentials. Please try again.")
 
@@ -60,17 +60,33 @@ def register():
         session['username'] = username
 
         flash("Registration successful!")
-        return redirect(url_for('index'))  
+        return redirect(url_for('skin_type'))  
 
     return render_template('register.html')
    
-@app.route('/skin_type')
+@app.route('/skin_type', methods=['GET', 'POST'])
 def skin_type():
-    return render_template('skin_type.html')   
+    # nur wenn eingeloggt
+    if 'user_email' not in session:
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        session['skin_type'] = request.form['skin_type']
+        return redirect(url_for('products'))
+
+    return render_template('skin_type.html')
+
 
 @app.route('/products')
 def products():
-    return render_template("products.html")
+    if 'user_email' not in session:
+        return redirect(url_for('login'))
+
+    if 'skin_type' not in session:
+        return redirect(url_for('skin_type'))
+
+    return render_template("products.html", skin_type=session['skin_type'])
+
 
 @app.route('/product_details') #<product_id>
 def product_details(): #product_id in klammer
