@@ -34,24 +34,24 @@
     <main class="products-main">
 
      <!-- Topbar -->
-<div class="topbar">
+
   <div class="search">
     <input type="text" placeholder="Search products..." />
   </div>
 
   <!-- User Menu -->
   <div class="user-menu">
-    <button class="avatar-btn" id="userMenuBtn">
-      {{ session.username[0]|upper }}
-    </button>
+  <button class="avatar-btn" id="userMenuBtn" type="button">
+    {{ (session.get('username','U')[:1]).upper() }}
+  </button>
 
-    <div class="dropdown" id="userDropdown">
-      <a href="{{ url_for('index') }}">🏠 Home</a>
-      <a href="{{ url_for('favorites') }}">⭐ Favoriten</a>
-      <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
-    </div>
+  <div class="dropdown" id="userDropdown">
+    <a href="{{ url_for('index') }}">🏠 Home</a>
+    <a href="{{ url_for('favorites') }}">⭐ Favoriten</a>
+    <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
   </div>
 </div>
+
 
       <!-- Info Box -->
       <section class="info-box">
@@ -140,5 +140,24 @@
 
     </main>
   </div>
+  
+  <script>
+  const btn = document.getElementById("userMenuBtn");
+  const dd  = document.getElementById("userDropdown");
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dd.classList.toggle("open");
+  });
+
+  document.addEventListener("click", () => {
+    dd.classList.remove("open");
+  });
+
+  dd.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+</script>
+
 </body>
 </html>

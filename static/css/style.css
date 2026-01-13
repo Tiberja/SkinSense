@@ -557,3 +557,55 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================
+   USER MENU (Top Right)
+========================= */
+
+.user-menu {
+  position: relative;
+}
+
+.avatar-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: none;
+  background: #eaded7;
+  color: #5a5a5a;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* Dropdown ist standardmäßig VERSTECKT */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 44px;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #eaded7;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  min-width: 170px;
+  z-index: 1000;
+  padding: 6px;
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #444;
+  font-size: 13px;
+}
+
+.dropdown a:hover {
+  background: #faf7f5;
+}
+
+/* Wenn offen */
+.dropdown.open {
+  display: block;
+}
