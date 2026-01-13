@@ -295,7 +295,13 @@ body {
   display: grid;
   grid-template-columns: 260px 1fr;
   background: #faf7f5;
+
+  /* NEU: wirklich ganz links */
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
+
 
 .sidebar {
   background: #f6f0ec;
