@@ -1,16 +1,23 @@
-/* Haupt-Stylesheet*/
-
+/* Haupt-Stylesheet */
 
 /* =========================
    LOGIN / REGISTER
 ========================= */
 
-/* Seite zentrieren */
-/* Grundregel: Browserrand weg */
+/* Grundregel: KEINE Zentrierung global */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/*  NUR Login & Register zentrieren */
+body.auth-page {
+  background-color: #faf7f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Home/Hero MUSS volle Breite haben */
