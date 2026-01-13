@@ -322,58 +322,41 @@ body {
   color: #3b3b3b;
 }
 
-.sidebar{
-  background:#f6f0ec;
-  padding: 22px 14px;          
-  border-right:1px solid #eee0d8;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin: 0 0 18px 0;          
-}
-
-.sidebar-title{
-  margin: 8px 0 0 0;
+.sidebar-title {
+  margin: 0;
   font-size: 14px;
-  color:#555;
+  color: #555;
 }
 
-.sidebar-subtitle{
-  margin: 4px 0 14px 0;
+.sidebar-subtitle {
+  margin: 6px 0 16px;
   font-size: 12px;
-  color:#888;
+  color: #888;
 }
 
-.sidebar-nav{
-  display:flex;
-  flex-direction:column;
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
-.sidebar-link{
-  display:block;
-  width: 100%;
+.sidebar-link {
+  display: block;
   padding: 10px 12px;
   border-radius: 12px;
-  text-decoration:none;
-  color:#5a5a5a;
-  font-weight:600;
-  font-size:13px;
-  text-align:left;             
+  text-decoration: none;
+  color: #5a5a5a;
+  font-weight: 600;
+  font-size: 13px;
 }
 
-
-.sidebar-link.active{
-  background:#fff;
-  border:1px solid #ecd9cf;
+.sidebar-link:hover {
+  background: #ffffff;
 }
 
-/* Hover-Effekt für Links */
-.sidebar-link:hover{
-  background:#fff;
+.sidebar-link.active {
+  background: #ffffff;
+  border: 1px solid #ecd9cf;
 }
 
 .products-main {
