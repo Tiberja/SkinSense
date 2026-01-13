@@ -33,16 +33,25 @@
     <!-- Main -->
     <main class="products-main">
 
-      <!-- Topbar -->
-      <div class="topbar">
-        <div class="search">
-          <input type="text" placeholder="Search products..." />
-        </div>
-        <div class="avatar"></div>
-      </div>
+     <!-- Topbar -->
+<div class="topbar">
+  <div class="search">
+    <input type="text" placeholder="Search products..." />
+  </div>
 
-      <h1 class="page-title">Moisturizers</h1>
-      <p class="page-subtitle">Recommended for Oily Skin</p>
+  <!-- User Menu -->
+  <div class="user-menu">
+    <button class="avatar-btn" id="userMenuBtn">
+      {{ session.username[0]|upper }}
+    </button>
+
+    <div class="dropdown" id="userDropdown">
+      <a href="{{ url_for('index') }}">🏠 Home</a>
+      <a href="{{ url_for('favorites') }}">⭐ Favoriten</a>
+      <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
+    </div>
+  </div>
+</div>
 
       <!-- Info Box -->
       <section class="info-box">
