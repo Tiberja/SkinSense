@@ -70,7 +70,7 @@ def skin_type():
 
 @app.route('/products')
 def products():
-    return "products Screen (placeholder)"  
+    return render_template("products.html")
 
 @app.route('/product_details') #<product_id>
 def product_details(): #product_id in klammer
