@@ -6,14 +6,30 @@
 ========================= */
 
 /* Seite zentrieren */
-body {
-  background-color: #faf7f5;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Grundregel: Browserrand weg */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+/* Home/Hero MUSS volle Breite haben */
+.hero {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("/static/images/home_background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 /* Login-Karte */
 .auth-card {
