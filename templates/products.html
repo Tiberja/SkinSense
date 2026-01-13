@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Products – SkinSense</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <div class="products-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span class="brand-name">SkinCare</span>
+      </div>
+
+      <h3 class="sidebar-title">Categories</h3>
+      <p class="sidebar-subtitle">Select a category</p>
+
+      <nav class="sidebar-nav">
+        <a class="sidebar-link active" href="#">All Products</a>
+        <a class="sidebar-link" href="#">Cleansers</a>
+        <a class="sidebar-link" href="#">Moisturizers</a>
+        <a class="sidebar-link" href="#">Sunscreens</a>
+        <a class="sidebar-link" href="#">Serums</a>
+        <a class="sidebar-link" href="#">Masks</a>
+        <a class="sidebar-link" href="#">Toners</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="products-main">
+
+     <!-- Topbar -->
+<div class="topbar">
+  <div class="search">
+    <input type="text" placeholder="Search products..." />
+  </div>
+
+  <div class="user-menu">
+    <button class="avatar-btn" id="userMenuBtn" type="button">
+      {{ (session.get('username','U')[:1]).upper() }}
+    </button>
+
+    <div class="dropdown" id="userDropdown">
+      <a href="{{ url_for('index') }}">🏠 Home</a>
+      <a href="{{ url_for('favorites') }}">⭐ Favoriten</a>
+      <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Info Box -->
+      <section class="info-box">
+        <div class="info-icon"></div>
+        <div>
+          <h3>Why Moisturizers are a Must-Have</h3>
+          <p>
+            Moisturizers prevent water loss and keep your skin barrier strong.
+            Even oily skin needs hydration to stay balanced.
+          </p>
+        </div>
+      </section>
+
+      <!-- Cards Grid (Placeholder) -->
+      <section class="cards-grid">
+        <div class="product-card">
+          <div class="product-img placeholder"></div>
+          <h3 class="product-title">Product Name</h3>
+          <p class="product-brand">Brand</p>
+          <div class="tags">
+            <span class="tag">Hydrating</span>
+            <span class="tag">Oil-Free</span>
+          </div>
+          <a class="btn-soft" href="#">View Details</a>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img placeholder"></div>
+          <h3 class="product-title">Product Name</h3>
+          <p class="product-brand">Brand</p>
+          <div class="tags">
+            <span class="tag">Cleanser</span>
+            <span class="tag">Sensitive</span>
+          </div>
+          <a class="btn-soft" href="#">View Details</a>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img placeholder"></div>
+          <h3 class="product-title">Product Name</h3>
+          <p class="product-brand">Brand</p>
+          <div class="tags">
+            <span class="tag">SPF</span>
+            <span class="tag">Lightweight</span>
+          </div>
+          <a class="btn-soft" href="#">View Details</a>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img placeholder"></div>
+          <h3 class="product-title">Product Name</h3>
+          <p class="product-brand">Brand</p>
+          <div class="tags">
+            <span class="tag">Exfoliating</span>
+            <span class="tag">Acne</span>
+          </div>
+          <a class="btn-soft" href="#">View Details</a>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img placeholder"></div>
+          <h3 class="product-title">Product Name</h3>
+          <p class="product-brand">Brand</p>
+          <div class="tags">
+            <span class="tag">Soothing</span>
+            <span class="tag">Barrier</span>
+          </div>
+          <a class="btn-soft" href="#">View Details</a>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img placeholder"></div>
+          <h3 class="product-title">Product Name</h3>
+          <p class="product-brand">Brand</p>
+          <div class="tags">
+            <span class="tag">Glow</span>
+            <span class="tag">Toner</span>
+          </div>
+          <a class="btn-soft" href="#">View Details</a>
+        </div>
+      </section>
+
+      <div class="bottom-bar">
+        <button class="btn-pill" type="button">Show More</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+  const btn = document.getElementById("userMenuBtn");
+  const dd  = document.getElementById("userDropdown");
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dd.classList.toggle("open");
+  });
+
+  document.addEventListener("click", () => {
+    dd.classList.remove("open");
+  });
+
+  dd.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+</script>
+
+</body>
+</html>

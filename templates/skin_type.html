@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang = "de">
+<html lang="de">
 <head>
-    <meta charset="utf-8">
-    <title> Hauttyp asuwählen - SkinSense</title>
-
-   <!--CSS einbinden--> 
-   <link rel="stylesheet" href="/static/css/style.css">
+  <meta charset="utf-8">
+  <title>Hauttyp auswählen - SkinSense</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
-<nav class="navbar">
-    <span class="logo"> SkinSense</span>
-</nav> 
-<main class="skin-page">
+  <nav class="navbar">
+    <span class="logo">SkinSense</span>
+  </nav>
+
+  <main class="skin-page">
     <h1>Was ist dein Hauttyp?</h1>
     <p>Wähle einen Hauttyp aus, um personalisierte Produktempfehlungen zu erhalten</p>
 
@@ -24,6 +24,20 @@
         <button type="button" class="skin-card" data-skin="oelig">
             <h3>Ölige Haut</h3>
             <p>glänzend, sichtbare Poren</p>
+    <!--  FORM: sendet die Auswahl an Flask -->
+    <form method="post" action="{{ url_for('skin_type') }}" id="skinForm">
+      <!-- wird per JS gesetzt -->
+      <input type="hidden" name="skin_type" id="skin_type" value="">
+
+      <div class="skin-grid">
+        <button type="button" class="skin-card left1" data-skin="trocken">
+          <h3>Trockene Haut</h3>
+          <p>gespannt, rau, schuppig</p>
+        </button>
+
+        <button type="button" class="skin-card right1" data-skin="oelig">
+          <h3>Ölige Haut</h3>
+          <p>glänzend, sichtbare Poren</p>
         </button>
 
         <button type="button" class="skin-card" data-skin="mischhaut">
@@ -37,27 +51,52 @@
         </button>
 
         <button type="button" class="skin-card center" data-skin="normal">
-            <h3>Normale Haut</h3>
-            <p>keine Aufälligkeiten</p>
+          <h3>Normale Haut</h3>
+          <p>keine Auffälligkeiten</p>
         </button>
 
     </div>
+        <button type="button" class="skin-card left2" data-skin="mischhaut">
+          <h3>Mischhaut</h3>
+          <p>ölig in manchen Bereichen, trocken in anderen</p>
+        </button>
 
-    <button class="btn-primary">Weiter</button>
-</main>
-<script> 
+        <button type="button" class="skin-card right2" data-skin="sensibel">
+          <h3>Sensible Haut</h3>
+          <p>reagiert schnell, leicht rot, gereizt</p>
+        </button>
+      </div>
+
+      <!-- Submit-Button: schickt POST an Flask -->
+      <button type="submit" class="btn-primary" id="continueBtn" disabled>Weiter</button>
+    </form>
+  </main>
+
+  <script>
     const cards = document.querySelectorAll(".skin-card");
+    const hiddenInput = document.getElementById("skin_type");
+    const continueBtn = document.getElementById("continueBtn");
 
     cards.forEach(card => {
-        card.addEventListener("click", () => {
-
+      card.addEventListener("click", () => {
         cards.forEach(c => c.classList.remove("active"));
-
         card.classList.add("active");
 
-        console.log("Ausgewählt:", card.dataset.skin);
+        // Hauttyp merken (für Flask)
+        hiddenInput.value = card.dataset.skin;
+
+        //  Button aktivieren
+        continueBtn.disabled = false;
       });
     });
-</script>
+
+    // Extra Sicherheit: nicht abschicken, wenn nichts gewählt
+    document.getElementById("skinForm").addEventListener("submit", (e) => {
+      if (!hiddenInput.value) {
+        e.preventDefault();
+        alert("Bitte wähle zuerst einen Hauttyp aus.");
+      }
+    });
+  </script>
 </body>
 </html>
