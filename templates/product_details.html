@@ -70,17 +70,167 @@
  <!--Bewertungen-->
  <section class="reviews">
     <h2>Bewertungen ★★★★☆ (4.7)</h2>
+    <button class="review-btn" id="openReview" type="button">Bewertung abgeben</button>
 
-    <div class="review-card">
-     <div class="review-header">
-       <strong class="review-name">Lina K.</strong>
-       <div class="review-stars">★★★★☆</div>
+    <div id="reviewsList"> 
+     <div class="review-card">
+      <div class="review-header">
+        <strong class="review-name">Lina K.</strong>
+        <div class="review-stars">★★★★☆</div>
+      </div>
+
+      <p class="review-text">Super Produkt!</p>
+
+      <div class="review-date">10.01.2026</div>
      </div>
-
-     <p class="review-text">Super Produkt!</p>
-
-     <div class="review-date">10.01.2026</div>
     </div>
  </section>
+
+ <!--Bewertung abgeben-->
+ <div class="modal" id="reviewModal" aria-hidden="true">
+   <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="closeReview" type="button" aria-label="Schließen">✕</button>
+
+    <h3 id="modalTitle">Bewertung abgeben</h3>
+
+    <label class="field-label">Sterne</label>
+    <div class="star-input" id="starInput" aria-label="Sterne auswählen">
+      <button type="button" class="star" data-value="1">★</button>
+      <button type="button" class="star" data-value="2">★</button>
+      <button type="button" class="star" data-value="3">★</button>
+      <button type="button" class="star" data-value="4">★</button>
+      <button type="button" class="star" data-value="5">★</button>
+    </div>
+    <small class="hint">Klicke auf die Sterne, um zu bewerten.</small>
+
+    <label class="field-label" for="reviewText">Kommentar</label>
+    <textarea id="reviewText" rows="4" placeholder="Wie war deine Erfahrung?"></textarea>
+
+    <button class="btn-submit" id="submitReview" type="button">Absenden</button>
+   </div>
+ </div>
+ <script>
+  const openBtn = document.getElementById("openReview");
+  const closeBtn = document.getElementById("closeReview");
+  const modal = document.getElementById("reviewModal");
+
+  const textEl = document.getElementById("reviewText");
+  const submitBtn = document.getElementById("submitReview");
+
+  const starsWrap = document.getElementById("starInput");
+  const starBtns = Array.from(starsWrap.querySelectorAll(".star"));
+  let selectedStars = 0;
+
+  const reviewsList = document.getElementById("reviewsList");
+  const STORAGE_KEY = "skinsense_reviews_demo";
+
+  const LOGGED_IN_USER = "Lina K."; // Demo, später vom Backend
+
+
+  function openModal(){
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+
+    selectedStars = 0;
+    renderStarsUI(0);
+    textEl.value = "";
+  }
+  
+  function closeModal(){
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  function renderStarsUI(n){
+    starBtns.forEach(btn => {
+      const v = Number(btn.dataset.value);
+      btn.classList.toggle("is-on", v <= n);
+    });
+  }
+
+  function starsToText(n){
+    return "★".repeat(n) + "☆".repeat(5 - n);
+  }
+
+  function formatDate(d){
+    return d.toLocaleDateString("de-DE");
+  }
+
+  function addReviewCard({name, stars, text, dateISO}, toTop=true){
+    const card = document.createElement("div");
+    card.className = "review-card";
+    card.innerHTML = `
+      <div class="review-header">
+        <strong class="review-name"></strong>
+        <div class="review-stars"></div>
+      </div>
+      <p class="review-text"></p>
+      <div class="review-date"></div>
+    `;
+    card.querySelector(".review-name").textContent = name;
+    card.querySelector(".review-stars").textContent = starsToText(stars);
+    card.querySelector(".review-text").textContent = text;
+    card.querySelector(".review-date").textContent = formatDate(new Date(dateISO));
+
+    if(toTop) reviewsList.prepend(card);
+    else reviewsList.appendChild(card);
+  }
+
+  function loadSaved(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      const arr = JSON.parse(raw);
+      // alte zuerst, neue zuletzt (damit prepend der neue oben bleibt)
+      arr.forEach(r => addReviewCard(r, false));
+    }catch(e){}
+  }
+
+  function saveReview(r){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    const arr = raw ? JSON.parse(raw) : [];
+    arr.push(r);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+  }
+
+  // Events
+  openBtn.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+  document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
+
+  starBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      selectedStars = Number(btn.dataset.value);
+      renderStarsUI(selectedStars);
+    });
+  });
+
+  submitBtn.addEventListener("click", () => {
+    const text = textEl.value.trim();
+
+    if(selectedStars === 0) return alert("Bitte Sterne auswählen.");
+    if(text.length < 3) return alert("Bitte einen kurzen Kommentar eingeben.");
+
+    const review = {
+      name: LOGGED_IN_USER,
+      stars: selectedStars,
+      text,
+      dateISO: new Date().toISOString()
+    };
+
+    addReviewCard(review, true);
+    saveReview(review);
+
+    // reset
+    textEl.value = "";
+    selectedStars = 0;
+    renderStarsUI(0);
+    closeModal();
+  });
+
+  // Beim Laden gespeicherte Demo-Reviews anzeigen
+  loadSaved();
+ </script>
 </body>
 </html>
