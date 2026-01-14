@@ -6,79 +6,88 @@ body {
     min-height: 100vh;
 }
 
+.navbar {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .btn-primary {
-  width: 100%;
-  padding: 13px;
-  border: none;
-  border-radius: 999px;
-  background-color: #e7c4b4;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 999px;
+    background-color: #e7c4b4;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .btn-primary:hover {
-  background-color: #d9a993;
+    background-color: #d9a993;
 }
 
 .skin-page {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 30px 20px;
-  text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 20px;
+    text-align: center;
 }
 
 .skin-page h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+    font-size: 42px;
+    margin-bottom: 10px;
 }
 
 .skin-page p {
-  color: #777;
-  font-size: 16px;
-  margin-bottom: 50px;
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 50px;
 }
 
 .skin-grid {
-  display: grid;
-  max-width: 900px;
-  margin: 0 auto 50px;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+    display: grid;
+    max-width: 900px;
+    margin: 0 auto 50px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
 
 }
 
 .skin-card {
-  padding: 30px; 
-  border-radius: 20px; 
-  border: 2px solid #eee; 
-  background: #fff;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.25s ease;
+    padding: 30px; 
+    border-radius: 20px; 
+    border: 2px solid #eee; 
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
 }
 
 .skin-card.center {
-  justify-self: center;
-  grid-column: 1 / -1;
-  width: 50%;
+    justify-self: center;
+    grid-column: 1 / -1;
+    width: 42%;
 }
 
 .skin-card h3 {
-  margin: 0 0 8px;
-  font-size: 20px;
+    margin: 0 0 8px;
+    font-size: 20px;
 }
 
 .skin-card p {
-  margin: 0;
-  color: #666;
-  font-size: 14px;
+    margin: 0;
+    color: #666;
+    font-size: 14px;
 }
 
 .skin-card:hover {
-  border-color: #d9a79c;
+    border-color: #d9a79c;
 }
 
 .skin-card input {
