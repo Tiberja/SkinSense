@@ -239,6 +239,7 @@ body.auth-page {
 }
 
 /* =========================
+<<<<<<< HEAD
    PRODUCTS PAGE (Layout)
 ========================= */
 
@@ -562,3 +563,75 @@ body.auth-page {
 .dropdown.open {
   display: block;
 }
+=======
+   SKINTYPE
+========================= */
+
+.skin-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.skin-page h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.skin-page p {
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 50px;
+}
+
+.skin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+   "left1 . right1"
+   ". center ."
+   "left2 . right2";
+  max-width: 1100px;
+  margin: 0 auto 50px;
+}
+
+.skin-card.left1  { grid-area: left1; }
+.skin-card.right1 { grid-area: right1; }
+.skin-card.center { grid-area: center; }
+.skin-card.left2  { grid-area: left2; }
+.skin-card.right2 { grid-area: right2; }
+
+
+.skin-card {
+  padding: 30px; 
+  border-radius: 20px; 
+  border: 2px solid #eee; 
+  background: #fff;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.skin-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.skin-card p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.skin-card:hover {
+  border-color: #d9a79c;
+}
+
+.skin-card.active {
+  border-color: #d9a79c;
+  box-shadow: 0 0 0 2px rgba(217, 167, 156, 0.3);
+}
+
+
+>>>>>>> a76af41 (products.css erstellt)
