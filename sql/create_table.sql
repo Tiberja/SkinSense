@@ -12,12 +12,14 @@ CREATE TABLE kategorie (
 
 CREATE TABLE produkt (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    beschreibung TEXT NOT NULL,
     name TEXT NOT NULL,
+    bezeichnung TEXT NOT NULL,
+    merkmal TEXT NOT NULL,
     preis NUMERIC NOT NULL,
-    shop_link TEXT NOT NULL,
+    beschreibung TEXT NOT NULL,
     inhaltsstoffe TEXT NOT NULL,
-    anwendung TEXT NOT NULL
+    anwendung TEXT NOT NULL,
+    shop_link TEXT NOT NULL,
     bild TEXT NOT NULL
 );
 

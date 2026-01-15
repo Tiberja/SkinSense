@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+from urllib.parse import urlparse
 
 
 app = Flask(__name__)
@@ -88,9 +89,62 @@ def products():
     return render_template("products.html", skin_type=session['skin_type'])
 
 
-@app.route('/product_details') #<product_id>
-def product_details(): #product_id in klammer
-    return  render_template("product_details.html") #product_detail Screen for {product_id} (placeholder)" #   
+@app.route('/product_details/<int:product_id>')
+def product_details(product_id): 
+    db = get_db()
+
+    produkt = db.execute(
+        "SELECT * FROM produkt WHERE id= ?",
+        (product_id,)
+    ).fetchone()
+
+    shop_domain=""
+    if produkt["shop_link"]:
+        netloc = urlparse(produkt["shop_link"]).netloc
+        shop_domain = netloc.replace("www.","")
+
+    bewertungen = db.execute(
+        """SELECT b.sterne, b.kommentar, b.datum, u.name AS user_name FROM bewertung b JOIN benutzer u ON b.benutzer_id = u.id WHERE b.produkt_id = ? ORDER BY b.datum DESC""",
+        (product_id,)).fetchall()
+
+    stats = db.execute(""" SELECT AVG(sterne) AS avg_sterne, COUNT(*) AS anzahl FROM bewertung WHERE produkt_id = ?""", 
+        (product_id,)).fetchone()
+
+    avg = stats["avg_sterne"] if stats["avg_sterne"] is not None else 0
+    count = stats["anzahl"]
+
+    avg_rounded = int(round(avg))
+
+    return render_template(
+        "product_details.html",
+        produkt=produkt,
+        bewertungen=bewertungen,
+        avg=avg,
+        count=count,
+        avg_rounded=avg_rounded,
+        shop_domain=shop_domain
+    )
+
+#Bewertungen 
+@app.route("/products/<int:product_id>/reviews", methods=["POST"])
+def add_review(product_id):
+    sterne = int(request.form["stars"])
+    kommentar = request.form["text"]
+
+    db = get_db()
+    benutzer_email = session["user_email"]  
+
+    user_row = db.execute("SELECT id FROM benutzer WHERE email = ?",(benutzer_email,)
+     ).fetchone()
+
+    benutzer_id = user_row["id"]
+
+    db.execute("INSERT INTO bewertung (produkt_id, benutzer_id, sterne, kommentar) VALUES (?,?,?,?)", 
+               (product_id, benutzer_id, sterne, kommentar)) 
+    db.commit()
+
+    return redirect(url_for("product_details", product_id=product_id))
+    
 
 @app.route('/favorites')
 def favorites():

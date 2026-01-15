@@ -131,19 +131,19 @@ summary{
 }
 
 .review-btn {
-  padding: 13px;
-  border: none;
-  border-radius: 999px;
-  background-color: #e7c4b4;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
+    display: inline-block;
+    padding: 13px 18px;
+    border: none;
+    border-radius: 999px;
+    background-color: #e7c4b4;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 .review-btn:hover {
-  background-color: #d9a993;
+    background-color: #d9a993;
 }
 
 .review-card{
@@ -190,11 +190,11 @@ summary{
     z-index: 999;
 }
 
-.modal.open {
-    display:flex;
+.modal:target {
+    display: flex;
 }
 
-.model-content {
+.modal-content {
     width: min(520px, 92vw);
     background: #fff;
     border-radius: 20px;
@@ -207,34 +207,14 @@ summary{
     position: absolute;
     top: 14px;
     right: 14px;
+    text-decoration: none;
     border: none;
     background: transparent;
     font-size: 18px;
-    cursor: pointer;
 }
 
-.field-label {
-    display:block;
-    margin-top: 14px;
-    font-weight: 700;
-    font-size: 14px;
-}
-
-.modal-content input,
-.modal-content textarea {
-    width: 100%;
-    margin-top: 8px;
-    padding: 12px 12px;
-    border-radius: 12px;
-    border: 1px solid #eee;
-    font: inherit;
-    outline: none;
-}
-
-.hint{
-    display:block;
-    margin-top: 6px;
-    color: #777;
+.modal-close:hover {
+    background: #f3ede9;
 }
 
 .btn-submit{
@@ -250,26 +230,32 @@ summary{
 }
 
 /*Sterne*/
-.star-input {
-    display: flex; 
+.star-rating {
+    display: inline-flex; 
+    flex-direction: row-reverse;
     gap: 6px;
     margin-top:10px;
 }
 
-.star {
-    border: none;
-    background: transparent;
+.star-rating input{
+    display: none;
+}
+
+.star-rating label {
     cursor: pointer;
-    font-size: 26px;
+    font-size: 28px;
     color: #ddd;
-    padding: 0;
     line-height: 1;
 }
 
-.star.is-on { 
-    color: #e3a23a;
- }
+.star-rating label:hover,
+.star-rating label:hover ~label{
+    color: #e3a23a; 
+}
 
+.star-rating input:checked ~label {
+    color: #e3a23a;
+}
 #reviewsList{
     display: flex;
     gap: 30px;

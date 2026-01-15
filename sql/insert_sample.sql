@@ -28,9 +28,8 @@ INSERT INTO kategorie (bezeichnung, beschreibung) VALUES ("Peeling","Sanftes AHA
 
 --Produkte
 --trockene Haut
-INSERT INTO produkt (beschreibung,name,preis,shop_link,inhaltsstoffe,anwendung,bild) VALUES ("Sanfter Gelreiniger für normale bis Mischhaut.","CeraVe Reinigungsgel","11,95 €","dm / Rossmann / Apotheke","Aqua, Glycerin, Ceramide, Niacinamid","Morgens & abends auf feuchte Haut einmassieren"); --1
+INSERT INTO produkt (name,bezeichnung,merkmal,beschreibung,preis,inhaltsstoffe,anwendung,shop_link,bild) VALUES ("CeraVe Reinigungsgel","pflegende Feuchtigkeitslotion","feuchtigkeit, für trockene Haut","11,95 €","Sanfter Gelreiniger für normale bis Mischhaut.","Aqua, Glycerin, Ceramide, Niacinamid","Morgens & abends auf feuchte Haut einmassieren","Rossmann.de","/static/images/products/CeraVe_Feuchtigkeitslotion.png"); --1
 
-INSERT INTO produkt (beschreibung,name,preis,shop_link,inhaltsstoffe,anwendung,bild) VALUES ("Sanfter Gelreiniger für normale bis Mischhaut.","CeraVe Reinigungsgel","11,95 €","dm / Rossmann / Apotheke","Aqua, Glycerin, Ceramide, Niacinamid","Morgens & abends auf feuchte Haut einmassieren","/static/images/products/CeraVe_Feuchtigkeitslotion.png"); --2
 
 --Benutzer
 INSERT INTO benutzer (passwort_hash,name,email,hauttyp_id) VALUES ("HASH1","Tiberja Gündüz","tiberja.gdz@gmail.com","1"); --1
