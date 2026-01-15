@@ -33,14 +33,21 @@
     <!-- Main -->
     <main class="products-main">
 
-     <!-- Topbar -->
+
+      <!-- Topbar -->
       <div class="topbar">
         <div class="search">
           <input type="text" placeholder="Search products..." />
         </div>
-     
-     
-     
+
+        <!-- User Menu -->
+        <div class="user-menu">
+          <a class="sidebar-link" href="{{ url_for('index') }}">🏠 Home</a>
+          <a class="sidebar-link" href="{{ url_for('favorites') }}">⭐ Favoriten</a>
+          <a class="sidebar-link" href="{{ url_for('logout') }}">🚪 Abmelden</a>
+        </div>
+      </div>
+
       <!-- Info Box  -->
       <section class="info-box">
         <div class="info-icon"></div>
@@ -52,16 +59,7 @@
           </p>
         </div>
       </section>
-
-
-        <!-- User Menu -->
-        <div class="user-menu">
-          <a class="sidebar-link" href="{{ url_for('index') }}">🏠 Home</a>
-          <a class="sidebar-link" href="{{ url_for('favorites') }}">⭐ Favoriten</a>
-          <a class="sidebar-link" href="{{ url_for('logout') }}">🚪 Abmelden</a>
-        </div>
-      </div>
-
+      
       <!-- Cards Grid (Placeholder) -->
       <section class="cards-grid">
         <div class="product-card">
