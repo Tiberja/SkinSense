@@ -9,8 +9,8 @@ users = {}
 
 @app.route('/')
 def index():
-    if 'user_email' not in session:
-        return redirect(url_for('login'))
+   # if 'user_email' not in session:
+        #return redirect(url_for('login'))
     return render_template ('home.html')
 
 @app.route('/login' , methods=['GET', 'POST'])

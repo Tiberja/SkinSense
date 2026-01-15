@@ -14,7 +14,7 @@ CREATE TABLE produkt (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     bezeichnung TEXT NOT NULL,
-    merkmal TEXT NOT NULL,
+    merkmale TEXT NOT NULL,
     preis NUMERIC NOT NULL,
     beschreibung TEXT NOT NULL,
     inhaltsstoffe TEXT NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE benutzer (
     passwort_hash TEXT NOT NULL,
     name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    hauttyp_id INTEGER,
+    hauttyp_id INTEGER NOT NULL,
     FOREIGN KEY (hauttyp_id) REFERENCES hauttyp (id)
 );
 

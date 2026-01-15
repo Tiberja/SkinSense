@@ -27,7 +27,7 @@
             <p class="price">{{ "%.2f"|format(produkt.preis) }}€</p>
         
             <div class="tags">  
-                 {% for t in produkt.merkmal.split(",")%}                  <!-- tags in db einfügen-->
+                 {% for t in produkt.merkmale.split(",")%}                  <!-- tags in db einfügen-->
                    <span>{{t.strip()}}</span>
                  {% endfor %}
             </div>
