@@ -322,3 +322,24 @@
 .dropdown.open {
   display: block;
 }
+
+ /*SKINTYPE */
+.back-skin-btn {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+
+  padding: 12px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+
+  background: #e7c4b4;
+  color: #ffffff;
+  font-weight: 800;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.back-skin-btn:hover {
+  background: #d9a993;
+}
