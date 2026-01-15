@@ -324,10 +324,11 @@
 }
 
  /*SKINTYPE */
-.back-skin-btn {
+.back-skin-btn{
   position: fixed;
   left: 20px;
   bottom: 20px;
+  z-index: 9999;
 
   padding: 12px 14px;
   border-radius: 999px;
@@ -340,6 +341,6 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
-.back-skin-btn:hover {
+.back-skin-btn:hover{
   background: #d9a993;
 }
