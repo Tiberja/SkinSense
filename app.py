@@ -82,8 +82,8 @@ def skin_type():
 
 @app.route('/products')
 def products():
-    if 'user_email' not in session:
-        return redirect(url_for('login'))
+ #   if 'user_email' not in session:
+  #      return redirect(url_for('login'))
 
    # if 'skin_type' not in session:
    #     return redirect(url_for('skin_type'))
