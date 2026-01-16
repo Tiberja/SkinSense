@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from urllib.parse import urlparse
 
-
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # Needed for flash messages
 
 users = {} 
+
+from db import db, Benutzer, Produkt, Kategorie, Hauttyp, Bewertung
 
 @app.route('/')
 def index():

@@ -13,11 +13,11 @@ DELETE from hauttyp;
 DELETE from sqlite_sequence;
 
 --Hauttyp
-INSERT INTO hauttyp (bezeichnung) VALUES ("trocken"); --1
-INSERT INTO hauttyp (bezeichnung) VALUES ("mischhaut"); --2
-INSERT INTO hauttyp (bezeichnung) VALUES ("oelig"); --3
-INSERT INTO hauttyp (bezeichnung) VALUES ("sensibel"); --4
-INSERT INTO hauttyp (bezeichnung) VALUES ("normal"); --5
+INSERT INTO hauttyp (bezeichnung, beschreibung) VALUES ("trocken","gespannt, rau, schuppig"); --1
+INSERT INTO hauttyp (bezeichnung, beschreibung) VALUES ("mischhaut","ölig in manchen Bereichen, trocken in anderen"); --2
+INSERT INTO hauttyp (bezeichnung, beschreibung) VALUES ("oelig","glänzend, sichtbare Poren"); --3
+INSERT INTO hauttyp (bezeichnung, beschreibung) VALUES ("sensibel","reagiert schnell, leicht rot, gereizt"); --4
+INSERT INTO hauttyp (bezeichnung, beschreibung) VALUES ("normal","keine Auffälligkeiten"); --5
 
 --Kategorie 
 INSERT INTO kategorie (bezeichnung, beschreibung) VALUES ("Reinigung","Entfernt Schmutz/Talg, ohne die Hautbarriere zu stressen."); --1

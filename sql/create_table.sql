@@ -2,6 +2,7 @@
 CREATE TABLE hauttyp (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     bezeichnung TEXT NOT NULL
+    beschreibung TEXT NOT NULL
 );
 
 CREATE TABLE kategorie (
