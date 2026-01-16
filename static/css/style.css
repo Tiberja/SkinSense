@@ -86,23 +86,6 @@ body.auth-page {
   box-shadow: 0 0 0 3px rgba(231, 196, 180, 0.3);
 }
 
-/* Forgot Password */
-.form-row {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 22px;
-}
-
-.form-row a {
-  font-size: 13px;
-  color: #d9a993;
-  text-decoration: none;
-}
-
-.form-row a:hover {
-  text-decoration: underline;
-}
-
 /* Login Button */
 .btn-primary {
   width: 100%;
