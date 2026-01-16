@@ -85,8 +85,8 @@ def products():
     if 'user_email' not in session:
         return redirect(url_for('login'))
 
-    if 'skin_type' not in session:
-        return redirect(url_for('skin_type'))
+   # if 'skin_type' not in session:
+   #     return redirect(url_for('skin_type'))
 
     return render_template("products.html", skin_type=session['skin_type'])
 
