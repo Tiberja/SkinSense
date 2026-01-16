@@ -34,6 +34,18 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email'].strip()
+
+        #  Sicherheits-Standard: immer gleiche Meldung (egal ob User existiert)
+        flash("Wenn ein Konto mit dieser E-Mail existiert, wurde ein Link zum Zurücksetzen gesendet.")
+        return redirect(url_for('login'))
+
+    return render_template('forgot_password.html')
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     # Wenn schon eingeloggt: nicht nochmal registrieren
