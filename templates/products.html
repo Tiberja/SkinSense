@@ -24,8 +24,8 @@
       <p class="sidebar-subtitle">Select a category</p>
 
       <nav class="sidebar-nav">
-        <a class="sidebar-link active" href="#">All Products</a>
-        
+        <a class="sidebar-link active" href="{{ url_for('products', category=cat.id) }}">...All Products</a>
+
         <a class="sidebar-link" href="{{ url_for('products', category='Reinigung') }}">Cleansers</a>
         <a class="sidebar-link" href="{{ url_for('products', category='Feuchtigkeitscreme') }}">Moisturizers</a>
         <a class="sidebar-link" href="{{ url_for('products', category='Sonnencreme') }}">Sunscreens</a>

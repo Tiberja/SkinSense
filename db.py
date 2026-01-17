@@ -1,13 +1,7 @@
-
-import click
 from flask_sqlalchemy import SQLAlchemy
-from app import app
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todos.sqlite'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy()
-db.init_app(app)
+
 
 class Hauttyp(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
@@ -87,15 +81,5 @@ geeignet = db.Table (
     db.Column('hauttyp_id', db.Integer, db.ForeignKey('hauttyp.id', ondelete='CASCADE'), primary_key=True)
 )
 
-with app.app_context():
-    db.create_all()
 
-@click.command('init-db')
-def init():
-    with app.app_context():
-        db.drop_all()
-        db.create_all()
-    click.echo('Database has been initialized.')
-
-app.cli.add_command(init) 
 

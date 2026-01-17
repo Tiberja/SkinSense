@@ -1,12 +1,20 @@
-from flask import render_template, redirect, url_for, session, request
-from db import db, Produkt, Kategorie, Benutzer, Hauttyp
+from flask import Flask, render_template, redirect, url_for, session, request, flash
+from db import db, Produkt, Kategorie, Benutzer, Hauttyp, Bewertung
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # Needed for flash messages
 
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///skinsense.sqlite"  # oder der DB-Name den ihr nutzt
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()
+
 users = {} 
 
-from db import db, Benutzer, Produkt, Kategorie, Hauttyp, Bewertung
+
 
 @app.route('/')
 def index():
@@ -88,21 +96,18 @@ def products():
   #  if 'skin_type' not in session:
    #     return redirect(url_for('skin_type'))
    
-     # User aus DB holen (damit wir seinen Hauttyp kennen)
     user = Benutzer.query.filter_by(email=session['user_email']).first()
     if not user:
         return redirect(url_for('login'))
 
-    # Alle Kategorien für Sidebar
     kategorien = Kategorie.query.order_by(Kategorie.id).all()
 
-    # Kategorie aus URL (z.B. /products?category=4)
     selected_category = request.args.get('category', type=int)
 
-    # Basis-Query: nur Produkte die zum Hauttyp passen
-    q = Produkt.query.filter(Produkt.geeignet_fuer.any(Hauttyp.id == user.hauttyp_id))
+    q = Produkt.query.filter(
+        Produkt.geeignet_fuer.any(Hauttyp.id == user.hauttyp_id)
+    )
 
-    # Wenn Kategorie gewählt -> zusätzlich filtern
     if selected_category:
         q = q.filter(Produkt.kategorien.any(Kategorie.id == selected_category))
 
@@ -110,12 +115,12 @@ def products():
 
     return render_template(
         "products.html",
-         #, skin_type=session['skin_type'
-         
-        products=products,
-        categories=categories,
-        selected_category=selected
+         #, skin_type=session['skin_type',
+        products=produkte,
+        categories=kategorien,
+        selected_category=selected_category
     )
+
 
 
 @app.route('/product_details/<int:product_id>')
