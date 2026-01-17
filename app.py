@@ -96,9 +96,9 @@ def products():
   #  if 'skin_type' not in session:
    #     return redirect(url_for('skin_type'))
    
-    user = Benutzer.query.filter_by(email=session['user_email']).first()
-    if not user:
-        return redirect(url_for('login'))
+  #  user = Benutzer.query.filter_by(email=session['user_email']).first()
+    #if not user:
+   #     return redirect(url_for('login'))
 
     kategorien = Kategorie.query.order_by(Kategorie.id).all()
 
