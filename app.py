@@ -1,10 +1,10 @@
-from flask import Flask, render_template, redirect, url_for, session, request, flash
-from db import db, Produkt, Kategorie, Benutzer, Hauttyp, Bewertung
+from flask import Flask, render_template, redirect, url_for, session, request
+from db import db, Produkt, Kategorie, Benutzer, Hauttyp
 
 app = Flask(__name__)
-app.secret_key = 'supersecretkey'  # Needed for flash messages
+app.secret_key = "supersecretkey"
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///skinsense.sqlite"  # oder der DB-Name den ihr nutzt
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///instance/skinsense.sqlite"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
@@ -96,31 +96,28 @@ def products():
   #  if 'skin_type' not in session:
    #     return redirect(url_for('skin_type'))
    
-  #  user = Benutzer.query.filter_by(email=session['user_email']).first()
-    #if not user:
-   #     return redirect(url_for('login'))
+    user = Benutzer.query.filter_by(email=session["user_email"]).first()
 
     kategorien = Kategorie.query.order_by(Kategorie.id).all()
+    selected_category = request.args.get("category", type=int)
 
-    selected_category = request.args.get('category', type=int)
-
-    q = Produkt.query.filter(
-        Produkt.geeignet_fuer.any(Hauttyp.id == user.hauttyp_id)
-    )
+    query = Produkt.query
 
     if selected_category:
-        q = q.filter(Produkt.kategorien.any(Kategorie.id == selected_category))
+        query = query.filter(
+            Produkt.kategorien.any(Kategorie.id == selected_category)
+        )
 
-    produkte = q.all()
+    produkte = query.all()
 
     return render_template(
         "products.html",
          #, skin_type=session['skin_type',
+       
         products=produkte,
         categories=kategorien,
         selected_category=selected_category
     )
-
 
 
 @app.route('/product_details/<int:product_id>')
