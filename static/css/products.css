@@ -603,6 +603,17 @@
   cursor: pointer;
 }
 
+.user-menu > summary {
+  list-style: none;
+}
+
+.user-menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.user-menu[open] .dropdown {
+  display: block;
+}
 /* Dropdown ist standardmäßig VERSTECKT */
 .dropdown {
   display: none;
@@ -631,11 +642,7 @@
   background: #faf7f5;
 }
 
-/* Wenn offen */
-.user-menu:hover .dropdown,
-.user-menu:focus-within .dropdown {
-  display: block;
-}
+
 
  /*SKINTYPE */
 .back-skin-btn{

@@ -41,18 +41,17 @@
         </div>
 
         <!-- User Menu -->
-      <!-- User Menu (Button + Dropdown) -->
-      <div class="user-menu">
-       <button class="avatar-btn" type="button" aria-label="User Menu">
-         {{ (session.get('username','U')[:1]).upper() }}
-  </button>
+<details class="user-menu">
+  <summary class="avatar-btn" aria-label="User Menu">
+    {{ (session.get('username','U')[:1]).upper() }}
+  </summary>
 
-       <div class="dropdown">
-        <a href="{{ url_for('index') }}">🏠 Home</a>
-        <a href="{{ url_for('favorites') }}">⭐ Favoriten</a>
-        <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
+  <div class="dropdown">
+    <a href="{{ url_for('index') }}">🏠 Home</a>
+    <a href="{{ url_for('favorites') }}">⭐ Favoriten</a>
+    <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
   </div>
-</div>
+</details>
 
       <!-- Info Box  -->
       <section class="info-box">
