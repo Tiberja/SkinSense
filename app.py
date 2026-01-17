@@ -99,31 +99,35 @@ def products():
     if 'user_email' not in session:
         return redirect(url_for('login'))
 
-  #  if 'skin_type' not in session:
-   #     return redirect(url_for('skin_type'))
+   if 'skin_type' not in session:
+        return redirect(url_for('skin_type'))
    
-    user = Benutzer.query.filter_by(email=session["user_email"]).first()
+   user = Benutzer.query.filter_by(email=session["user_email"]).first()
+    if not user:
+        return redirect(url_for("login"))
 
-    kategorien = Kategorie.query.order_by(Kategorie.id).all()
+    categories = Kategorie.query.all()
+
     selected_category = request.args.get("category", type=int)
 
-    query = Produkt.query
+    q = Produkt.query
 
     if selected_category:
-        query = query.filter(
+        q = q.filter(
             Produkt.kategorien.any(Kategorie.id == selected_category)
         )
 
-    produkte = query.all()
+    products = q.all()
 
     return render_template(
         "products.html",
-         #, skin_type=session['skin_type',
+         "skin_type=session['skin_type",
        
-        products=produkte,
-        categories=kategorien,
+        products=products,
+        categories=categories,
         selected_category=selected_category
     )
+
 
 
 @app.route('/product_details/<int:product_id>')
