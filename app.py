@@ -88,7 +88,7 @@ def products():
   #  if 'skin_type' not in session:
    #     return redirect(url_for('skin_type'))
 
-    return render_template("products.html", skin_type=session['skin_type'])
+    return render_template("products.html") #, skin_type=session['skin_type'])
 
 
 @app.route('/product_details/<int:product_id>')
