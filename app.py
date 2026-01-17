@@ -217,3 +217,10 @@ def logout():
     flash("You have been logged out.")
     return redirect(url_for('login'))
 
+
+@app.route('/insert/sample')
+def run_insert_sample():
+    insert_sample()
+    return 'Database flushed and populated with some sample data.'
+
+
