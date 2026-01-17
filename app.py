@@ -1,16 +1,17 @@
+import os
 from flask import Flask, render_template, redirect, url_for, session, request
 from db import db, Produkt, Kategorie, Benutzer, Hauttyp
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+db_path = os.path.join(basedir, "instance", "skinsense.sqlite")
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///instance/skinsense.sqlite"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
-
-with app.app_context():
-    db.create_all()
 
 users = {} 
 
