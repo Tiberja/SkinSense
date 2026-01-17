@@ -12,7 +12,7 @@
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-  background: #888;
+  background: #ffffff;
   color: var(--text);
 }
 
@@ -33,7 +33,7 @@ body{
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  margin-bottom:18px;
+  
 }
 
 h1{
@@ -172,17 +172,17 @@ h1{
 }
 
 .avatar-btn{
-  width:44px;
-  height:44px;
-  border-radius: 50%;
-  background: #f0d3c6;
-  display:grid;
-  place-items:center;
-  box-shadow: var(--shadow);
-  border: 2px solid rgba(255,255,255,.8);
-  cursor:pointer;
+  width:34px;
+  height:34px;
+  border-radius: 999px;
+  border: none;
+  background: #eaded7;
+  color: #5a5a5a;
   font-weight: 800;
-  color: #3a3a3a;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow);
 }
 
 .user-menu > summary{
@@ -197,7 +197,7 @@ h1{
   display:none;
   position:absolute;
   right:0;
-  top: 54px;
+  top: 44px;
   background:#fff;
   border: 1px solid #eaded7;
   border-radius: 12px;
@@ -209,6 +209,11 @@ h1{
 
 .user-menu[open] .dropdown{
   display:block;
+}
+
+.user-menu{
+  position: relative;
+  margin-left: auto;
 }
 
 .dropdown a{
