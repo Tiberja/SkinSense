@@ -25,12 +25,12 @@
 
       <nav class="sidebar-nav">
         <a class="sidebar-link active" href="#">All Products</a>
-        <a class="sidebar-link" href="#">Cleansers</a>
-        <a class="sidebar-link" href="#">Moisturizers</a>
-        <a class="sidebar-link" href="#">Sunscreens</a>
-        <a class="sidebar-link" href="#">Serums</a>
-        <a class="sidebar-link" href="#">Masks</a>
-        <a class="sidebar-link" href="#">Toners</a>
+        
+        <a class="sidebar-link" href="{{ url_for('products', category='Reinigung') }}">Cleansers</a>
+        <a class="sidebar-link" href="{{ url_for('products', category='Feuchtigkeitscreme') }}">Moisturizers</a>
+        <a class="sidebar-link" href="{{ url_for('products', category='Sonnencreme') }}">Sunscreens</a>
+        <a class="sidebar-link" href="{{ url_for('products', category='Serum/Booster') }}">Serums</a>
+        <a class="sidebar-link" href="{{ url_for('products', category='Peeling') }}">Peeling</a>
       </nav>
     </aside>
 

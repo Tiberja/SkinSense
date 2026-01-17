@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
-from urllib.parse import urlparse
+from flask import render_template, redirect, url_for, session, request
+from db import db, Produkt, Kategorie, Benutzer, Hauttyp
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # Needed for flash messages
@@ -87,8 +87,35 @@ def products():
 
   #  if 'skin_type' not in session:
    #     return redirect(url_for('skin_type'))
+   
+     # User aus DB holen (damit wir seinen Hauttyp kennen)
+    user = Benutzer.query.filter_by(email=session['user_email']).first()
+    if not user:
+        return redirect(url_for('login'))
 
-    return render_template("products.html") #, skin_type=session['skin_type'])
+    # Alle Kategorien für Sidebar
+    kategorien = Kategorie.query.order_by(Kategorie.id).all()
+
+    # Kategorie aus URL (z.B. /products?category=4)
+    selected_category = request.args.get('category', type=int)
+
+    # Basis-Query: nur Produkte die zum Hauttyp passen
+    q = Produkt.query.filter(Produkt.geeignet_fuer.any(Hauttyp.id == user.hauttyp_id))
+
+    # Wenn Kategorie gewählt -> zusätzlich filtern
+    if selected_category:
+        q = q.filter(Produkt.kategorien.any(Kategorie.id == selected_category))
+
+    produkte = q.all()
+
+    return render_template(
+        "products.html",
+         #, skin_type=session['skin_type'
+         
+        products=products,
+        categories=categories,
+        selected_category=selected
+    )
 
 
 @app.route('/product_details/<int:product_id>')
