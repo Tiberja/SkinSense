@@ -15,39 +15,19 @@
     <h1>Was ist dein Hauttyp?</h1>
     <p>Wähle einen Hauttyp aus, um personalisierte Produktempfehlungen zu erhalten</p>
 
-    <div class="skin-grid">
-        <label class="skin-card">
-         <input type="radio" name="skin">
-            <h3>Trockene Haut</h3>
-            <p>gespannt, rau, schuppig</p>
-        </label>
+    <form action="{{ url_for('skin_type') }}" method="POST">
+     <div class="skin-grid">
+       {% for ht in hauttypen %}
+         <label class="skin-card">
+          <input type="radio" name="skin_type" value="{{ ht.id}}" required>
+             <h3>{{ ht.bezeichnung|capitalize }}</h3>
+             <p>{{ ht.beschreibung }}</p>
+         </label>
+        {% endfor %}   
+     </div>
 
-        <label class="skin-card">
-         <input type="radio" name="skin">
-            <h3>Ölige Haut</h3>
-            <p>glänzend, sichtbare Poren</p>
-        </label>
-
-        <label class="skin-card">
-         <input type="radio" name="skin">
-            <h3>Mischhaut</h3>
-            <p>ölig in manchen Bereichen, trocken in anderen</p>
-        </label>
-
-        <label class="skin-card">
-         <input type="radio" name="skin">
-            <h3>Sensible Haut</h3>
-            <p>reagiert schnell, leicht rot, gereizt</p>
-        </label>
-
-        <label class="skin-card center">
-         <input type="radio" name="skin">
-          <h3>Normale Haut</h3>
-          <p>keine Auffälligkeiten</p>
-        </label>
-      </div>
-
-      <button class="btn-primary">Weiter</button>
+     <button class="btn-primary">Weiter</button>
+    </form>
   </main>
 </body>
 </html>

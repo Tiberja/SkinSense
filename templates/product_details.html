@@ -102,7 +102,7 @@
 
     <h3 id="modalTitle">Bewertung abgeben</h3>
 
-    <form method="POST" action="/products/{{produkt.id}}/reviews">
+    <form action="{{ url_for('add_review', product_id=produkt.id) }}" method="post">
       <!--Sterne-->
       <label class="field-label">Sterne</label>
 

@@ -1,17 +1,15 @@
 import os
-from flask import Flask, render_template, redirect, url_for, session, request
-from db import db, Produkt, Kategorie, Benutzer, Hauttyp
+from flask import Flask, render_template, redirect, url_for, session, request, flash, abort
+from urllib.parse import urlparse
+from sqlalchemy import func
+
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-db_path = os.path.join(basedir, "instance", "skinsense.sqlite")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///instance/skinsense.sqlite"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+from db import db, Benutzer, Produkt, Kategorie, Hauttyp, Bewertung, insert_sample
 
-db.init_app(app)
 
 users = {} 
 
@@ -79,14 +77,21 @@ def register():
 @app.route('/skin_type', methods=['GET', 'POST'])
 def skin_type():
     # nur wenn eingeloggt
-    if 'user_email' not in session:
-        return redirect(url_for('login'))
+    #if 'user_email' not in session:
+       # return redirect(url_for('login'))
 
     if request.method == 'POST':
-        session['skin_type'] = request.form['skin_type']
+        session['skin_type'] = int(request.form['skin_type'])
         return redirect(url_for('products'))
 
-    return render_template('skin_type.html')
+    hauttypen = db.session.execute(
+        db.select(Hauttyp).order_by(Hauttyp.id)
+    ).scalars().all()
+
+    print("DEBUG hauttypen:", [(h.id, h.bezeichnung) for h in hauttypen])
+
+
+    return render_template('skin_type.html', hauttypen=hauttypen)
 
 
 @app.route('/products')
@@ -123,28 +128,42 @@ def products():
 
 @app.route('/product_details/<int:product_id>')
 def product_details(product_id): 
-    db = get_db()
 
-    produkt = db.execute(
-        "SELECT * FROM produkt WHERE id= ?",
-        (product_id,)
-    ).fetchone()
+    produkt = db.session.execute(
+        db.select(Produkt).where(Produkt.id == product_id)
+    ).scalar_one_or_none()
 
+    if produkt is None:
+        abort(404)
+
+# Shop-Domain aus URL ableiten
     shop_domain=""
-    if produkt["shop_link"]:
-        netloc = urlparse(produkt["shop_link"]).netloc
+    if produkt.shop_link:
+        netloc = urlparse(produkt.shop_link).netloc
         shop_domain = netloc.replace("www.","")
 
-    bewertungen = db.execute(
-        """SELECT b.sterne, b.kommentar, b.datum, u.name AS user_name FROM bewertung b JOIN benutzer u ON b.benutzer_id = u.id WHERE b.produkt_id = ? ORDER BY b.datum DESC""",
-        (product_id,)).fetchall()
+# Bewertungen holen
+    rows = db.session.execute(
+        db.select(Bewertung, Benutzer.name).join(Benutzer, Bewertung.benutzer_id == Benutzer.id).where(Bewertung.produkt_id == product_id).order_by(Bewertung.datum.desc())
+    ).all()
 
-    stats = db.execute(""" SELECT AVG(sterne) AS avg_sterne, COUNT(*) AS anzahl FROM bewertung WHERE produkt_id = ?""", 
-        (product_id,)).fetchone()
+    bewertungen = [
+        {
+            "sterne": bew.sterne,
+            "kommentar": bew.kommentar,
+            "datum": bew.datum,
+            "user_name": user_name,
+        }
+        for (bew, user_name) in rows
+    ]
 
-    avg = stats["avg_sterne"] if stats["avg_sterne"] is not None else 0
-    count = stats["anzahl"]
+    avg, count = db.session.execute(
+        db.select(func.avg(Bewertung.sterne), func.count(Bewertung.id))
+          .where(Bewertung.produkt_id == product_id)
+    ).one()
 
+    avg = float(avg) if avg is not None else 0.0
+    count = int(count)
     avg_rounded = int(round(avg))
 
     return render_template(
@@ -160,23 +179,32 @@ def product_details(product_id):
 #Bewertungen 
 @app.route("/products/<int:product_id>/reviews", methods=["POST"])
 def add_review(product_id):
+    if "user_email" not in session:
+        return redirect(url_for("login"))
+
     sterne = int(request.form["stars"])
-    kommentar = request.form["text"]
+    kommentar = request.form["text"].strip()
 
-    db = get_db()
-    benutzer_email = session["user_email"]  
+    benutzer = db.session.execute(
+        db.select(Benutzer).where(Benutzer.email == session["user_email"])
+    ).scalar_one_or_none()
 
-    user_row = db.execute("SELECT id FROM benutzer WHERE email = ?",(benutzer_email,)
-     ).fetchone()
+    if benutzer is None:
+        flash("Benutzer nicht gefunden. Bitte nochmal einloggen")
+        return redirect(url_for("login"))
 
-    benutzer_id = user_row["id"]
+    bewertung = Bewertung(
+        produkt_id=product_id,
+        benutzer_id=benutzer.id,
+        sterne=sterne,
+        kommentar=kommentar
+    )
 
-    db.execute("INSERT INTO bewertung (produkt_id, benutzer_id, sterne, kommentar) VALUES (?,?,?,?)", 
-               (product_id, benutzer_id, sterne, kommentar)) 
-    db.commit()
+    db.session.add(bewertung)
+    db.session.commit()
 
     return redirect(url_for("product_details", product_id=product_id))
-    
+
 
 @app.route('/favorites')
 def favorites():
@@ -188,3 +216,4 @@ def logout():
     session.clear()
     flash("You have been logged out.")
     return redirect(url_for('login'))
+
