@@ -11,68 +11,69 @@ app.secret_key = "supersecretkey"
 from db import db, Benutzer, Produkt, Kategorie, Hauttyp, Bewertung, insert_sample
 
 
-users = {} 
-
-
-
 @app.route('/')
 def index():
    # if 'user_email' not in session:
         #return redirect(url_for('login'))
     return render_template ('home.html')
 
-@app.route('/login' , methods=['GET', 'POST'])
+
+
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    # Wenn schon eingeloggt → direkt zur Hauptseite
-    #if "user_email" in session:
-        #return redirect(url_for("index"))
+    if request.method == "POST":
+        email = request.form["email"].strip()
 
-    if request.method == 'POST':
-        email = request.form['email'].strip()
-        password = request.form['password']
+        user = db.session.execute(
+            db.select(Benutzer).where(Benutzer.email == email)
+        ).scalar_one_or_none()
 
-        # prüfen gegen users-Dict (statt test@example)
-        if email in users and users[email]["password"] == password:
-            session["user_email"] = email
-            session["username"] = users[email]["username"]
-            flash("Login successful!")
-            return redirect(url_for('skin_type'))
+        if user is None:
+            flash("User nicht gefunden. Bitte registrieren.")
+            return redirect(url_for("register"))
 
-        flash("Invalid credentials. Please try again.")
+        session["user_email"] = user.email
+        session["username"] = user.name
+        session["user_id"] = user.id
 
-    return render_template('login.html')
+        return redirect(url_for("skin_type"))
+
+    return render_template("login.html")
+       
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    # Wenn schon eingeloggt: nicht nochmal registrieren
-    # if 'user_email' in session:
-        #return redirect(url_for('index'))
+    if request.method == "POST":
+        username = request.form["username"].strip()
+        email = request.form["email"].strip()
 
-    if request.method == 'POST':
-        username = request.form['username'].strip()
-        email = request.form['email'].strip()
-        password = request.form['password']
+        exists = db.session.execute(
+            db.select(Benutzer).where(Benutzer.email == email)
+        ).scalar_one_or_none()
 
-        # prüfen, ob Benutzer schon existiert
-        if email in users:
-            flash("User with this email already exists.")
-            return redirect(url_for('register'))
+        if exists:
+            flash("User existiert bereits. Bitte einloggen.")
+            return redirect(url_for("login"))
 
-        # neuen Nutzer speichern
-        users[email] = {
-            'username': username,
-            'password': password
-        }
+        user = Benutzer(
+            name=username,
+            email=email,
+            passwort_hash="TEMP",
+            hauttyp_id=1
+        )
 
-        #  automatisch einloggen
-        session['user_email'] = email
-        session['username'] = username
+        db.session.add(user)
+        db.session.commit()
 
-        flash("Registration successful!")
-        return redirect(url_for('skin_type'))  
+        session["user_email"] = user.email
+        session["username"] = user.name
+        session["user_id"] = user.id
 
-    return render_template('register.html')
+        return redirect(url_for("skin_type"))
+
+    return render_template("register.html")
+
    
 @app.route('/skin_type', methods=['GET', 'POST'])
 def skin_type():
@@ -94,40 +95,42 @@ def skin_type():
     return render_template('skin_type.html', hauttypen=hauttypen)
 
 
-@app.route('/products')
+@app.route("/products")
 def products():
-    if 'user_email' not in session:
-        return redirect(url_for('login'))
-
-   if 'skin_type' not in session:
-        return redirect(url_for('skin_type'))
-   
-   user = Benutzer.query.filter_by(email=session["user_email"]).first()
-    if not user:
+    if "user_email" not in session:
         return redirect(url_for("login"))
 
-    categories = Kategorie.query.all()
+    user = db.session.execute(
+        db.select(Benutzer).where(Benutzer.email == session["user_email"])
+    ).scalar_one_or_none()
+
+    if user is None:
+        session.clear()
+        return redirect(url_for("login"))
+
+    kategorien = db.session.execute(
+        db.select(Kategorie).order_by(Kategorie.id)
+    ).scalars().all()
 
     selected_category = request.args.get("category", type=int)
 
-    q = Produkt.query
+    q = db.select(Produkt).where(
+        Produkt.geeignet_fuer.any(Hauttyp.id == user.hauttyp_id)
+    )
 
     if selected_category:
-        q = q.filter(
+        q = q.where(
             Produkt.kategorien.any(Kategorie.id == selected_category)
         )
 
-    products = q.all()
+    produkte = db.session.execute(q).scalars().all()
 
     return render_template(
         "products.html",
-         "skin_type=session['skin_type",
-       
-        products=products,
-        categories=categories,
+        products=produkte,
+        categories=kategorien,
         selected_category=selected_category
     )
-
 
 
 @app.route('/product_details/<int:product_id>')

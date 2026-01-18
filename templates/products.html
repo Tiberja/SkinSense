@@ -23,15 +23,19 @@
       <h3 class="sidebar-title">Categories</h3>
       <p class="sidebar-subtitle">Select a category</p>
 
-      <nav class="sidebar-nav">
-        <a class="sidebar-link active" href="{{ url_for('products', category=cat.id) }}">...All Products</a>
+     <nav class="sidebar-nav">
+  <a class="sidebar-link {{ 'active' if not selected_category else '' }}"
+     href="{{ url_for('products') }}">
+     ...All Products
+  </a>
 
-        <a class="sidebar-link" href="{{ url_for('products', category='Reinigung') }}">Cleansers</a>
-        <a class="sidebar-link" href="{{ url_for('products', category='Feuchtigkeitscreme') }}">Moisturizers</a>
-        <a class="sidebar-link" href="{{ url_for('products', category='Sonnencreme') }}">Sunscreens</a>
-        <a class="sidebar-link" href="{{ url_for('products', category='Serum/Booster') }}">Serums</a>
-        <a class="sidebar-link" href="{{ url_for('products', category='Peeling') }}">Peeling</a>
-      </nav>
+  {% for cat in categories %}
+    <a class="sidebar-link {{ 'active' if selected_category == cat.id else '' }}"
+       href="{{ url_for('products', category=cat.id) }}">
+      {{ cat.bezeichnung }}
+    </a>
+  {% endfor %}
+</nav>
     </aside>
 
     <!-- Main -->
@@ -71,74 +75,34 @@
       </section>
 
       <!-- Cards Grid (Placeholder) -->
-      <section class="cards-grid">
-        <div class="product-card">
-          <div class="product-img placeholder"></div>
-          <h3 class="product-title">Product Name</h3>
-          <p class="product-brand">Brand</p>
-          <div class="tags">
-            <span class="tag">Hydrating</span>
-            <span class="tag">Oil-Free</span>
-          </div>
-          <a class="btn-soft" href="#">View Details</a>
-        </div>
+<section class="cards-grid">
+  {% for p in products %}
+    <div class="product-card">
 
-        <div class="product-card">
-          <div class="product-img placeholder"></div>
-          <h3 class="product-title">Product Name</h3>
-          <p class="product-brand">Brand</p>
-          <div class="tags">
-            <span class="tag">Cleanser</span>
-            <span class="tag">Sensitive</span>
-          </div>
-          <a class="btn-soft" href="#">View Details</a>
-        </div>
+      <!-- Bild (Pfad ggf. anpassen) -->
+      <div class="product-img">
+        <img src="{{ url_for('static', filename='imgages/' ~ p.bild) }}"
+             alt="{{ p.name }}"
+             onerror="this.style.display='none'">
+      </div>
 
-        <div class="product-card">
-          <div class="product-img placeholder"></div>
-          <h3 class="product-title">Product Name</h3>
-          <p class="product-brand">Brand</p>
-          <div class="tags">
-            <span class="tag">SPF</span>
-            <span class="tag">Lightweight</span>
-          </div>
-          <a class="btn-soft" href="#">View Details</a>
-        </div>
+      <h3 class="product-title">{{ p.name }}</h3>
+      <p class="product-brand">{{ p.bezeichnung }}</p>
 
-        <div class="product-card">
-          <div class="product-img placeholder"></div>
-          <h3 class="product-title">Product Name</h3>
-          <p class="product-brand">Brand</p>
-          <div class="tags">
-            <span class="tag">Exfoliating</span>
-            <span class="tag">Acne</span>
-          </div>
-          <a class="btn-soft" href="#">View Details</a>
-        </div>
+      <div class="tags">
+        {% for tag in (p.merkmale or '').split(',')[:2] %}
+          <span class="tag">{{ tag.strip() }}</span>
+        {% endfor %}
+      </div>
 
-        <div class="product-card">
-          <div class="product-img placeholder"></div>
-          <h3 class="product-title">Product Name</h3>
-          <p class="product-brand">Brand</p>
-          <div class="tags">
-            <span class="tag">Soothing</span>
-            <span class="tag">Barrier</span>
-          </div>
-          <a class="btn-soft" href="#">View Details</a>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img placeholder"></div>
-          <h3 class="product-title">Product Name</h3>
-          <p class="product-brand">Brand</p>
-          <div class="tags">
-            <span class="tag">Glow</span>
-            <span class="tag">Toner</span>
-          </div>
-          <a class="btn-soft" href="#">View Details</a>
-        </div>
-      </section>
-
+      <a class="btn-soft" href="{{ url_for('product_details', product_id=p.id) }}">
+        View Details
+      </a>
+    </div>
+  {% else %}
+    <p>Keine Produkte gefunden.</p>
+  {% endfor %}
+</section>
       <div class="bottom-bar">
         <button class="btn-pill" type="button">Show More</button>
       </div>
