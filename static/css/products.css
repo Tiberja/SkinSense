@@ -208,38 +208,33 @@
 /* Bild-Container */
 .product-img{
   position:relative;
-  height:160px;
+  height:190px;
   background:#f7f2ef;
   border-radius:14px;
   margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   overflow:hidden;
-  display: flex;
-  align-items: center;    
-  justify-content: center; 
 }
 
 .product-img img{
-  max-height:100%;
-  max-width:100%;
-  display: block;
-}
-
-.product-img img{
-  width:100%;
-  height:100%;
-  object-fit:contain; 
+  max-width:60%;
+  max-height:70%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
   display:block;
+  z-index:1;   
 }
-
 
 .fav-form{
   position:absolute;
   top:10px;
   right:10px;
   margin:0;
-  z-index:5;
+  z-index:20;   /* 👈 GANZ WICHTIG */
 }
-
 .fav-btn{
   width:34px;
   height:34px;
