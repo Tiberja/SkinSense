@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <title>Products – SkinSense</title>
 
-  <!-- 1️⃣ Gemeinsame Basis -->
+  <!-- Basis -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-  <!-- 2️⃣ Seiten-spezifisch -->
+  <!-- Seite -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
 </head>
+
 <body>
   <div class="products-layout">
 
@@ -23,24 +23,24 @@
       <h3 class="sidebar-title">Categories</h3>
       <p class="sidebar-subtitle">Select a category</p>
 
-     <nav class="sidebar-nav">
-  <a class="sidebar-link {{ 'active' if not selected_category else '' }}"
-     href="{{ url_for('products') }}">
-     ...All Products
-  </a>
+      <nav class="sidebar-nav">
+        <a class="sidebar-link {{ 'active' if not selected_category else '' }}"
+           href="{{ url_for('products') }}">
+          All Products
+        </a>
 
-  {% for cat in categories %}
-    <a class="sidebar-link {{ 'active' if selected_category == cat.id else '' }}"
-       href="{{ url_for('products', category=cat.id) }}">
-      {{ cat.bezeichnung }}
-    </a>
-  {% endfor %}
-</nav>
+        {% for cat in categories %}
+          <a class="sidebar-link {{ 'active' if selected_category == cat.id else '' }}"
+             href="{{ url_for('products', category=cat.id) }}">
+            {{ cat.bezeichnung }}
+          </a>
+        {% endfor %}
+      </nav>
     </aside>
+
 
     <!-- Main -->
     <main class="products-main">
-
 
       <!-- Topbar -->
       <div class="topbar">
@@ -49,70 +49,72 @@
         </div>
 
         <!-- User Menu -->
-<details class="user-menu">
-  <summary class="avatar-btn" aria-label="User Menu">
-    {{ (session.get('username','U')[:1]).upper() }}
-  </summary>
+        <details class="user-menu">
+          <summary class="avatar-btn" aria-label="User Menu">
+            {{ (session.get('username','U')[:1]).upper() }}
+          </summary>
 
-  <div class="dropdown">
-    <a href="{{ url_for('favorites') }}">⭐ Favoriten</a>
-    <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
-  </div>
-</details>
-</div>
+          <div class="dropdown">
+            <a href="{{ url_for('favorites') }}">⭐ Favoriten</a>
+            <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
+          </div>
+        </details>
+      </div>
 
-<!-- Info Box  -->
+      <!-- Info Box -->
       <section class="info-box">
         <div class="info-icon"></div>
         <div>
-          <h3>Why Moisturizers are a Must-Have</h3>
-          <p>
-            Moisturizers prevent water loss and keep your skin barrier strong.
-            Even oily skin needs hydration to stay balanced.
-          </p>
+          <h3>{{ info_title }}</h3>
+          <p>{{ info_text }}</p>
         </div>
       </section>
 
-      <!-- Cards Grid (Placeholder) -->
-<section class="cards-grid">
-  {% for p in products %}
-    <div class="product-card">
 
-      <div class="product-img">
-        <img src="{{ url_for('static', filename='images/products/' ~ p.bild) }}"
-             alt="{{ p.name }}"
-             onerror="this.style.display='none'">
-        <a href="{{ url_for('product_details', product_id=p.id) }}">
-      <img src="{{ url_for('static', filename=image_map.get(p.bild, 'images/Design.png')) }}"
-     alt="{{ p.name }}">
-     onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/Design.png') }}'">
-        </a>
+      <!-- Cards Grid -->
+      <section class="cards-grid">
+        {% for p in products %}
+          <div class="product-card">
 
-        <form class="fav-form" action="{{ url_for('toggle_favorite', product_id=p.id) }}" method="post">
-          <button class="fav-btn" type="submit" aria-label="Toggle favorite">
-            {% if p.id in favorite_ids %}♥{% else %}♡{% endif %}
-          </button>
-        </form>
-      </div>
+            <!-- Bild + Favorit -->
+            <div class="product-img">
 
-      <h3 class="product-title">{{ p.name }}</h3>
-      <p class="product-brand">{{ p.bezeichnung }}</p>
+              <a class="img-link" href="{{ url_for('product_details', product_id=p.id) }}">
+                <img
+                  src="{{ url_for('static', filename=image_map.get(p.bild, 'images/Design.png')) }}"
+                  alt="{{ p.name }}"
+                  loading="lazy"
+                  onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/Design.png') }}';"
+                >
+              </a>
 
-      <a class="btn-soft" href="{{ url_for('product_details', product_id=p.id) }}">View Details</a>
+              <form class="fav-form" action="{{ url_for('toggle_favorite', product_id=p.id) }}" method="post">
+                <button class="fav-btn" type="submit" aria-label="Toggle favorite">
+                  {% if p.id in favorite_ids %}♥{% else %}♡{% endif %}
+                </button>
+              </form>
 
-    </div>
-  {% else %}
-    <p>Keine Produkte gefunden.</p>
-  {% endfor %}
-</section>
+            </div>
 
+            <h3 class="product-title">{{ p.name }}</h3>
+            <p class="product-brand">{{ p.bezeichnung }}</p>
 
+            <a class="btn-soft" href="{{ url_for('product_details', product_id=p.id) }}">
+              View Details
+            </a>
+
+          </div>
+        {% else %}
+          <p>Keine Produkte gefunden.</p>
+        {% endfor %}
+      </section>
 
     </main>
   </div>
+
   <a href="{{ url_for('skin_type') }}" class="back-skin-btn">
-  ← Back to Skin Type Selection
-</a>
+    ← Back to Skin Type Selection
+  </a>
+
 </body>
 </html>
-

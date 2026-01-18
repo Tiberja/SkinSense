@@ -15,15 +15,17 @@
     <h1 class="auth-title">Log In</h1>
 
     <!-- Flash Messages -->
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul class="flash-messages">
-          {% for msg in messages %}
-            <li>{{ msg }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flash-messages">
+      {% for category, msg in messages %}
+        {% if category == "login" %}
+          <li>{{ msg }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 
     <!-- Login Form -->
     <form method="post" action="{{ url_for('login') }}">

@@ -208,10 +208,11 @@
 /* Bild-Container */
 .product-img{
   position:relative;
-  height:190px;
+  height:160px;
   background:#f7f2ef;
   border-radius:14px;
   margin-bottom:12px;
+ 
   display:flex;
   align-items:center;
   justify-content:center;
@@ -219,13 +220,19 @@
 }
 
 .product-img img{
-  max-width:60%;
-  max-height:70%;
-  width:auto;
-  height:auto;
-  object-fit:contain;
+  max-width:100%;
+  max-height:100%;
   display:block;
-  z-index:1;   
+}
+
+.product-img img{
+  width: auto;
+  height: auto;
+  max-width: 90%;
+  max-height: 80%;
+  object-fit: contain;
+  display: block;
+    z-index:1;   
 }
 
 .fav-form{

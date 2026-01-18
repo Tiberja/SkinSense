@@ -1,4 +1,5 @@
 import os
+import bcrypt
 from flask import Flask, render_template, redirect, url_for, session, request, flash, abort
 from urllib.parse import urlparse
 from sqlalchemy import func
@@ -17,19 +18,27 @@ def index():
         #return redirect(url_for('login'))
     return render_template ('home.html')
 
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        name = request.form["username"].strip()
+        email = request.form["email"].strip().lower()
+        password = request.form["password"]
 
         user = db.session.execute(
-            db.select(Benutzer).where(Benutzer.name == name)
+            db.select(Benutzer).where(Benutzer.email == email)
         ).scalar_one_or_none()
 
         if user is None:
-            flash("User nicht gefunden. Bitte registrieren.")
-            return redirect(url_for("register"))
+            flash("Email oder Passwort ist falsch.", "login")
+            return redirect(url_for("login"))
 
+        if not bcrypt.checkpw(password.encode("utf-8"), user.passwort_hash.encode("utf-8")):
+            flash("Email oder Passwort ist falsch.", "login")
+            return redirect(url_for("login"))
+
+        session.clear()
         session["user_id"] = user.id
         session["username"] = user.name
 
@@ -39,36 +48,48 @@ def login():
        
 
 
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = request.form.get("username", "").strip()
-        email = request.form.get("email", "").strip()
-        password = request.form.get("password", "").strip()
+        username = request.form["username"].strip()
+        email = request.form["email"].strip().lower()
+        password = request.form["password"]
 
         if not username or not email or not password:
-            flash("Bitte alle Felder ausfüllen.")
+            flash("Bitte alle Felder ausfüllen.", "register")
             return redirect(url_for("register"))
 
-        # Username prüfen
-        exists = db.session.execute(
+        
+        exists_email = db.session.execute(
+            db.select(Benutzer).where(Benutzer.email == email)
+        ).scalar_one_or_none()
+
+        if exists_email:
+            flash("Diese Email ist bereits registriert.", "register")
+            return redirect(url_for("register"))
+
+        exists_name = db.session.execute(
             db.select(Benutzer).where(Benutzer.name == username)
         ).scalar_one_or_none()
 
-        if exists:
-            flash("Username existiert bereits.")
+        if exists_name:
+            flash("Username existiert bereits.", "register")
             return redirect(url_for("register"))
+
+        pw_hash = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
         user = Benutzer(
             name=username,
             email=email,
-            passwort_hash=password,  
-            hauttyp_id=1               
+            passwort_hash=pw_hash,
+            hauttyp_id=1  # oder später None + nach skin_type setzen
         )
 
         db.session.add(user)
         db.session.commit()
 
+        session.clear()
         session["user_id"] = user.id
         session["username"] = user.name
 
@@ -118,27 +139,45 @@ def products():
     )
 
     if selected_category:
-        q = q.where(Produkt.kategorien.any(Kategorie.id == selected_category))
+        q = q.where(
+            Produkt.kategorien.any(Kategorie.id == selected_category)
+        )
 
     produkte = db.session.execute(q).scalars().all()
     favorite_ids = {p.id for p in user.favoriten}
 
-
+    # -------- image_map --------
     image_map = {}
     base = os.path.join(app.static_folder, "images", "products")
+
     for root, dirs, files in os.walk(base):
         for f in files:
             if f.lower().endswith((".png", ".jpg", ".jpeg")):
-                rel = os.path.relpath(os.path.join(root, f), app.static_folder)
+                rel = os.path.relpath(
+                    os.path.join(root, f),
+                    app.static_folder
+                )
                 image_map[f] = rel.replace("\\", "/")
 
+    # -------- Info Box (Kategorie-basiert) --------
+    if selected_category:
+        cat = db.session.get(Kategorie, selected_category)
+        info_title = cat.bezeichnung
+        info_text = cat.beschreibung
+    else:
+        info_title = "Alle Produkte"
+        info_text = "Hier findest du alle Produkte, die zu deinem Hauttyp passen."
+
     return render_template(
-        "products.html",
-        products=produkte,
-        categories=kategorien,
-        selected_category=selected_category,
-        favorite_ids=favorite_ids,
-        image_map=image_map,  
+    "products.html",
+    products=produkte,
+    categories=kategorien,
+    selected_category=selected_category,
+    favorite_ids=favorite_ids,
+    image_map=image_map,
+    info_title=info_title,
+    info_text=info_text,
+
     )
 
 @app.route('/product_details/<int:product_id>')
@@ -239,6 +278,7 @@ def favorites():
         "favorites.html",
         products=fav_products,
         favorite_ids=favorite_ids
+
     )
 
 @app.post("/favorites/toggle/<int:product_id>")
