@@ -20,13 +20,13 @@
         <span class="brand-name">SkinSense</span>
       </div>
 
-      <h3 class="sidebar-title">Categories</h3>
-      <p class="sidebar-subtitle">Select a category</p>
+      <h3 class="sidebar-title">Kategorien</h3>
+      <p class="sidebar-subtitle">Wählen Sie eine Kategorie</p>
 
       <nav class="sidebar-nav">
         <a class="sidebar-link {{ 'active' if not selected_category else '' }}"
            href="{{ url_for('products') }}">
-          All Products
+          Alle Produkte
         </a>
 
         {% for cat in categories %}
@@ -42,12 +42,8 @@
     <!-- Main -->
     <main class="products-main">
 
-      <!-- Topbar -->
+    
       <div class="topbar">
-        <div class="search">
-          <input type="text" placeholder="Search products..." />
-        </div>
-
         <!-- User Menu -->
         <details class="user-menu">
           <summary class="avatar-btn" aria-label="User Menu">
@@ -100,7 +96,7 @@
             <p class="product-brand">{{ p.bezeichnung }}</p>
 
             <a class="btn-soft" href="{{ url_for('product_details', product_id=p.id) }}">
-              View Details
+              Mehr erfahren →
             </a>
 
           </div>
@@ -113,7 +109,7 @@
   </div>
 
   <a href="{{ url_for('skin_type') }}" class="back-skin-btn">
-    ← Back to Skin Type Selection
+    ← Zurück zur Hauttyp-Auswahl
   </a>
 
 </body>

@@ -82,22 +82,6 @@
   gap:16px;
 }
 
-.search input{
-  width:340px;
-  max-width:55vw;
-  padding:12px 14px;
-  border-radius:999px;
-  border:1px solid #eaded7;
-  background:#fff;
-  outline:none;
-}
-
-.search input:focus{
-  border-color:#e7c4b4;
-  box-shadow:0 0 0 3px rgba(231,196,180,0.25);
-}
-
-
 .user-menu{
   margin-left:auto;
   position:relative;
@@ -323,14 +307,5 @@
   }
 }
 
-@media (max-width: 560px){
-  .search input{
-    width:100%;
-    max-width:100%;
-  }
-  .cards-grid{
-    grid-template-columns:1fr;
-  }
-}
 
 
