@@ -13,7 +13,7 @@ from db import db, Benutzer, Produkt, Kategorie, Hauttyp, Bewertung, insert_samp
 
 @app.route('/')
 def index():
-   # if 'user_email' not in session:
+   # if 'user_id' not in session:
         #return redirect(url_for('login'))
     return render_template ('home.html')
 
@@ -33,7 +33,7 @@ def login():
         session["user_id"] = user.id
         session["username"] = user.name
 
-        return redirect(url_for("skin_type"))
+        return redirect(url_for("products"))
 
     return render_template("login.html")
        
@@ -42,13 +42,15 @@ def login():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = request.form["username"].strip()
+        username = request.form.get("username", "").strip()
+        email = request.form.get("email", "").strip()
+        password = request.form.get("password", "").strip()
 
-        if not username:
-            flash("Bitte gib einen Benutzernamen ein.")
+        if not username or not email or not password:
+            flash("Bitte alle Felder ausfüllen.")
             return redirect(url_for("register"))
 
-        
+        # Username prüfen
         exists = db.session.execute(
             db.select(Benutzer).where(Benutzer.name == username)
         ).scalar_one_or_none()
@@ -57,12 +59,11 @@ def register():
             flash("Username existiert bereits.")
             return redirect(url_for("register"))
 
-       
         user = Benutzer(
             name=username,
-            passwort_hash="TEMP",
-            email=f"{username}@temp.local",
-            hauttyp_id=1
+            email=email,
+            passwort_hash=password,  
+            hauttyp_id=1               
         )
 
         db.session.add(user)
