@@ -46,11 +46,13 @@ body {
 
 .product-image{
     width: 450px;
+    height: 620px;
     max-width: 100%;
     margin-right: 120px;
     border-radius: 20px;
     padding: 20px;
     background: #f3ede9; 
+    object-fit: contain;   
 }
 
 .product-info {

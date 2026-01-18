@@ -263,7 +263,7 @@ def insert_sample():
         inhaltsstoffe="Licochalcone A (antioxidativ, schützt vor UV-Stress), Glycerin (Feuchtigkeit), UV-Filter (UVA/UVB-Schutz)",
         anwendung="Morgens großzügig auftragen, bei Sonne regelmäßig erneuern.",
         shop_link="https://www.dm.de/eucerin-sensitive-protect-spf50-p4005800301622.html",
-        bild="Eucerin_Sensitive_Protect50+.png"
+        bild="Eucerin_Sensitive_Protect.png"
     )
     p13 = Produkt(
         name="Nivea UV Gesicht Sensitive SPF50",
@@ -362,7 +362,7 @@ def insert_sample():
         inhaltsstoffe="PHA (mildes Peeling, bindet zusätzlich Feuchtigkeit)",
         anwendung="2× wöchentlich nach der Reinigung anwenden.",
         shop_link="https://www.dm.de/balea-beauty-expert-pha-toner-p4058172776518.html",
-        bild="balea_pha_toner.jpg"
+        bild="balea_pha_toner.png"
     )
     p22 = Produkt(
         name="Avène Gentle Peeling Gel",
