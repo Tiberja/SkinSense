@@ -25,7 +25,6 @@
           </summary>
 
           <div class="dropdown">
-            <a href="{{ url_for('index') }}">🏠 Home</a>
             <a href="{{ url_for('products') }}">🧴 Produkte</a>
             <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
           </div>
@@ -72,74 +71,34 @@
           </button>
         </div>
       </div>
+<section class="grid">
+  {% for p in products %}
+    <article class="card">
 
-      <section class="grid">
-        <article class="card">
-          <div class="thumbWrap">
-            <div class="thumb bg1">PLACEHOLDER</div>
-            <button class="heart" type="button" title="Favorit">♡</button>
-          </div>
-          <div class="meta">
-            <p class="title">Favorit #1</p>
-            <p class="sub">Brand • Kategorie</p>
-          </div>
-        </article>
+      <div class="thumbWrap">
+        <div class="thumb">
+          <img
+            src="{{ url_for('static', filename='images/Design.png') }}"
+            alt="{{ p.name }}"
+          >
+        </div>
 
-        <article class="card">
-          <div class="thumbWrap">
-            <div class="thumb bg2">PLACEHOLDER</div>
-            <button class="heart" type="button" title="Favorit">♡</button>
-          </div>
-          <div class="meta">
-            <p class="title">Favorit #2</p>
-            <p class="sub">Brand • Kategorie</p>
-          </div>
-        </article>
+        <!-- Favorit entfernen -->
+        <form action="{{ url_for('toggle_favorite', product_id=p.id) }}" method="post">
+          <button class="heart" type="submit" title="Favorit entfernen">♥</button>
+        </form>
+      </div>
 
-        <article class="card">
-          <div class="thumbWrap">
-            <div class="thumb bg3">PLACEHOLDER</div>
-            <button class="heart" type="button" title="Favorit">♡</button>
-          </div>
-          <div class="meta">
-            <p class="title">Favorit #3</p>
-            <p class="sub">Brand • Kategorie</p>
-          </div>
-        </article>
+      <div class="meta">
+        <p class="title">{{ p.name }}</p>
+        <p class="sub">{{ p.bezeichnung }}</p>
+      </div>
 
-        <article class="card">
-          <div class="thumbWrap">
-            <div class="thumb bg4">PLACEHOLDER</div>
-            <button class="heart" type="button" title="Favorit">♡</button>
-          </div>
-          <div class="meta">
-            <p class="title">Favorit #4</p>
-            <p class="sub">Brand • Kategorie</p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumbWrap">
-            <div class="thumb bg5">PLACEHOLDER</div>
-            <button class="heart" type="button" title="Favorit">♡</button>
-          </div>
-          <div class="meta">
-            <p class="title">Favorit #5</p>
-            <p class="sub">Brand • Kategorie</p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumbWrap">
-            <div class="thumb bg1">PLACEHOLDER</div>
-            <button class="heart" type="button" title="Favorit">♡</button>
-          </div>
-          <div class="meta">
-            <p class="title">Favorit #6</p>
-            <p class="sub">Brand • Kategorie</p>
-          </div>
-        </article>
-      </section>
+    </article>
+  {% else %}
+    <p>Du hast noch keine Favoriten 🤍</p>
+  {% endfor %}
+</section>
 
     </div>
   </div>

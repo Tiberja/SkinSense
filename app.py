@@ -17,24 +17,21 @@ def index():
         #return redirect(url_for('login'))
     return render_template ('home.html')
 
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        email = request.form["email"].strip()
+        name = request.form["username"].strip()
 
         user = db.session.execute(
-            db.select(Benutzer).where(Benutzer.email == email)
+            db.select(Benutzer).where(Benutzer.name == name)
         ).scalar_one_or_none()
 
         if user is None:
             flash("User nicht gefunden. Bitte registrieren.")
             return redirect(url_for("register"))
 
-        session["user_email"] = user.email
-        session["username"] = user.name
         session["user_id"] = user.id
+        session["username"] = user.name
 
         return redirect(url_for("skin_type"))
 
@@ -46,29 +43,33 @@ def login():
 def register():
     if request.method == "POST":
         username = request.form["username"].strip()
-        email = request.form["email"].strip()
 
+        if not username:
+            flash("Bitte gib einen Benutzernamen ein.")
+            return redirect(url_for("register"))
+
+        
         exists = db.session.execute(
-            db.select(Benutzer).where(Benutzer.email == email)
+            db.select(Benutzer).where(Benutzer.name == username)
         ).scalar_one_or_none()
 
         if exists:
-            flash("User existiert bereits. Bitte einloggen.")
-            return redirect(url_for("login"))
+            flash("Username existiert bereits.")
+            return redirect(url_for("register"))
 
+       
         user = Benutzer(
             name=username,
-            email=email,
             passwort_hash="TEMP",
+            email=f"{username}@temp.local",
             hauttyp_id=1
         )
 
         db.session.add(user)
         db.session.commit()
 
-        session["user_email"] = user.email
-        session["username"] = user.name
         session["user_id"] = user.id
+        session["username"] = user.name
 
         return redirect(url_for("skin_type"))
 
@@ -97,13 +98,10 @@ def skin_type():
 
 @app.route("/products")
 def products():
-    if "user_email" not in session:
+    if "user_id" not in session:
         return redirect(url_for("login"))
 
-    user = db.session.execute(
-        db.select(Benutzer).where(Benutzer.email == session["user_email"])
-    ).scalar_one_or_none()
-
+    user = db.session.get(Benutzer, session["user_id"])
     if user is None:
         session.clear()
         return redirect(url_for("login"))
@@ -119,19 +117,28 @@ def products():
     )
 
     if selected_category:
-        q = q.where(
-            Produkt.kategorien.any(Kategorie.id == selected_category)
-        )
+        q = q.where(Produkt.kategorien.any(Kategorie.id == selected_category))
 
     produkte = db.session.execute(q).scalars().all()
+    favorite_ids = {p.id for p in user.favoriten}
+
+
+    image_map = {}
+    base = os.path.join(app.static_folder, "images", "products")
+    for root, dirs, files in os.walk(base):
+        for f in files:
+            if f.lower().endswith((".png", ".jpg", ".jpeg")):
+                rel = os.path.relpath(os.path.join(root, f), app.static_folder)
+                image_map[f] = rel.replace("\\", "/")
 
     return render_template(
         "products.html",
         products=produkte,
         categories=kategorien,
-        selected_category=selected_category
+        selected_category=selected_category,
+        favorite_ids=favorite_ids,
+        image_map=image_map,  
     )
-
 
 @app.route('/product_details/<int:product_id>')
 def product_details(product_id): 
@@ -213,9 +220,44 @@ def add_review(product_id):
     return redirect(url_for("product_details", product_id=product_id))
 
 
-@app.route('/favorites')
+@app.route("/favorites")
 def favorites():
-    return render_template("favorites.html")       
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    user = db.session.get(Benutzer, session["user_id"])
+
+    if user is None:
+        session.clear()
+        return redirect(url_for("login"))
+
+    fav_products = list(user.favoriten)
+    favorite_ids = {p.id for p in user.favoriten}
+
+    return render_template(
+        "favorites.html",
+        products=fav_products,
+        favorite_ids=favorite_ids
+    )
+
+@app.post("/favorites/toggle/<int:product_id>")
+def toggle_favorite(product_id):
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    user = db.session.get(Benutzer, session["user_id"])
+    produkt = db.session.get(Produkt, product_id)
+
+    if not user or not produkt:
+        return redirect(url_for("products"))
+
+    if produkt in user.favoriten:
+        user.favoriten.remove(produkt)
+    else:
+        user.favoriten.append(produkt)
+
+    db.session.commit()
+    return redirect(request.referrer or url_for("products"))
 
 
 @app.route('/logout')

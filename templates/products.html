@@ -55,7 +55,6 @@
   </summary>
 
   <div class="dropdown">
-    <a href="{{ url_for('index') }}">🏠 Home</a>
     <a href="{{ url_for('favorites') }}">⭐ Favoriten</a>
     <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
   </div>
@@ -79,33 +78,35 @@
   {% for p in products %}
     <div class="product-card">
 
-      <!-- Bild (Pfad ggf. anpassen) -->
       <div class="product-img">
         <img src="{{ url_for('static', filename='images/products/' ~ p.bild) }}"
              alt="{{ p.name }}"
              onerror="this.style.display='none'">
+        <a href="{{ url_for('product_details', product_id=p.id) }}">
+      <img src="{{ url_for('static', filename=image_map.get(p.bild, 'images/Design.png')) }}"
+     alt="{{ p.name }}">
+     onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/Design.png') }}'">
+        </a>
+
+        <form class="fav-form" action="{{ url_for('toggle_favorite', product_id=p.id) }}" method="post">
+          <button class="fav-btn" type="submit" aria-label="Toggle favorite">
+            {% if p.id in favorite_ids %}♥{% else %}♡{% endif %}
+          </button>
+        </form>
       </div>
 
       <h3 class="product-title">{{ p.name }}</h3>
       <p class="product-brand">{{ p.bezeichnung }}</p>
 
-      <div class="tags">
-        {% for tag in (p.merkmale or '').split(',')[:2] %}
-          <span class="tag">{{ tag.strip() }}</span>
-        {% endfor %}
-      </div>
+      <a class="btn-soft" href="{{ url_for('product_details', product_id=p.id) }}">View Details</a>
 
-      <a class="btn-soft" href="{{ url_for('product_details', product_id=p.id) }}">
-        View Details
-      </a>
     </div>
   {% else %}
     <p>Keine Produkte gefunden.</p>
   {% endfor %}
 </section>
-      <div class="bottom-bar">
-        <button class="btn-pill" type="button">Show More</button>
-      </div>
+
+
 
     </main>
   </div>
