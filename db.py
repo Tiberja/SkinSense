@@ -123,11 +123,27 @@ def insert_sample():
     db.session.commit()
 
     # Kategorien
-    k1 = Kategorie(bezeichnung="Reinigung", beschreibung="Entfernt Schmutz/Talg, ohne die Hautbarriere zu stressen.")
-    k2 = Kategorie(bezeichnung="Feuchtigkeitscreme", beschreibung="Spendet Feuchtigkeit, stärkt Barriere, reduziert Trockenheit/Glanz.")
-    k3 = Kategorie(bezeichnung="Sonnencreme", beschreibung="UV-Schutz (UVA/UVB) für Alltag; wichtig gegen Irritation & Aging.")
-    k4 = Kategorie(bezeichnung="Serum/Booster", beschreibung="Wirkstoff-Targeting (z. B. Niacinamid, Hyaluron, Ceramide.")
-    k5 = Kategorie(bezeichnung="Peeling", beschreibung="Sanftes AHA/BHA/PHA für Textur, Poren, Schüppchen (nicht täglich).")
+    k1 = Kategorie(bezeichnung="Reinigung", beschreibung="Reinigung ist der erste und wichtigste Schritt der Hautpflege. "
+        "Sie entfernt Schmutz, Talg, Schweiß, Make-up und Umweltpartikel, "
+        "die sich im Laufe des Tages auf der Haut ansammeln. "
+        "Eine gute Reinigung beugt verstopften Poren, Pickeln und Entzündungen vor, "
+        "ohne die Haut auszutrocknen oder zu reizen.")
+    k2 = Kategorie(bezeichnung="Feuchtigkeitscreme", beschreibung="Feuchtigkeitscremes versorgen die Haut mit Wasser und helfen, dieses in der Haut zu speichern. "
+        "Sie stärken die natürliche Hautbarriere, machen die Haut geschmeidig "
+        "und verhindern Spannungsgefühle, Trockenheit oder übermäßigen Fettglanz. "
+        "Auch fettige und unreine Haut braucht Feuchtigkeit, sonst produziert sie noch mehr Öl.")
+    k3 = Kategorie(bezeichnung="Sonnencreme", beschreibung="Sonnencreme schützt die Haut vor schädlicher UV-Strahlung (UVA und UVB). "
+        "Sie beugt vorzeitiger Hautalterung, Pigmentflecken und Hautschäden vor. "
+        "Besonders wichtig ist Sonnenschutz bei Pickelmalen, Aknenarben oder empfindlicher Haut, "
+        "da UV-Strahlen diese dunkler und langanhaltender machen können – auch im Alltag und bei bewölktem Himmel.")
+    k4 = Kategorie(bezeichnung="Serum/Booster", beschreibung="Seren enthalten hochkonzentrierte Wirkstoffe und wirken gezielt auf bestimmte Hautprobleme. "
+        "Je nach Inhaltsstoff können sie Unreinheiten reduzieren, Rötungen beruhigen, "
+        "Feuchtigkeit spenden oder die Hautbarriere stärken. "
+        "Ein Serum ergänzt die tägliche Pflege und verstärkt die Wirkung von Creme und Reinigung.")
+    k5 = Kategorie(bezeichnung="Peeling", beschreibung="Peelings entfernen abgestorbene Hautschüppchen und sorgen für ein glatteres Hautbild. "
+        "Chemische Peelings (AHA, BHA, PHA) können Poren reinigen, Pickel vorbeugen "
+        "und das Verblassen von Pickelmalen unterstützen. "
+        "Peelings sollten nicht täglich angewendet werden, da sie die Haut sonst reizen können.")
 
     db.session.add_all([k1, k2, k3, k4, k5])
     db.session.commit()
@@ -137,9 +153,9 @@ def insert_sample():
         name="CeraVe Hydrating Cleanser", 
         bezeichnung="Cremiger Reiniger für trockene & empfindliche Haut", 
         merkmale="feuchtigkeitsspendend, parfumfrei, barriere-stärkend, nicht komedogen", 
-        preis=11.95, 
+        preis=8.95, 
         beschreibung="Sanfter, cremiger Reiniger, der Schmutz und leichte Rückstände entfernt, ohne die Haut auszutrocknen. Ideal bei Spannungsgefühl und trockener, empfindlicher Haut. Nach der Reinigung fühlt sich die Haut weich und gepflegt an, ohne zu spannen.", 
-        inhaltsstoffe="Ceramide (stärken die Hautbarriere), Hyaluronsäure (bindet Wasser), Glycerin (Feuchthaltefaktor)", 
+        inhaltsstoffe="Glycerin (Spendet Feuchtigkeit und verhindert ein trockenes oder spannendes Hautgefühl.) | Ceramide NP/AP/EOP (Stärken die natürliche Hautbarriere und helfen, Feuchtigkeit in der Haut zu halten.) | Sodium Hyaluronate (Hyaluronsäure, bindet Wasser und sorgt für ein hydratisiertes Hautgefühl.) | Cholesterol & Phytosphingosine (Unterstützen die Reparatur und Stabilität der Hautbarriere.) | Sodium Lauroyl Lactylate (Sehr mildes Reinigungsmittel, das die Haut sanft reinigt.) | Cetearyl/Cetyl/Stearyl Alcohol (Pflegende Fettalkohole, machen die Haut weich und trocknen sie nicht aus.) | Tocopherol (Vitamin E, schützt die Haut vor Umwelteinflüssen.) | Phenoxyethanol & Ethylhexylglycerin (Halten das Produkt hygienisch und sicher haltbar.)", 
         anwendung="Morgens & abends auf feuchter Haut einmassieren und abspülen.", 
         shop_link="https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html", 
         bild="CeraVe_Feuchtigkeitsspendende_Reinigungslotion.png"
@@ -148,9 +164,9 @@ def insert_sample():
         name="La Roche-Posay Toleriane Reinigungsmilch",
         bezeichnung="Sehr milde Reinigungsmilch",
         merkmale="sehr sanft, parfumfrei, alkoholfrei, beruhigend",
-        preis=15.95,
+        preis=17.95,
         beschreibung="Sehr milde Reinigungsmilch für trockene und hochsensible Haut, die schnell reagiert. Reinigt ohne starkes Schäumen und ist dadurch oft weniger austrocknend als Gelreiniger. Ideal, wenn die Haut nach dem Waschen zu Rötungen oder Spannungsgefühl neigt.",
-        inhaltsstoffe="Glycerin (spendet Feuchtigkeit), Thermalwasser (beruhigt und mindert Reizungen)",
+        inhaltsstoffe="Glycerin (Spendet Feuchtigkeit und schützt die Haut vor dem Austrocknen.) | Thermalwasser von La Roche-Posay (Beruhigt empfindliche Haut und lindert Rötungen.) | Niacinamid (Stärkt die Hautbarriere und wirkt beruhigend.) | Caprylic/Capric Triglyceride (Pflegen die Haut und machen sie geschmeidig.) | Mildes Tensidsystem (Reinigt sanft, ohne die Haut zu reizen.) | Milde Konservierungsstoffe (Sorgen für Produktsicherheit bei sehr empfindlicher Haut.)",
         anwendung="Abends auftragen und mit Wattepad abnehmen oder sanft abspülen.",
         shop_link="https://www.dm.de/la-roche-posay-la-roche-posay-toleriane-reinigungsfluid-gesicht-und-augen-p3433422406599.html",
         bild="La_Roche_Posay_Toleriane_Reinigungsfluid.png"
@@ -335,11 +351,11 @@ def insert_sample():
         name="The Ordinary Lactic Acid 5% + HA",
         bezeichnung="Sanftes AHA-Peeling für trockene Haut",
         merkmale="mild exfolierend, glättend, feuchtigkeitsspendend",
-        preis=8.95,
+        preis=10.19,
         beschreibung="Sehr sanftes AHA-Peeling für trockene Haut, das abgestorbene Hautschüppchen löst und die Haut glatter wirken lässt. Milchsäure ist im Vergleich zu stärkeren AHAs oft verträglicher und kann zusätzlich Feuchtigkeit unterstützen. Ideal, wenn du ein Peeling willst, aber Angst vor Reizung hast.",
-        inhaltsstoffe="Milchsäure (löst Schüppchen, verbessert Glow), Hyaluron (schützt vor Austrocknung)",
+        inhaltsstoffe="Lactic Acid 5% (AHA) (Sanftes chemisches Peeling, entfernt abgestorbene Hautzellen und sorgt für ein glatteres Hautbild.) | Tasmanian Pepperberry (Reduziert mögliche Reizungen und Rötungen durch das Peeling.) | Sodium Hyaluronate (Hyaluronsäure, spendet Feuchtigkeit und beugt Trockenheit vor.) | Glycerin (Unterstützt die Feuchtigkeitsbindung und schützt vor Spannungsgefühlen.) | pH-optimierte Formulierung (Sorgt dafür, dass das Peeling effektiv, aber möglichst hautschonend wirkt.)",
         anwendung="1–2× pro Woche abends auftragen, danach Creme verwenden.",
-        shop_link="https://www.douglas.de/de/p/3001047395",
+        shop_link="https://www.douglas.de/de/p/3001043645",
         bild="TheOrdinary_Lactic_Acid.png"
     )
     p20 = Produkt(
@@ -381,7 +397,7 @@ def insert_sample():
         merkmale="sanft, glättend, porenfreundlich",
         preis=13.95,
         beschreibung="Mildes Peeling, das sowohl gegen raue Haut als auch gegen Unreinheiten unterstützen kann, ohne zu aggressiv zu sein. Durch feine Partikel wird die Hautoberfläche geglättet, während Milchsäure zusätzlich sanft exfolieren kann. Gut, wenn du trocken bist, aber trotzdem zu verstopften Poren neigst.",
-        inhaltsstoffe="Milchsäure (glättet, unterstützt sanfte Erneuerung), Feine Peelingpartikel (mechanische Entfernung von Schüppchen)",
+        inhaltsstoffe="Milchsäure (Lactic Acid) (Löst abgestorbene Hautschüppchen und beugt verstopften Poren vor.) | Sanfte Peelingpartikel (Entfernen überschüssigen Talg und glätten die Hautoberfläche.) | Glycerin (Spendet Feuchtigkeit und schützt vor Austrocknung.) | Salicylsäure (BHA) (Wirkt antibakteriell und hilft gegen Pickel und Unreinheiten.) | Entzündungshemmende Inhaltsstoffe (Beruhigen unreine und zu Akne neigende Haut.)",
         anwendung="1× wöchentlich sanft einmassieren und abspülen.",
         shop_link="https://www.dm.de/eucerin-dermopure-waschpeeling-p4005800238127.html",
         bild="Eucerin_DermoPure_Waschpeeling.png"
@@ -404,7 +420,7 @@ def insert_sample():
         preis=2.95,
         beschreibung="Sehr mildes Waschgel für Mischhaut, die empfindlich reagiert oder schnell trocken wird. Reinigt ohne Duftstoffe und ist deshalb oft gut verträglich, selbst wenn die Haut schnell rötet. Ideal als unkomplizierte tägliche Reinigung für Gesicht und sensible Zonen.",
         inhaltsstoffe="Panthenol (beruhigt, fördert Regeneration), Glycerin (spendet Feuchtigkeit)",
-        anwendung="Morgens & abends auf feuchter Haut anwenden und abspülen.",
+        anwendung="Glycerin (Spendet Feuchtigkeit und verhindert Spannungsgefühle.) | Sehr milde Tenside (Reinigen die Haut besonders sanft, ohne sie zu reizen.) | Panthenol (Beruhigt die Haut und unterstützt die Regeneration.) | Ohne Duftstoffe, Alkohol und Farbstoffe (Minimiert das Risiko von Hautreizungen.) | Hautneutraler pH-Wert (Schützt die natürliche Hautbarriere.)",
         shop_link="https://www.dm.de/balea-med-ultra-sensitive-waschgel-p4058172920950.html",
         bild="Balea_Med_Ultra_Sensitive_Waschgel.png"
     )
