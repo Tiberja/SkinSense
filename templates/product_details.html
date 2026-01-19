@@ -9,12 +9,23 @@
 </head>
 <body>
     <nav class="navbar">
-        <span class="logo"> SkinSense</span>
-        <div class="avatar" title="Profil">
-         <span>👩🏻</span>
-        </div>
-    </nav> 
+      <span class="logo">SkinSense</span>
 
+      <div class="user-menu">
+        <input class="menu-toggle" type="checkbox" id="menuToggle">
+
+        <label class="avatar-btn" for="menuToggle" aria-label="Profil">{{ (session.get('username','U')[:1]).upper() }}</label>
+
+        <label class="menu-backdrop" for="menuToggle" aria-hidden="true"></label>
+
+        <div class="dropdown">
+        <a href="{{ url_for('products') }}">🧴 Produkte</a>
+        <a href="{{ url_for('favorites') }}">⭐ Favoriten</a>
+        <a href="{{ url_for('logout') }}">🚪 Abmelden</a>
+      </div>
+      </div>
+
+    </nav>
 
  <!--Produkt Informationen-->
  <section class="productpage">

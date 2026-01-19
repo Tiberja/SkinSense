@@ -1,10 +1,8 @@
 /* wenn seite sehr unterschiedlich ist neue Datei -> style_template.css */
 
 body {
-    /*background-color: #faf7f5;*/
     background-color: #faf7f5;
     margin: 0;
-    min-height: 100vh;
 }
 
 .navbar{
@@ -16,20 +14,8 @@ body {
     align-items: center;
 }
 
-.avatar{
-      width:44px;
-      height:44px;
-      border-radius: 50%;
-      background: #f0d3c6;
-      display:grid;
-      place-items:center;
-      box-shadow: var(--shadow);
-      border: 2px solid rgba(255,255,255,.8);
-      user-select:none;
-    }
-
-.avatar span{
-      font-size: 20px;
+.logo{
+    margin-left: -25px;
 }
 
 .productpage {
@@ -38,7 +24,7 @@ body {
 
 .product-main {
     display: flex;
-    gap: 15px;
+    gap: 120px;
     max-width: 1100px;
     margin: 0 auto;
     align-items: flex-start;
@@ -48,7 +34,6 @@ body {
     width: 450px;
     height: 620px;
     max-width: 100%;
-    margin-right: 120px;
     border-radius: 20px;
     padding: 20px;
     background: #f3ede9; 
@@ -59,7 +44,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
-    width: 100%;
     flex: 1;
 }
 
@@ -102,11 +86,11 @@ body {
     font-size: 16px;
 }
 
-details {
+.details details{
     padding: 15px 0;
 }
 
-summary{
+.details summary{
     font-weight: 600;
     cursor: pointer;
     font-size: 18px;
@@ -135,7 +119,6 @@ summary{
 .review-btn {
     display: inline-block;
     padding: 13px 18px;
-    border: none;
     border-radius: 999px;
     background-color: #e7c4b4;
     color: #ffffff;
@@ -181,7 +164,7 @@ summary{
     color: #999;
 }
 
-/*Modal->Bewertungen abgeben*/
+
 .modal {
     position: fixed;
     inset: 0;
@@ -210,7 +193,6 @@ summary{
     top: 14px;
     right: 14px;
     text-decoration: none;
-    border: none;
     background: transparent;
     font-size: 18px;
 }
@@ -222,7 +204,7 @@ summary{
 .btn-submit{
     width: 100%;
     margin-top: 18px;
-    background: #d2a49c; /* dein Rosa */
+    background: #d2a49c; 
     color: white;
     border: none;
     padding: 12px 18px;
@@ -231,7 +213,7 @@ summary{
     cursor:pointer;
 }
 
-/*Sterne*/
+
 .star-rating {
     display: inline-flex; 
     flex-direction: row-reverse;
@@ -261,9 +243,78 @@ summary{
 #reviewsList{
     display: flex;
     gap: 30px;
-    overflow-x: auto;          /* horizontales Scrollen */
+    overflow-x: auto;        
     scroll-snap-type: x mandatory;
     grid-column: 1 / -1; 
     padding-right: 160px;
 }
 
+.user-menu{
+  margin-left: auto;
+  position: relative;
+}
+
+
+.menu-toggle{
+  position: absolute;
+  opacity: 0;
+}
+
+
+.avatar-btn{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #eaded7;
+  color: #6b6b6b;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+  line-height: 1;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  position: relative;
+  z-index: 3000;
+}
+
+
+.dropdown{
+  display: none;
+  position: absolute;
+  top: 54px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #eaded7;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  min-width: 170px;
+  padding: 6px;
+  z-index: 2500;
+}
+
+.menu-backdrop{
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+}
+
+.menu-toggle:checked ~ .menu-backdrop{ display: block; }
+.menu-toggle:checked ~ .dropdown{ display: block; }
+
+
+.dropdown a{
+  display:block;
+  padding:10px 12px;
+  border-radius:10px;
+  text-decoration:none;
+  color:#444;
+  font-size:13px;
+  font-weight:600;
+}
+
+.dropdown a:hover{
+  background:#faf7f5;
+}
