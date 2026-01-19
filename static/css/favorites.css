@@ -132,12 +132,6 @@ h1{
   font-size: 14px;
 }
 
-/* Placeholder Farben */
-.bg1{ background: linear-gradient(135deg, #ffffff, #f3f3f3); }
-.bg2{ background: linear-gradient(135deg, #d7e8e2, #c7dbd3); }
-.bg3{ background: linear-gradient(135deg, #f1dcc5, #e7c8a8); }
-.bg4{ background: linear-gradient(135deg, #f6b35d, #e58b1b); }
-.bg5{ background: linear-gradient(135deg, #f2f2f2, #e0e0e0); }
 
 .heart{
   position:absolute;
