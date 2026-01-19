@@ -18,7 +18,7 @@
     <form action="{{ url_for('skin_type') }}" method="POST">
      <div class="skin-grid">
        {% for ht in hauttypen %}
-         <label class="skin-card">
+         <label class="skin-card {% if loop.index == 5 %}skin-card-center{% endif %}">
           <input type="radio" name="skin_type" value="{{ ht.id}}" required>
              <h3>{{ ht.bezeichnung|capitalize }}</h3>
              <p>{{ ht.beschreibung }}</p>

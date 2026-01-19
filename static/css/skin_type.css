@@ -69,7 +69,7 @@ body {
     transition: all 0.25s ease;
 }
 
-.skin-card.center {
+.skin-card-center {
     justify-self: center;
     grid-column: 1 / -1;
     width: 42%;
