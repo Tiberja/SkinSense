@@ -631,8 +631,26 @@ def insert_sample():
         sterne=5,
         kommentar="spendet sehr viel Feuchtigkeit"
     )
+    b4 = Bewertung(
+        produkt_id=19,
+        benutzer_id=2,
+        sterne=5,
+        kommentar="sehr gutes Produkt"
+    )
+    b5 = Bewertung(
+        produkt_id=19,
+        benutzer_id=1,
+        sterne=4,
+        kommentar="liebe es"
+    )
+    b6 = Bewertung(
+        produkt_id=19,
+        benutzer_id=3,
+        sterne=5,
+        kommentar="Lieblingsprodukt"
+    )
 
-    db.session.add_all([b1, b2, b3])
+    db.session.add_all([b1, b2, b3, b4, b5, b6])
     db.session.commit()
     
 

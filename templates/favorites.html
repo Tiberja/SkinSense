@@ -30,46 +30,16 @@
           </div>
         </details>
       </header>
-
-      <div class="toolbar">
-        <div class="filters">
-          <button class="chip" type="button">
-            <label>
-              Filter by:
-              <select>
-                <option>Skin Type</option>
-                <option>Dry</option>
-                <option>Normal</option>
-                <option>Oily</option>
-                <option>Combination</option>
-              </select>
-            </label>
-          </button>
-
-          <button class="chip" type="button">
-            <label>
-              Filter by:
-              <select>
-                <option>Product Category</option>
-                <option>Cleanser</option>
-                <option>Serum</option>
-                <option>Moisturizer</option>
-                <option>Sunscreen</option>
-              </select>
-            </label>
-          </button>
-        </div>
-      </div>
+      
 <section class="grid">
   {% for p in products %}
     <article class="card">
 
       <div class="thumbWrap">
         <div class="thumb">
-          <img
-            src="{{ url_for('static', filename='images/Design.png') }}"
-            alt="{{ p.name }}"
-          >
+
+        <img src="/static/images/products/{{p.bild}}">
+
         </div>
 
         <!-- Favorit entfernen -->

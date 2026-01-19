@@ -14,8 +14,6 @@ from db import db, Benutzer, Produkt, Kategorie, Hauttyp, Bewertung, insert_samp
 
 @app.route('/')
 def index():
-   # if 'user_id' not in session:
-        #return redirect(url_for('login'))
     return render_template ('home.html')
 
 
@@ -41,6 +39,7 @@ def login():
         session.clear()
         session["user_id"] = user.id
         session["username"] = user.name
+        session["skin_type"] = user.hauttyp_id
 
         return redirect(url_for("products"))
 
@@ -100,20 +99,24 @@ def register():
    
 @app.route('/skin_type', methods=['GET', 'POST'])
 def skin_type():
-    # nur wenn eingeloggt
-    #if 'user_email' not in session:
-       # return redirect(url_for('login'))
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
 
     if request.method == 'POST':
-        session['skin_type'] = int(request.form['skin_type'])
+        new_id = int(request.form['skin_type'])
+
+        session['skin_type'] = new_id
+        user= db.session.get(Benutzer, session["user_id"])
+        if user:
+            user.hauttyp_id = new_id
+            db.session.commit()
+
         return redirect(url_for('products'))
+
 
     hauttypen = db.session.execute(
         db.select(Hauttyp).order_by(Hauttyp.id)
     ).scalars().all()
-
-    print("DEBUG hauttypen:", [(h.id, h.bezeichnung) for h in hauttypen])
-
 
     return render_template('skin_type.html', hauttypen=hauttypen)
 
@@ -134,8 +137,12 @@ def products():
 
     selected_category = request.args.get("category", type=int)
 
+    selected_skin_type = session.get("skin_type")
+    if not selected_skin_type:
+        selected_skin_type = user.hauttyp_id
+
     q = db.select(Produkt).where(
-        Produkt.geeignet_fuer.any(Hauttyp.id == user.hauttyp_id)
+        Produkt.geeignet_fuer.any(Hauttyp.id == selected_skin_type)
     )
 
     if selected_category:
@@ -233,18 +240,15 @@ def product_details(product_id):
 #Bewertungen 
 @app.route("/products/<int:product_id>/reviews", methods=["POST"])
 def add_review(product_id):
-    if "user_email" not in session:
+    if "user_id" not in session:
         return redirect(url_for("login"))
 
     sterne = int(request.form["stars"])
     kommentar = request.form["text"].strip()
 
-    benutzer = db.session.execute(
-        db.select(Benutzer).where(Benutzer.email == session["user_email"])
-    ).scalar_one_or_none()
-
+    benutzer = db.session.get(Benutzer,session["user_id"])
     if benutzer is None:
-        flash("Benutzer nicht gefunden. Bitte nochmal einloggen")
+        session.clear()
         return redirect(url_for("login"))
 
     bewertung = Bewertung(
@@ -305,7 +309,7 @@ def toggle_favorite(product_id):
 def logout():
     session.clear()
     flash("You have been logged out.")
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 
 @app.route('/insert/sample')
