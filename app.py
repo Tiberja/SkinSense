@@ -19,22 +19,25 @@ def index():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+   
+    # Verarbeiten des Login-Formulars
     if request.method == "POST":
         email = request.form["email"].strip().lower()
         password = request.form["password"]
-
+    
         user = db.session.execute(
             db.select(Benutzer).where(Benutzer.email == email)
         ).scalar_one_or_none()
-
+   
+    # Falls Benutzer nicht existiert -> Fehlermeldung
         if user is None:
             flash("Email oder Passwort ist falsch.", "login")
             return redirect(url_for("login"))
-
+    # Passwort-Hash prüfen
         if not bcrypt.checkpw(password.encode("utf-8"), user.passwort_hash.encode("utf-8")):
             flash("Email oder Passwort ist falsch.", "login")
             return redirect(url_for("login"))
-
+    # Login erfolgreich
         session.clear()
         session["user_id"] = user.id
         session["username"] = user.name
@@ -49,11 +52,14 @@ def login():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    
+    # Registriert neuen Benutzer
     if request.method == "POST":
         username = request.form["username"].strip()
         email = request.form["email"].strip().lower()
         password = request.form["password"]
-
+        
+    # Prüfen ob alle Felder ausgefüllt sind
         if not username or not email or not password:
             flash("Bitte alle Felder ausfüllen.", "register")
             return redirect(url_for("register"))
@@ -67,6 +73,7 @@ def register():
             flash("Diese Email ist bereits registriert.", "register")
             return redirect(url_for("register"))
 
+    # Prüfen ob Username bereits existiert
         exists_name = db.session.execute(
             db.select(Benutzer).where(Benutzer.name == username)
         ).scalar_one_or_none()
@@ -75,6 +82,7 @@ def register():
             flash("Username existiert bereits.", "register")
             return redirect(url_for("register"))
 
+    # Passwort hashen
         pw_hash = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
         user = Benutzer(
@@ -122,6 +130,8 @@ def skin_type():
 
 @app.route("/products")
 def products():
+   
+   # Zugriff nur für angemeldete Benutzer
     if "user_id" not in session:
         return redirect(url_for("login"))
 
@@ -129,13 +139,13 @@ def products():
     if user is None:
         session.clear()
         return redirect(url_for("login"))
-
+    # Alle Kategorien holen 
     kategorien = db.session.execute(
         db.select(Kategorie).order_by(Kategorie.id)
     ).scalars().all()
 
     selected_category = request.args.get("category", type=int)
-
+    
     selected_skin_type = session.get("skin_type")
     if not selected_skin_type:
         selected_skin_type = user.hauttyp_id
@@ -148,8 +158,9 @@ def products():
         q = q.where(
             Produkt.kategorien.any(Kategorie.id == selected_category)
         )
-
+    # Gefilterte Produkte abfragen
     produkte = db.session.execute(q).scalars().all()
+    
     favorite_ids = {p.id for p in user.favoriten}
 
     # -------- Info Box (Kategorie-basiert) --------
@@ -251,17 +262,20 @@ def add_review(product_id):
 
 @app.route("/favorites")
 def favorites():
+    
+    # Zugriff nur für angemeldete Benutzer-> Favoriten anzeigen
     if "user_id" not in session:
         return redirect(url_for("login"))
 
+    # Benutzer holen
     user = db.session.get(Benutzer, session["user_id"])
 
     if user is None:
         session.clear()
         return redirect(url_for("login"))
 
-    fav_products = list(user.favoriten)
-    favorite_ids = {p.id for p in user.favoriten}
+    fav_products = list(user.favoriten)           # Favoriten-Produkte des Benutzers
+    favorite_ids = {p.id for p in user.favoriten} # IDs der Favoriten-Produkte
 
     return render_template(
         "favorites.html",
