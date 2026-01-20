@@ -1,11 +1,11 @@
 :root{
   --bg:#f6f2ee;
-  --card:#ffffff;
+  /*--card:#ffffff;*/
   --muted:#8d8d8d;
-  --text:#222;
-  --chip:#efe5dc;
+  /*--text:#222;
+  --chip:#efe5dc;*/
   --shadow: 0 10px 30px rgba(0,0,0,.06);
-  --radius:18px;
+  /*--radius:18px;*/
 }
 
 *{ box-sizing:border-box; }
@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  background: #faf7f5;
+  /*background: #faf7f5;*/
   color: #333;
 }
 
@@ -93,7 +93,7 @@ h1{
 
 .thumb img{
   display: block;
-  visibility: visible; 
+  /*visibility: visible; */
   width: 100%;
   height: 90%;
   object-fit: contain;

@@ -33,7 +33,7 @@ body {
 .product-image{
     width: 450px;
     height: 620px;
-    max-width: 100%;
+    /*max-width: 100%;*/
     border-radius: 20px;
     padding: 20px;
     background: #f3ede9; 
@@ -140,7 +140,6 @@ body {
     text-align: left;
     margin-bottom: 100px;
     min-width: 380px;          /* Breite einer Karte */
-    flex-shrink: 0;            /* verhindert Umbruch */
     scroll-snap-align: start;
 }
 

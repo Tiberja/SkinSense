@@ -5,7 +5,7 @@
   <title>Login – SkinSense</title>
 
   <!-- Login CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 <body class="auth-page">
@@ -15,7 +15,7 @@
     <h1 class="auth-title">Log In</h1>
 
     <!-- Flash Messages -->
-{% with messages = get_flashed_messages(with_categories=true) %}
+{% with messages = get_flashed_messages(category_filter=["login"]) %}
   {% if messages %}
     <ul class="flash-messages">
       {% for category, msg in messages %}

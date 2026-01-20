@@ -52,11 +52,16 @@ body {
 
 .skin-grid {
     display: grid;
-    max-width: 900px;
     margin: 0 auto 50px;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 
+}
+
+.skin-grid> .skin-card:last-child{
+    grid-column: 1/-1;
+    justify-self: center;
+    width: 42%;
 }
 
 .skin-card {
@@ -67,12 +72,6 @@ body {
     text-align: center;
     cursor: pointer;
     transition: all 0.25s ease;
-}
-
-.skin-card-center {
-    justify-self: center;
-    grid-column: 1 / -1;
-    width: 42%;
 }
 
 .skin-card h3 {

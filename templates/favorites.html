@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <title>My Favorite Skincare</title>
 
-  <!-- 1️⃣ Gemeinsame Basis -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Gemeinsame Basis -->
+  <link rel="stylesheet" href="/static/css/style.css">
 
-  <!-- 2️⃣ Seiten-spezifisch -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/favorites.css') }}">
+  <!-- Seiten-spezifisch -->
+  <link rel="stylesheet" href="/static/css/favorites.css">
 </head>
 
 <body>
@@ -30,16 +30,18 @@
           </div>
         </details>
       </header>
-      
+
 <section class="grid">
   {% for p in products %}
     <article class="card">
 
       <div class="thumbWrap">
         <div class="thumb">
-
+        
+        <a href="{{ url_for('product_details', product_id=p.id) }}">
         <img src="/static/images/products/{{p.bild}}">
-
+        </a>
+        
         </div>
 
         <!-- Favorit entfernen -->

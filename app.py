@@ -1,4 +1,3 @@
-import os
 import bcrypt
 from flask import Flask, render_template, redirect, url_for, session, request, flash, abort
 from urllib.parse import urlparse
@@ -153,19 +152,6 @@ def products():
     produkte = db.session.execute(q).scalars().all()
     favorite_ids = {p.id for p in user.favoriten}
 
-    # -------- image_map --------
-    image_map = {}
-    base = os.path.join(app.static_folder, "images", "products")
-
-    for root, dirs, files in os.walk(base):
-        for f in files:
-            if f.lower().endswith((".png", ".jpg", ".jpeg")):
-                rel = os.path.relpath(
-                    os.path.join(root, f),
-                    app.static_folder
-                )
-                image_map[f] = rel.replace("\\", "/")
-
     # -------- Info Box (Kategorie-basiert) --------
     if selected_category:
         cat = db.session.get(Kategorie, selected_category)
@@ -181,7 +167,6 @@ def products():
     categories=kategorien,
     selected_category=selected_category,
     favorite_ids=favorite_ids,
-    image_map=image_map,
     info_title=info_title,
     info_text=info_text,
 

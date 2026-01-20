@@ -5,9 +5,9 @@
   <title>Products – SkinSense</title>
 
   <!-- Basis -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="/static/css/style.css">
   <!-- Seite -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
+  <link rel="stylesheet" href="/static/css/products.css">
 </head>
 
 <body>
@@ -76,12 +76,7 @@
             <div class="product-img">
 
               <a class="img-link" href="{{ url_for('product_details', product_id=p.id) }}">
-                <img
-                  src="{{ url_for('static', filename=image_map.get(p.bild, 'images/Design.png')) }}"
-                  alt="{{ p.name }}"
-                  loading="lazy"
-                  onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/Design.png') }}';"
-                >
+                <img src="/static/images/products/{{ p.bild }}" alt="{{ p.name }}" loading="lazy">
               </a>
 
               <form class="fav-form" action="{{ url_for('toggle_favorite', product_id=p.id) }}" method="post">

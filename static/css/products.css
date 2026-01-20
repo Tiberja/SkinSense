@@ -6,9 +6,6 @@
   display:grid;
   grid-template-columns:260px 1fr;
   background:#faf7f5;
-  margin:0;
-  padding:0;
-  width:100%;
 }
 
 /* ===== Sidebar ===== */
@@ -79,7 +76,6 @@
 .topbar{
   display:flex;
   align-items:center;
-  gap:16px;
 }
 
 .user-menu{
@@ -187,6 +183,8 @@
   border-radius:18px;
   padding:14px;
   box-shadow:0 10px 30px rgba(0,0,0,0.04);
+  display:flex;
+  flex-direction:column;
 }
 
 /* Bild-Container */
@@ -213,7 +211,7 @@
   top:10px;
   right:10px;
   margin:0;
-  z-index:20;   /* 👈 GANZ WICHTIG */
+  z-index:20;  
 }
 .fav-btn{
   width:34px;
@@ -256,6 +254,7 @@
   font-weight:700;
   font-size:12px;
   color:#8a5e4c;
+  margin-top:auto;
 }
 
 .btn-soft:hover{

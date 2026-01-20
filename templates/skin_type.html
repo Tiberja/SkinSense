@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Hauttyp auswählen - SkinSense</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/skin_type.css') }}">
+  <link rel="stylesheet" href="/static/css/skin_type.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
     <form action="{{ url_for('skin_type') }}" method="POST">
      <div class="skin-grid">
        {% for ht in hauttypen %}
-         <label class="skin-card {% if loop.index == 5 %}skin-card-center{% endif %}">
+         <label class="skin-card">   
           <input type="radio" name="skin_type" value="{{ ht.id}}" required>
              <h3>{{ ht.bezeichnung|capitalize }}</h3>
              <p>{{ ht.beschreibung }}</p>
