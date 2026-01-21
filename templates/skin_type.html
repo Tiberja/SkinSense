@@ -11,10 +11,12 @@
     <span class="logo">SkinSense</span>
   </nav>
 
+  <!--Überschrift-->
   <main class="skin-page">
     <h1>Was ist dein Hauttyp?</h1>
     <p>Wähle einen Hauttyp aus, um personalisierte Produktempfehlungen zu erhalten</p>
 
+    <!--Hauttyp Karten-->
     <form action="{{ url_for('skin_type') }}" method="POST">
      <div class="skin-grid">
        {% for ht in hauttypen %}
@@ -26,6 +28,7 @@
         {% endfor %}   
      </div>
 
+     <!--Weiter Button-->
      <button class="btn-primary">Weiter</button>
     </form>
   </main>

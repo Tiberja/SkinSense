@@ -1,53 +1,6 @@
 /* Haupt-Stylesheet */
 
 /* =========================
-   HOME
-========================= */
-
-.main {
-  width: 100vw;
-  min-height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-
-  background-image: url("/static/images/home_background.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  position: relative;
-}
-
-.main h1 {
-  font-size: 120px;
-  font-weight: 900;
-  transform: translateY(-50px);
-  margin-bottom: 0.2px; 
-}
-
-.main p {
-  font-size: 20px;
-  margin-top: 0.2px;
-  transform: translateY(-60px);
-  color: #383838;
-}
-
-.btn-starten {
-  width: 350px;
-  font-size: 18px;
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-  transform: translateY(-60px);
-}
-
-
-/* =========================
    LOGIN / REGISTER
 ========================= */
 
@@ -204,12 +157,10 @@ body.auth-page {
 /* =========================
    HOME
 ========================= */
-
-.hero {
+/*Grundlayout*/
+.main {
   width: 100vw;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
 
   display: flex;
   flex-direction: column;
@@ -225,25 +176,21 @@ body.auth-page {
 
   position: relative;
 }
-
-.hero h1 {
-  position: relative;
-  z-index: 1;
+/*Überschrift*/
+.main h1 {
   font-size: 120px;
   font-weight: 900;
   transform: translateY(-50px);
   margin-bottom: 0.2px; 
 }
-
-.hero p {
-  position: relative;
-  z-index: 1;
+/*Untertitel*/
+.main p {
   font-size: 20px;
   margin-top: 0.2px;
   transform: translateY(-60px);
   color: #383838;
 }
-
+/*Starten-Button*/
 .btn-starten {
   width: 350px;
   font-size: 18px;
@@ -252,4 +199,3 @@ body.auth-page {
   text-align: center;
   transform: translateY(-60px);
 }
-

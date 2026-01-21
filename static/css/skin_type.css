@@ -1,11 +1,11 @@
 
-
+/*Grundlayout*/
 body {
     background-color: #faf7f5;
     margin: 0;
     min-height: 100vh;
 }
-
+/*Navigation*/
 .navbar {
     margin-left: 20px;
     margin-right: 20px;
@@ -14,7 +14,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
+/*Button-Weiter*/
 .btn-primary {
     width: 100%;
     padding: 13px;
@@ -27,29 +27,29 @@ body {
     cursor: pointer;
     text-decoration: none;
 }
-
+/*Button-Effekt*/
 .btn-primary:hover {
     background-color: #d9a993;
 }
-
+/*Hauptbereich der Skintypes*/
 .skin-page {
     max-width: 900px;
     margin: 0 auto;
     padding: 20px 20px;
     text-align: center;
 }
-
+/*Überschrift*/
 .skin-page h1 {
     font-size: 42px;
     margin-bottom: 10px;
 }
-
+/*Unterer Text*/
 .skin-page p {
     color: #777;
     font-size: 16px;
     margin-bottom: 50px;
 }
-
+/*Grid für plazierung der Karten*/
 .skin-grid {
     display: grid;
     margin: 0 auto 50px;
@@ -57,13 +57,13 @@ body {
     gap: 24px;
 
 }
-
+/*damit letzte Karte in der Mitte ist*/
 .skin-grid> .skin-card:last-child{
     grid-column: 1/-1;
     justify-self: center;
     width: 42%;
 }
-
+/*Kartenlayout*/
 .skin-card {
     padding: 30px; 
     border-radius: 20px; 
@@ -73,26 +73,26 @@ body {
     cursor: pointer;
     transition: all 0.25s ease;
 }
-
+/*Bezeichnung Hauttyp*/
 .skin-card h3 {
     margin: 0 0 8px;
     font-size: 20px;
 }
-
+/*Beschreibung Hauttyp*/
 .skin-card p {
     margin: 0;
     color: #666;
     font-size: 14px;
 }
-
+/*Rahmen-Effekt*/
 .skin-card:hover {
     border-color: #d9a79c;
 }
-
+/*verstecktes Input Feld -> damit Rahmen bleibt*/
 .skin-card input {
     display: none;
 }
-
+/*ausgewählte Karte*/
 .skin-card:has(input:checked) {
     border-color:#d9a79c;
     box-shadow: 0 0 0 2px rgba(217, 167, 156, 0.3);

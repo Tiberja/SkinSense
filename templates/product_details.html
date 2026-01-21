@@ -11,11 +11,10 @@
     <nav class="navbar">
       <span class="logo">SkinSense</span>
 
+      <!--Profil-Dropdown-->
       <div class="user-menu">
         <input class="menu-toggle" type="checkbox" id="menuToggle">
-
         <label class="avatar-btn" for="menuToggle" aria-label="Profil">{{ (session.get('username','U')[:1]).upper() }}</label>
-
         <label class="menu-backdrop" for="menuToggle" aria-hidden="true"></label>
 
         <div class="dropdown">
@@ -34,11 +33,11 @@
     
         <div class="product-info">
             <h1>{{produkt.name}}</h1>
-            <p class="subtitle">{{produkt.bezeichnung}}</p> <!-- in db -->
+            <p class="subtitle">{{produkt.bezeichnung}}</p> 
             <p class="price">{{ "%.2f"|format(produkt.preis) }}€</p>
         
             <div class="tags">  
-                 {% for t in produkt.merkmale.split(",")%}                  <!-- tags in db einfügen-->
+                 {% for t in produkt.merkmale.split(",")%}                 
                    <span>{{t.strip()}}</span>
                  {% endfor %}
             </div>
