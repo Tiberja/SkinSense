@@ -1,38 +1,46 @@
+
 :root{
-  --bg:#f6f2ee;
-  --muted:#8d8d8d;
-  --shadow: 0 10px 30px rgba(0,0,0,.06);
+  --bg:#f6f2ee;                     
+  --muted:#8d8d8d;                 
+  --shadow: 0 10px 30px rgba(0,0,0,.06); 
 }
 
-*{ box-sizing:border-box; }
+/* Einheitliches Box-Modell:
+   Padding & Border zählen zur Breite/Höhe */
+*{
+  box-sizing:border-box;
+}
 
-
+/* Grundstil für den Body */
 body {
-  margin: 0;
-  color: #333;
+  margin: 0;                       
+  color: #333;                      
 }
 
-/* Layout */
+/* Seitenlayout*/
 .page{
-  min-height:100vh;
-  background: var(--bg);
-  padding: 24px 28px 40px; /* wie products-main */
+  min-height:100vh;                 
+  background: var(--bg);            
+  padding: 24px 28px 40px;         
 }
 
+/* Container für zentrierten Inhalt */
 .shell{
-  max-width: 1050px;
-  margin: 0 auto;
-  position: relative;
+  max-width: 1050px;                
+  margin: 0 auto;                  
+  position: relative;               
 }
 
+/* Kopfbereich der Seite */
 .page-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
+  display:flex;                     
+  align-items:center;               
+  justify-content:space-between;   
+  gap:16px;                        
   margin-bottom: 10px;
 }
 
+/* Hauptüberschrift */
 h1{
   margin: 8px 0 4px;
   font-size: 28px;
@@ -41,40 +49,52 @@ h1{
   color: #333;
 }
 
-/* Grid */
+/* Grid für Favoritenkarten*/
 .grid{
-  display:grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 16px;
+  display:grid;                    
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* 5 gleich breite Spalten */
+  gap: 16px;                        /* Abstand zwischen Karten */
   margin-top: 14px;
 }
 
+/* Tablet-Ansicht */
 @media (max-width: 980px){
-  .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-@media (max-width: 640px){
-  .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  h1{ font-size: 24px; }
+  .grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
+/* Mobile Ansicht */
+@media (max-width: 640px){
+  .grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  h1{
+    font-size: 24px;
+  }
+}
+
+/*  Kartenlayout*/
 .card{
   background: transparent;
   border-radius: 22px;
   padding: 6px;
 }
 
+/* Bild-Container */
 .thumbWrap{
-  position: relative;
+  position: relative;               /* Für Herz-Button */
   border-radius: 22px;
-  overflow:hidden;
+  overflow:hidden;                  /* Bild bleibt im Container */
   background: rgba(255,255,255,.7);
-  box-shadow: var(--shadow);
-  aspect-ratio: 1 / 1;
+  box-shadow: var(--shadow);         /* Einheitlicher Schatten */
+  aspect-ratio: 1 / 1;              
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
+/* Hintergrund für Bild */
 .thumb{
   width: 100%;
   height: 100%;
@@ -86,56 +106,60 @@ h1{
   background:#e8ddd6;
 }
 
+/* Produktbild */
 .thumb img{
   display: block;
-  /*visibility: visible; */
   width: 100%;
   height: 90%;
-  object-fit: contain;
+  object-fit: contain;              /* Bild wird nicht verzerrt */
 }
 
+/* Herz-Button */
 .heart{
   position:absolute;
   top: 10px;
   right: 10px;
   width: 34px;
   height: 34px;
-  border-radius: 999px;
+  border-radius: 999px;             /* Kreis */
   border: 0;
   background: rgba(255,255,255,.75);
   display:grid;
-  place-items:center;
+  place-items:center;               /* Herz zentrieren */
   cursor:pointer;
 }
 
+/* Textbereich unter dem Bild */
 .meta{
   padding: 10px 6px 0;
 }
 
+/* Produktname */
 .title{
   margin:0;
   font-size: 16px;
   font-weight: 750;
 }
 
+/* Marken-/Untertitel */
 .sub{
   margin: 2px 0 0;
   font-size: 13px;
-  color: var(--muted);
+  color: var(--muted);              
   line-height: 1.2;
 }
 
-
-   /*USER MENU (Avatar + Dropdown) */
+/*User-Menü (Avatar + Dropdown)*/
 .user-menu{
   position: relative;
-  margin-left: auto; /* hält es rechts */
+  margin-left: auto;                /* Schiebt Menü nach rechts */
 }
 
+/* Avatar-Button */
 .avatar-btn{
   width: 34px;
   height: 34px;
-  border-radius: 999px;
+  border-radius: 999px;             /* Kreis */
   border: none;
   background: #eaded7;
   color: #5a5a5a;
@@ -146,16 +170,17 @@ h1{
   box-shadow: var(--shadow);
 }
 
+/* Entfernt Standard-Pfeil von <summary> */
 .user-menu > summary{
   list-style:none;
 }
-
 .user-menu > summary::-webkit-details-marker{
   display:none;
 }
 
+/* Dropdown-Menü */
 .dropdown{
-  display:none;
+  display:none;                     /* Standardmäßig versteckt */
   position:absolute;
   right:0;
   top: 44px;
@@ -168,10 +193,12 @@ h1{
   padding: 6px;
 }
 
+/* Dropdown sichtbar, wenn <details> offen */
 .user-menu[open] .dropdown{
   display:block;
 }
 
+/* Links im Dropdown */
 .dropdown a{
   display:block;
   padding: 10px 12px;
@@ -180,7 +207,6 @@ h1{
   color:#444;
   font-size: 13px;
 }
-
 .dropdown a:hover{
   background:#faf7f5;
 }
