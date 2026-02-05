@@ -247,6 +247,27 @@ body {
     grid-column: 1 / -1; 
     padding-right: 160px;
 }
+
+.review-actions{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trash-btn{
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 6px 8px;
+  border-radius: 10px;
+}
+
+.trash-btn:hover{
+  background: #faf7f5;
+}
+
 /*Profil und Dropdown*/
 .user-menu{
   margin-left: auto;
@@ -314,3 +335,36 @@ body {
 .dropdown a:hover{
   background:#faf7f5;
 }
+
+.product-image-wrap{
+  position: relative;
+  display: inline-block; 
+}
+
+.fav-form{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  margin: 0;
+}
+
+.fav-btn{
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+
+ 
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+}
+
+.fav-btn:hover{
+  transform: scale(1.05);
+}
+

@@ -139,6 +139,7 @@ def products():
     if user is None:
         session.clear()
         return redirect(url_for("login"))
+    
     # Alle Kategorien holen 
     kategorien = db.session.execute(
         db.select(Kategorie).order_by(Kategorie.id)
@@ -186,6 +187,15 @@ def products():
 @app.route('/product_details/<int:product_id>')
 def product_details(product_id): 
 
+    # Zugriff nur für angemeldete Benutzer
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    user = db.session.get(Benutzer, session["user_id"])
+    if user is None:
+        session.clear()
+        return redirect(url_for("login"))
+    
     produkt = db.session.execute(
         db.select(Produkt).where(Produkt.id == product_id)
     ).scalar_one_or_none()
@@ -193,7 +203,9 @@ def product_details(product_id):
     if produkt is None:
         abort(404)
 
-# Shop-Domain aus URL ableiten
+    favorite_ids = {p.id for p in user.favoriten}   
+
+    # Shop-Domain aus URL ableiten
     shop_domain=""
     if produkt.shop_link:
         netloc = urlparse(produkt.shop_link).netloc
@@ -206,6 +218,8 @@ def product_details(product_id):
 
     bewertungen = [
         {
+            "id": bew.id,
+            "benutzer_id": bew.benutzer_id,
             "sterne": bew.sterne,
             "kommentar": bew.kommentar,
             "datum": bew.datum,
@@ -230,7 +244,9 @@ def product_details(product_id):
         avg=avg,
         count=count,
         avg_rounded=avg_rounded,
-        shop_domain=shop_domain
+        shop_domain=shop_domain,
+        favorite_ids=favorite_ids,
+        user_id=session["user_id"],
     )
 
 #Bewertungen 
@@ -259,6 +275,24 @@ def add_review(product_id):
 
     return redirect(url_for("product_details", product_id=product_id))
 
+@app.route("/products/<int:product_id>/reviews/<int:review_id>/delete", methods=["POST"])
+def delete_review(product_id, review_id):
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    user_id = session["user_id"]
+
+    bewertung = db.session.get(Bewertung, review_id)
+    if bewertung is None or bewertung.produkt_id != product_id:
+        abort(404)
+
+    if bewertung.benutzer_id != user_id:
+        abort(403)
+
+    db.session.delete(bewertung)
+    db.session.commit()
+
+    return redirect(url_for("product_details", product_id=product_id))
 
 @app.route("/favorites")
 def favorites():

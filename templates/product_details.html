@@ -29,8 +29,18 @@
  <!--Produkt Informationen-->
  <section class="productpage">
     <div class="product-main">
-        <img src= "/static/images/products/{{produkt.bild}}" class="product-image">
-    
+        <div class="product-image-wrap">
+         <img src="/static/images/products/{{ produkt.bild }}" class="product-image" alt="{{ produkt.name }}">
+
+         <form class="fav-form"
+             action="{{ url_for('toggle_favorite', product_id=produkt.id) }}"
+             method="post">
+           <button class="fav-btn" type="submit" aria-label="Toggle favorite">
+              {% if produkt.id in favorite_ids %}♥{% else %}♡{% endif %}
+           </button>
+         </form>
+        </div>
+ 
         <div class="product-info">
             <h1>{{produkt.name}}</h1>
             <p class="subtitle">{{produkt.bezeichnung}}</p> 
@@ -86,22 +96,36 @@
     </h2>
     <a class="review-btn" href="#reviewModal" type="button">Bewertung abgeben</a>
 
-  <div id="reviewsList"> 
-      {% for r in bewertungen %}
-     <div class="review-card">
-      <div class="review-header">
-        <strong class="review-name">{{r.user_name}}</strong>
-        <div class="review-stars">
-          {{"★" * r.sterne}}{{"☆" * (5- r.sterne)}}
-        </div>
-      </div>
+    <div id="reviewsList"> 
+        {% for r in bewertungen %}
+         <div class="review-card">
+          <div class="review-header">
+           <strong class="review-name">{{ r.user_name }}</strong>
 
-      <p class="review-text">{{r.kommentar}}</p>
-      <div class="review-date">{{r.datum}}</div>
-     </div>
-    {% else %}
+           <div class="review-actions">
+            <div class="review-stars">
+             {{ "★" * r.sterne }}{{ "☆" * (5 - r.sterne) }}
+            </div>
+
+            {% if r.benutzer_id == user_id %}
+             <form method="post"
+                 action="{{ url_for('delete_review', product_id=produkt.id, review_id=r.id) }}"
+                 onsubmit="return confirm('Willst du deine Bewertung wirklich löschen?');">
+               <button type="submit" class="trash-btn" aria-label="Bewertung löschen" title="Bewertung löschen">
+                 🗑️
+               </button>
+             </form>
+            {% endif %}
+          </div>
+         </div>
+
+
+         <p class="review-text">{{r.kommentar}}</p>
+         <div class="review-date">{{r.datum}}</div>
+    </div>
+   {% else %}
       <p>Noch keine Bewertungen</p>
-    {% endfor %}
+   {% endfor %}
   </div>
  </section>
  </div>
