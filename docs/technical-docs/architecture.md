@@ -38,12 +38,26 @@ nav_order: 1
 ## Codemap
 ```mermaid
 graph TD
-    app["Flask Application (app.py)"]
-    db["Data Layer (db.py / SQLAlchemy)"]
-    templates["Jinja Templates"]
+    app["app.py (Flask Routen & Anwenungslogik)"]
+    db["db.py (SQLAlchemy models & Datenbankzugriff)"]
+
+    subgraph Templates["templates/ (Jinja templates)"]
+      t_home["home.html"]
+      t_login["login.html / register.html"]
+      t_skin["skin_type.html"]
+      t_products["products.html"]
+      t_details["product_details.html"]
+      t_fav["favorites.html"]
+    end
+
+    subgraph Static["static/ (static assets)"]
+      css["css/"]
+      imgs["images/"]
+    end
 
     app --> db
-    app --> templates
+    app --> Templates
+    Templates --> Static
 ```
 [Describe how your app is structured. Don't aim for completeness, rather describe *just* the most important parts.]
 
