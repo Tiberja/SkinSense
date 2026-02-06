@@ -42,7 +42,7 @@ graph TD
     db["db.py (SQLAlchemy models & Datenbankzugriff)"]
 
     subgraph Templates["templates/ (Jinja templates)"]
-
+      spacer[" "]
       t_home["home.html"]
       t_login["login.html / register.html"]
       t_skin["skin_type.html"]
