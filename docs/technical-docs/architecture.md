@@ -39,9 +39,9 @@ nav_order: 1
 ```mermaid
 graph TD
     app["app.py (Flask Routen & Anwendungslogik)"]
-    db["db.py (SQLAlchemy models & Datenbankzugriff)"]
+    db["db.py (SQLAlchemy Modelle & Datenbankzugriff)"]
 
-    subgraph Templates["templates/<br/>(Jinja templates)"]
+    subgraph Templates["Jinja templates"]
       t_home["home.html"]
       t_login["login.html / register.html"]
       t_skin["skin_type.html"]
@@ -50,9 +50,9 @@ graph TD
       t_fav["favorites.html"]
     end
 
-    subgraph Static["static/ (static assets)"]
-      css["css/"]
-      imgs["images/"]
+    subgraph Static["static"]
+      css["css"]
+      imgs["images"]
     end
 
     app --> db
