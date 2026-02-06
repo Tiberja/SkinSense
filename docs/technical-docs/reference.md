@@ -1,85 +1,192 @@
 ---
-title: Reference
+title: Referenz
 parent: Technical Docs
 nav_order: 3
 ---
 
 {: .label }
-[Jane Dane]
+[Tiberja Gündüz]
 
 {: .no_toc }
-# Reference documentation
-
-{: .attention }
-> This page collects internal functions, routes with their functions, and APIs (if any).
-> 
-> See [Uber](https://developer.uber.com/docs/drivers/references/api) or [PayPal](https://developer.paypal.com/api/rest/) for exemplary high-quality API reference documentation.
->
-> You may delete this `attention` box.
+# Referenzdokumentation
 
 <details open markdown="block">
 {: .text-delta }
-<summary>Table of contents</summary>
+<summary>Inhaltsverzeichnis</summary>
 + ToC
 {: toc }
 </details>
 
-## [Section / module]
+## Authentifizierung
 
-### `function_definition()`
+### `login()`
 
-**Route:** `/route/`
+**Route:** `/login`
 
-**Methods:** `POST` `GET` `PATCH` `PUT` `DELETE`
+**Methode:** `GET` `POST` 
 
-**Purpose:** [Short explanation of what the function does and why]
+**Zweck:** Zeigt die Login-Seite an und authentifiziert den Benutzer anhand ihrer Zugangsdaten.
 
-**Sample output:**
+**Ausgabe:**
 
-[Show an image, string output, or similar illustration -- or write NONE if function generates no output]
-
----
-
-## [Example, delete this section] Show to-do lists
-
-### `get_lists()`
-
-**Route:** `/lists/`
-
-**Methods:** `GET`
-
-**Purpose:** Show all to-do lists.
-
-**Sample output:**
-
-![get_lists() sample](../assets/images/fswd-intro_00.png)
+![login() sample](../assets/images/login.png)
 
 ---
 
-### `get_list_todos(list_id)`
+### `register()`
 
-**Route:** `/lists/<int:list_id>`
+**Route:** `/register`
 
-**Methods:** `GET`
+**Methode:** `GET` `POST` 
 
-**Purpose:** Retrieve all to-do items of to-do list with ID `list_id` from database and present to user.
+**Zweck:** Ermöglicht neuen Benutzern die Registrierung eines Accounts.
 
-**Sample output:**
+**Ausgabe:**
 
-![get_list_todos() sample](../assets/images/fswd-intro_02.png)
+![register() sample](../assets/images/register)
 
 ---
 
-## [Example, delete this section] Insert sample data
+### `logout()`
+
+**Route:** `/logout`
+
+**Methode:** `GET` 
+
+**Zweck:** Meldet den aktuellen Benutzer ab und beendet die Session.
+
+**Ausgabe:**
+
+Benutzer wird zur Startseite weitergeleitet.
+
+---
+
+## Benutzerseiten
+
+### `index()`
+
+**Route:** `/`
+
+**Methode:** `GET`
+
+**Zweck:** Zeigt die Startseite der Website an und dient als Einstiegspunkt für Benutzer. 
+
+**Ausgabe:**
+
+![index() sample](../assets/images/home.png)
+
+---
+
+### `skin_type()`
+
+**Route:** `/skin_type`
+
+**Methode:** `GET` `POST`
+
+**Zweck:** Ermöglicht die Auswahl eines Hauttyps, um passende Produkte zu erhalten. 
+
+**Ausgabe:**
+
+![skin_type() sample](../assets/images/skin_type.png)
+
+---
+
+### `products()`
+
+**Route:** `/products`
+
+**Methode:** `GET` 
+
+**Zweck:** Zeigt eine Liste von Produkten, basierend auf dem ausgewählten Hauttyp.
+
+**Ausgabe:**
+
+![products() sample](../assets/images/products.png)
+
+---
+
+### `product_details()`
+
+**Route:** `/product_details/<int:product_id>`
+
+**Methode:** `GET` 
+
+**Zweck:** Zeigt Detailinformationen zu einem ausgewählten Produkt, inklusive Bewertungen.
+
+**Ausgabe:**
+
+![product_details() sample](../assets/images/product_details.png)
+
+---
+
+### `favorites()`
+
+**Route:** `/favorites`
+
+**Methode:** `GET` 
+
+**Zweck:** Zeigt eine Übersicht aller vom Benutzer favorisierten Produkte.
+
+**Ausgabe:**
+
+![favorites() sample](../assets/images/favoriten.png)
+
+---
+
+## Benutzerinteraktionen
+
+### `toggle_favorite(product_id)`
+
+**Route:** `/favorites/toggle/<int:product_id>`
+
+**Methode:** `POST` 
+
+**Zweck:** Fügt ein Produkt zur Favoritenliste hinzu oder entfernt es davon. 
+
+**Ausgabe:**
+Das Herz wird ausgefüllt und das jeweilige Produkt wird in der Favoritenliste angezeigt. 
+
+
+---
+
+### `add_review(product_id)`
+
+**Route:** `/products/<int:product_id>/reviews`
+
+**Methode:** `POST` 
+
+**Zweck:** Ermöglicht Benutzern eine Bewertung zu einem Produkt hinzuzufügen. 
+
+**Ausgabe:**
+
+![add_review(product_id) sample](../assets/images/bewertungen.png)
+
+---
+
+### `delete_review(product_id, review_id)`
+
+**Route:** `/products/<int:product_id>/reviews/<int:review_id>/delete`
+
+**Methode:** `POST` 
+
+**Zweck:** Ermöglicht Benutzern ihre eigene Bewertung wieder zu löschen. 
+
+**Ausgabe:**
+
+Die ausgewählte Bewertung wird gelöscht und die Seite aktualisiert sich. 
+
+---
+
+## Beispieldaten einfügen
 
 ### `run_insert_sample()`
 
 **Route:** `/insert/sample`
 
-**Methods:** `GET`
+**Methode:** `GET`
 
-**Purpose:** Flush the database and insert sample data set
+**Zweck:** Leert die Datenbank und fügt Beispieldaten hinzu. 
 
-**Sample output:**
+**Ausgabe:**
 
-Browser shows: `Database flushed and populated with some sample data.`
+Browser zeigt: `Database flushed and populated with some sample data.`
