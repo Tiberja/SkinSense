@@ -38,10 +38,12 @@ nav_order: 1
 ## Codemap
 ```mermaid
 graph TD
-    Browser --> app.py
-    app.py --> db.py
-    app.py --> templates
-    templates --> Browser
+    app["Flask Application (app.py)"]
+    db["Data Layer (db.py / SQLAlchemy)"]
+    templates["Jinja Templates"]
+
+    app --> db
+    app --> templates
 ```
 [Describe how your app is structured. Don't aim for completeness, rather describe *just* the most important parts.]
 
