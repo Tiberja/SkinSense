@@ -41,8 +41,7 @@ graph TD
     app["app.py (Flask Routen & Anwendungslogik)"]
     db["db.py (SQLAlchemy models & Datenbankzugriff)"]
 
-    subgraph Templates["templates/"]
-      label["Jinja Templates"]
+    subgraph Templates["templates/(Jinja templates)"]
       t_home["home.html"]
       t_login["login.html / register.html"]
       t_skin["skin_type.html"]
