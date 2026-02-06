@@ -36,7 +36,13 @@ nav_order: 1
 [Give a high-level overview of what your app does and how it achieves it: similar to the value proposition, but targeted at a fellow developer who wishes to contribute.]
 
 ## Codemap
-
+```mermaid
+graph TD
+    Browser --> app.py
+    app.py --> db.py
+    app.py --> templates
+    templates --> Browser
+```
 [Describe how your app is structured. Don't aim for completeness, rather describe *just* the most important parts.]
 
 ## Cross-cutting concerns
