@@ -5,21 +5,23 @@ nav_order: 2
 ---
 
 {: .label }
-[Jane Dane]
+[Tiberja Gündüz]
 
 {: .no_toc }
 # Data model
 
 <details open markdown="block">
 {: .text-delta }
-<summary>Table of contents</summary>
+<summary>Inhaltsverzeichnis</summary>
 + ToC
 {: toc }
 </details>
 
 ![ERM-Diagramm](../assets/images/data-model.png) 
 
-Das vorliegende Datenmodell dient der strukturierten Speicherung und Verbindung von Benutzern, Hauttypen und Produkten, um personalisierte Produktempfehlungen zu erhalten und Bewertungen sowie Favoriten zu ermöglichen. 
+
+
+Das vorliegende Datenmodell dient der strukturierten Speicherung und Verbindung von Benutzern, Hauttypen und Produkten, um personalisierte Produktempfehlungen zu erhalten und Bewertungen sowie Favoriten zu ermöglichen. Es basiert auf einem Entity-Relationship-Modell und wurde vollständig normalisiert. m:n-Beziehungen werden über Zwischentabellen umgesetzt, Primär- und Fremdschlüssel sorgen dafür, dass die Tabellen korrekt miteinander verbunden sind. Die Struktur unterstützt typische Anwendungsfälle wie Produktbewertungen, Favoritenverwaltung sowie Filterung nach Hauttypen und Kategorien.
 
 ### Benutzer 
 Die Entität Benutzer repräsentiert registrierte Nutzer der Anwendung. Jeder Benutzer besitzt eine eindeutige benutzer_id als Primärschlüssel, sowie Angaben wie Name, E-Mail-Adresse und ein Passwort-Hash. Zusätzlich ist jedem Benutzer genau ein Hauttyp zugeordnet (hauttyp_id als Fremdschlüssel).
