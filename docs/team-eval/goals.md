@@ -30,8 +30,3 @@ Unser Ziel war es, eine Webanwendung zu entwickeln, die Nutzer/innen dabei unter
 ### Nicht erreichte Ziele 
 + Nur begrenzte Anzahl an Produkten
 + Keine Suchfunktion 
-
-### Verbesserungen 
-+ Implementierung eines Hauttyp-Tests, um Nutzer/innen bei der Auswahl zu unterstützen
-+ Gewichtung der Empfehlungen (am besten geeignet, bedingt geeignet)
-+ Weitere Sortierfilter 
