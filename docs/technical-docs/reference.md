@@ -43,7 +43,7 @@ nav_order: 3
 
 **Ausgabe:**
 
-![register() sample](../assets/images/register)
+![register() sample](../assets/images/register.png)
 
 ---
 
