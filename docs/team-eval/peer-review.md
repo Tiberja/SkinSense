@@ -1,5 +1,5 @@
 ---
-title: Peer Review
+title: Bewertung
 parent: Team Evaluation
 nav_order: 3
 ---
@@ -8,7 +8,7 @@ nav_order: 3
 [Jane Dane] 
 
 {: .no_toc }
-# Peer review
+# Bewertung 
 
 <details open markdown="block">
 {: .text-delta }
@@ -17,7 +17,7 @@ nav_order: 3
 {: toc }
 </details>
 
-## Acelya Calin - Bewertung
+## Acelya Calin - Bewertet von Tiberja Gündüz
 
 ### Wahrnehmung 
 
