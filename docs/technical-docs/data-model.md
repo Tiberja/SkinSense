@@ -8,7 +8,7 @@ nav_order: 2
 [Tiberja Gündüz]
 
 {: .no_toc }
-# Data model
+# Datenmodell
 
 <details open markdown="block">
 {: .text-delta }
@@ -20,6 +20,8 @@ nav_order: 2
 ![ERM-Diagramm](../assets/images/data-model.png) 
 
 
+
+## Beschreibung
 
 Das vorliegende Datenmodell dient der strukturierten Speicherung und Verbindung von Benutzern, Hauttypen und Produkten, um personalisierte Produktempfehlungen zu erhalten und Bewertungen sowie Favoriten zu ermöglichen. Es basiert auf einem Entity-Relationship-Modell und wurde vollständig normalisiert. m:n-Beziehungen werden über Zwischentabellen umgesetzt, Primär- und Fremdschlüssel sorgen dafür, dass die Tabellen korrekt miteinander verbunden sind. Die Struktur unterstützt typische Anwendungsfälle wie Produktbewertungen, Favoritenverwaltung sowie Filterung nach Hauttypen und Kategorien.
 
