@@ -17,7 +17,7 @@ nav_order: 1
 {: toc }
 </details>
 
-## Overview
+## Übersicht
 
 SkinSense ist eine serverseitig gerenderte Full-Stack-Webanwendung. Sie unterstützt Benutzer dabei, Hautpflegeprodukte zu finden, die zu ihrem Hauttyp passen und hilft ihnen dabei, das Thema Skincare besser zu verstehen und anzuwenden. 
 
@@ -63,7 +63,7 @@ Die Jinja-Templates entsprechen jeweils einer Seite der Anwendung, wie zum Beisp
 
 Statische Ressourcen wie Stylesheets und Bilder werden von den Templates eingebunden.
 
-## Cross-cutting concerns
+## Querschnittsaspekte
 
 ### Session-basierte Authentifizierung und Zugriffskontrolle
 
