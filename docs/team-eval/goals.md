@@ -1,5 +1,5 @@
 ---
-title: Goals
+title: Ziele
 parent: Team Evaluation
 nav_order: 1
 ---
@@ -8,7 +8,7 @@ nav_order: 1
 [Tiberja Gündüz]
 
 {: .no_toc }
-# Goals achieved and missed
+# Ziele
 
 <details open markdown="block">
 {: .text-delta }
