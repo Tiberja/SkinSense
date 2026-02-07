@@ -4,89 +4,136 @@ nav_order: 3
 ---
 
 {: .label }
-[Jane Dane]
+[Tiberja Gündüz]
 
 {: .no_toc }
-# Design decisions
+# Designentscheidungen
 
 <details open markdown="block">
 {: .text-delta }
-<summary>Table of contents</summary>
+<summary>Inhaltsverzeichnis</summary>
 + ToC
 {: toc }
 </details>
 
-## 01: [Title]
+## 01: Einsatz von SQLAlchemy als ORM
 
-### Meta
+### Metadaten
 
 Status
-: **Work in progress** - Decided - Obsolete
+: In Bearbeitung - **Entschieden** - Veraltet
 
-Updated
-: DD-MMM-YYYY
+Aktualisiert am
+: 07.02.2026
 
-### Problem statement
+### Problemstellung
 
-[Describe the problem to be solved or the goal to be achieved. Include relevant context information.]
+Sollten Datenbankoperationen (create, read, update, delete) durch direkte SQL-Abfragen umgesetzt werden oder durch den Einsatz von SQLAlchemy als Object-Relational Mapper (ORM)?
 
-### Decision
+Die Webanwendung ist in Python mit Flask umgesetzt und verwendet eine relationale Datenbank. Für den Projektumfang wäre sowohl die Nutzung von direktem SQL als auch ORM grundsätzlich ausreichend. 
 
-[Describe **which** design decision was taken for **what reason** and by **whom**.]
+Da sich die Anwendung jedoch weiterentwickeln kann, ist davon auszugehen, dass sich das Datenbankschema im Laufe der Entwicklung mehrfach ändert und die Datenbankstruktur mit zunehmender Funktionalität komplexer wird.
 
-### Regarded options
+### Entscheidung
 
-[Describe any possible design decision that will solve the problem. Assess these options, e.g., via a simple pro/con list.]
+Wir haben uns entschieden, SQLAlchemy als ORM für alle Datenbankoperationen einzusetzen. 
+
+SQLAlchemy ermöglicht es, Datenmodelle und deren Beziehungen klar zu definieren und Datenbankzugriffe einheitlich umzusetzen. Dadurch bleibt der Code übersichtlich und leicht wartbar, insbesondere bei Änderungen am Datenbankschema. 
+
+*Entschieden von:* github.com/tiberja, github.com/Acelya
+
+### Betrachtete Alternativen
+
+Wir haben zwei Alternativen betrachtet:
+
++ Direkte SQL-Abfragen
++ SQLAlchemy (ORM)
+
+| Kriterium | Direkte SQL-Abfragen | SQLAlchemy |
+| --- | --- | --- |
+| **Know-how** | ✔️ Grundkenntnisse vorhanden | ❌ Einarbeitung in ORM notwendig |
+| **Wartbarkeit** | ❌ SQL an vielen Stellen im Code | ✔️ Zentrale Modellstruktur |
+| **Schema-Änderung** | ❌ Aufwendig bei vielen Queries | ✔️ Änderungen an Modellen möglich |
+| **Lesbarkeit** | ❌ Schnell unübersichtlich | ✔️ Klare Objektstruktur |
+| **Fehleranfälligkeit** | ❌ Höheres Risiko durch manuelle SQL-Abfragen| ✔️ Reduziert durch strukturierte Modelle |
 
 ---
 
-## [Example, delete this section] 01: How to access the database - SQL or SQLAlchemy 
+## 02: Verzicht auf UI-Frameworks wie Bootstrap
 
-### Meta
+### Metadaten
 
 Status
-: Work in progress - **Decided** - Obsolete
+: In Bearbeitung - **Entschieden** - Veraltet
 
-Updated
-: 30-Jun-2024
+Aktualisiert am
+: 07.02.2026
 
-### Problem statement
+### Problemstellung
 
-Should we perform database CRUD (create, read, update, delete) operations by writing plain SQL or by using SQLAlchemy as object-relational mapper?
+Für die Benutzeroberfläche der Anwendung musste entschieden werden, ob ein bestehendes UI-Framework wie Bootstrap eingesetzt werden soll oder ob das Layout mit eigenem HTML und CSS umgesetzt wird. 
 
-Our web application is written in Python with Flask and connects to an SQLite database. To complete the current project, this setup is sufficient.
+Beide Ansätze waren grundsätzlich geeignet, um die benötigten Seiten der Anwendung darzustellen. Mit zunehmender Komplexität der Benutzeroberfläche hätte ein Framework jedoch stärkeren Einfluss auf Struktur und Gestaltung. 
 
-We intend to scale up the application later on, since we see substantial business value in it.
+### Entscheidung
 
+Wir haben uns entschieden, auf den Einsatz von UI-Frameworks wie Bootstrap zu verzichten und das User Interface ausschließlich mit eigenem HTML und CSS umzusetzen. 
 
+Dadurch konnte das Design gezielt an die Anforderungen der Anwendung angepasst werden, ohne von vordefinierten Komponenten oder Layoutvorgaben abhängig zu sein. 
 
-Therefore, we will likely:
-Therefore, we will likely:
-Therefore, we will likely:
+*Entschieden von:* github.com/tiberja, github.com/Acelya
 
-+ Change the database schema multiple times along the way, and
-+ Switch to a more capable database system at some point.
+### Betrachtete Alternativen
 
-### Decision
+Wir haben zwei Alternativen betrachtet:
 
-We stick with plain SQL.
-
-Our team still has to come to grips with various technologies new to us, like Python and CSS. Adding another element to our stack will slow us down at the moment.
-
-Also, it is likely we will completely re-write the app after MVP validation. This will create the opportunity to revise tech choices in roughly 4-6 months from now.
-*Decision was taken by:* github.com/joe, github.com/jane, github.com/maxi
-
-### Regarded options
-
-We regarded two alternative options:
-
-+ Plain SQL
-+ SQLAlchemy
-
-| Criterion | Plain SQL | SQLAlchemy |
++ Einsatz eines UI-Frameworks (z.B Bootstrap)
++ Eigenes HTML- und CSS-Design
+  
+| Kriterium | UI-Framework | Eigenes HTML & CSS |
 | --- | --- | --- |
-| **Know-how** | ✔️ We know how to write SQL | ❌ We must learn ORM concept & SQLAlchemy |
-| **Change DB schema** | ❌ SQL scattered across code | ❔ Good: classes, bad: need Alembic on top |
-| **Switch DB engine** | ❌ Different SQL dialect | ✔️ Abstracts away DB engine |
+| **Einrichtungsaufwand** | ✔️ Schneller Einstieg | ❌ Höherer Initialaufwand |
+| **Gestaltungsfreiheit** | ❌ Stark vorgegeben | ✔️ Volle Kontrolle |
+| **Abhängigkeiten** | ❌ Externe Bibliothek | ✔️ Keine externen UI-Abhängigkeiten |
+| **Anpassbarkeit** | ❌ Anpassungen oft umständlich | ✔️ Direkt anpassbar |
+| **Lernfaktor** | ❌ Abstraktion vieler Grundlagen| ✔️ Besseres Verständnis von HTML/CSS |
+
+---
+
+## 03: Sessionbasierte Authentifizierung zur Benutzerverwaltung
+
+### Metadaten
+
+Status
+: In Bearbeitung - **Entschieden** - Veraltet
+
+Aktualisiert am
+: 07.02.2026
+
+### Problemstellung
+
+Die Anwendung benötigt eine Möglichkeit, Benutzer eindeutig zu identifizieren und benutzerspezifische Funktionen wie Favoriten und Bewertungen nur für angemeldete Benutzer zugänglich zu machen.
+
+Dabei musste entschieden werden, wie der Authentifizierungszustand eines Benutzers über mehrere Seitenaufrufe hinweg verwaltet wird. 
+
+### Entscheidung
+
+Wir haben uns für eine sessionbasierte Authentifizierung entschieden. Nach erfolgreichem Login wird der Benutzer über eine serverseitige Session identifiziert, die bei weiteren Anfragen zur Zugriffskontrolle verwendet wird.  
+
+*Entschieden von:* github.com/tiberja, github.com/Acelya
+
+### Betrachtete Alternativen
+
+Wir haben zwei Alternativen betrachtet:
+
++ Sessionbasierte Authentifizierung 
++ Tokenbasierte Authentifizierung
+
+| Kriterium | Tokenbasierte Authentifizierung | Sessionbasierte Authentifizierung |
+| --- | --- | --- |
+| **Komplexität** | ❌ Höherer Implementierungsaufwand | ✔️ Einfach umzusetzen |
+| **Zustandsverwaltung** | ❌ Manuelle Token-Verwaltung | ✔️ Automatische Session-Verwaltung |
+| **Sicherheit** | ✔️ Sicher bei korrekter Umsetzung | ✔️ Sicher bei korrekter Implementierung |
+| **Wartbarkeit** | ❌ Mehr Logik notwendig | ✔️ Übersichtlich |
 
 ---
