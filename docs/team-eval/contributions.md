@@ -12,7 +12,7 @@ nav_order: 4
 
 <details open markdown="block">
 {: .text-delta }
-<summary>Table of contents</summary>
+<summary>Inhaltsverzeichnis</summary>
 + ToC
 {: toc }
 </details>
@@ -26,7 +26,12 @@ Contributions
 
 ## Tiberja Gündüz 
 
-Contributions
-: Diam nonumy eirmod
-: Tempor invidunt ut labore
-: ...
+Aufgaben
+: Umsetzung der Startseite
+: Implementierung der Hauttyp-Auswahl-Seite 
+: Entwicklung der Produktdetails-Seite inklusive Bewertungen
+: Konzeption und Umsetzung der Datenbank
+Dokumentation
+: Technische Dokumentation (Architektur, Datenmodell, Referenzen)
+: Design Decision 
+: Team Evaluation (Ziele, Verbesserungen, Bewertung, Aufgaben)
