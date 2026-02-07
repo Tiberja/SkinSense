@@ -1,5 +1,5 @@
 ---
-title: Improvements
+title: Verbesserungen
 parent: Team Evaluation
 nav_order: 2
 ---
@@ -8,7 +8,7 @@ nav_order: 2
 [Tiberja Gündüz]
 
 {: .no_toc }
-# How we would improve next time
+# Was wir nächstes Mal anders machen würden
 
 <details open markdown="block">
 {: .text-delta }
