@@ -3,7 +3,8 @@ title: Quellen
 parent: Technische Doku
 nav_order: 4
 ---
-
+{: .label }
+[Tiberja Gündüz, Acelya Calin]
 {: .no_toc }
 # Quellen
 
