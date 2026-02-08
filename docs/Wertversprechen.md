@@ -45,17 +45,17 @@ Die App spricht vor allem Menschen an, die sich im Alltag eine einfache, vertrau
 
 Einstieg
 Nach dem Öffnen von SkinSense erhalten Nutzer:innen eine kurze Einführung, die den Zweck und die grundlegenden Funktionen der App erklärt.
-Hauttyp-Abfrage
+- Hauttyp-Abfrage
 Über eine einfache Abfrage Informationen zu ihrem Hauttyp an.
-Produktempfehlungen
+- Produktempfehlungen
 Basierend auf den angegebenen Informationen zeigt die App eine Auswahl von Produkten an, die zum jeweiligen Hauttyp passen. 
-Kategoriesortierung
+- Kategoriesortierung
 Die empfohlenen Produkte können anschließend nach Kategorien wie Reinigung, Feuchtigkeitscreme, Sonnencreme, Serum oder Peeling sortiert werden. Dadurch wird die Produktauswahl weiter strukturiert und gezielt eingegrenzt.
-Produktdetails & Filter
+- Produktdetails 
 Nutzer:innen haben die Möglichkeit, einzelne Produkte genauer zu betrachten, Inhaltsstoffe nachzuvollziehen 
-Favorisieren
+- Favorisieren
 Passende Produkte können zur Favoritenliste hinzugefügt werden, um sie später schnell und unkompliziert wiederzufinden.
-Abschluss
+- Abschluss
 Am Ende der Nutzung verfügen Nutzer:innen über eine auf ihren Hauttyp abgestimmte Produktauswahl und eine bessere Orientierung für zukünftige Kaufentscheidungen.
 
 
