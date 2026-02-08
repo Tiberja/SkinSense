@@ -1,6 +1,6 @@
 ---
 title: Quellen
-parent: Technische Doku
+parent: Technische-Doku
 nav_order: 4
 ---
 {: .label }
