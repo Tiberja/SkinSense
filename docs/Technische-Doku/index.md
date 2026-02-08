@@ -5,6 +5,6 @@ nav_order: 2
 ---
 
 {: .label }
-[Jane Dane]
+[Tiberja Gündüz, Acelya Calin]
 
 # Technische Dokumentation
