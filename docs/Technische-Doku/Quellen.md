@@ -220,6 +220,10 @@ https://docs.sqlalchemy.org/en/20/tutorial/data_select.html, 19.01.2026, 16:15
 https://docs.python.org/3/library/urllib.parse.html#urllib.parse.urlencode, 19.01.2026, 23:15
 
 
+### KI
+
+https://www.perplexity.ai/search/was-macht-eine-favoritenseite-sL2hgfvhRU66gGL_KexAxw#0
+
 
 ## Produkte
 [https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html](https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html)
