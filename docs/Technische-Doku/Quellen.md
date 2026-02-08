@@ -151,6 +151,76 @@ nav_order: 4
 06.01.2026, 17:45
 (für die Codemap)
 
+
+## Acelya Calin
+
+### CSS
+https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Basic_user_interface, 17.01.2026, 16:15
+
+https://css-tricks.com/snippets/css/complete-guide-to-css-flexbox-layout/, 17.02.2026, 16:30
+
+https://youtu.be/wRNinF7YQqQ?si=B2kb0DfZqEXtlut9,18.02.2026, 17:30
+
+https://youtu.be/dOgFkZiVC8w?si=di4sxq47g61xJYd7, 18.02.2026, 18:15
+
+https://hwrberlin.github.io/fswd/html-css.html, 19.02.2026, 16:15
+
+### HTML & Accessibility
+
+https://hwrberlin.github.io/fswd/html-css.html, 20.01.2026, 12:50
+
+https://www.w3schools.com/tags/att_form_enctype.asp, 20.01.2026, 20:33
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm, 19.02.2026, 16:31
+
+https://developer.mozilla.org/de/docs/Learn_web_development/Extensions/Forms, 16.01.2026, 10:05
+
+https://jinja.palletsprojects.com/en/stable/templates/#base-template, 19.02.2026, 21:15
+
+
+### Jinja (Templates & Logik)
+
+https://python-web.teclado.com/section07/lectures/06_jinja2_conditional_statements/#basic-comparisons, 17.01.2026, 16:15
+
+https://ttl255.com/jinja2-tutorial-part-2-loops-and-conditionals/#loops:~:text=and%20%25%7D%20characters.-,Loops,-First%20of%20the, 19.02.2026, 15:00
+
+
+### Flask/Python
+
+https://flask.palletsprojects.com/en/stable/quickstart/, 19.01.2026, 16:00
+
+https://flask.palletsprojects.com/en/stable/api/#incoming-request-data, 13.01.2026, 14:15
+
+https://flask.palletsprojects.com/en/stable/api/#flask.abort, 115.01.2026, 16:00
+
+https://hwrberlin.github.io/fswd/user-interfaces.html#21-a-minimal-example-form-to-create-a-new-to-do-item, 12.01.2026, 16:55
+
+https://hwrberlin.github.io/fswd/flask.html#7-http-request-methods-and-restful-apis, 13.01.2026, 16:22
+
+https://flask-login.readthedocs.io/en/latest/#login-example, 11.01.2026, 19:22
+
+https://youtu.be/TILZwurRsqQ?si=7HMegR_zv7Un6wtC, 11.01.2026, 16:00
+
+
+
+### Sicherheit - Passwort-Hashing 
+
+https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html,21.01.2026, 17:15
+
+
+### SQLAlchemy (ORM und Datenbankzugriffe)
+
+https://docs.sqlalchemy.org/en/20/orm/queryguide/query.html#sqlalchemy.orm.Query.join, 21.01.2026, 22:00
+
+https://docs.sqlalchemy.org/en/20/tutorial/data_select.html, 19.01.2026, 16:15
+
+
+### Python Standardbibliothek
+
+https://docs.python.org/3/library/urllib.parse.html#urllib.parse.urlencode, 19.01.2026, 23:15
+
+
+
 ## Produkte
 [https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html](https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html)
 
@@ -193,6 +263,47 @@ nav_order: 4
 [https://media.paulaschoice-eu.com/image/upload/f_auto,q_auto,dpr_auto/products/images/2051?_i=AG](https://www.paulaschoice.de/de/skin-perfecting-bha-lotion-exfoliant-full-size/2051-01.html?aw_account=2992589059&aw_campaign=21164289081&aw_adgroup=177819404122&aw_creative=738142892859&aw_dev=c&aw_target=dsa-2303923158894&aw_type=search&undefined=aw_keyword%3D&undefined=aw_matchtype%3D&undefined=aw_pos%3D&utm_content=search_nonbrand&gad_source=1&gad_campaignid=21164289081&gbraid=0AAAAADvDXUtl6GlfiAo3FsoSSb6q9eUoS&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D4xR3hPklR2hSJXGbnnYpRFoSYTk4bRCbQjlNN7ns4JD7w2ICwg89waAtetEALw_wcB)
 
 [https://cdn.shop-apotheke.com/images/768x0/D19/723/942/D19723942-p1.webp](https://www.eucerin.de/produkte/hyaluron-filler-3x-effect/hydra-boost-serum)
+
+https://www.douglas.de/de/p/5010973066?trac=DO_DE.01.01_Shopping.P_Shopping.Google.22112608723.pla.1116804.online.PM&gad_source=1&gad_campaignid=22108893545&gbraid=0AAAAADy1nXkb_Id2pwUs3wGGEGLe-6Adq&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D4DrsTVKtRPpqjcMp1DWDVHLQ3adXrlrQCMB9PKz5gijr_LhVqssqIaAq01EALw_wcB
+
+https://www.douglas.de/de/b/paulas-choice/calm/b255502?trac=DO_DE.01.01_Non-Brand.P_Marken.Google.22870933802.182923797265.kwd-333435357794.796530540475.PM&gad_source=1&gad_campaignid=22870933802&gbraid=0AAAAADy1nXl4lmXrzVWHLzdUQsH3gJBlS&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D4A4_cAOsNq9ywlgcixBgrYNnkAPoJ6cY7G_G16xUVlkPHuFqlgW9EaAvTTEALw_wcB
+
+https://www.douglas.de/de/p/m002820009?trac=DO_DE.01.01_Shopping.P_MP_Shopping.Google.23122583033.189916009120.M4084017.online.PM&gad_source=1&gad_campaignid=23122583033&gbraid=0AAAAADy1nXnAo2capt9hc4h2f_LZTXRST&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D66ZMaCk5NLqhnqYf7vNntrJxBTvbRL-M54AHaLtIyf27wj_YmfsNUaAsqrEALw_wcB
+
+https://www.douglas.de/de/p/5010522371?variant=234063&trac=DO_DE.01.01_Shopping.P_MP_Shopping.Google.22428455164.185198759458.234063.online.PM&gad_source=1&gad_campaignid=22428455164&gbraid=0AAAAADy1nXkX1NO5eP2C5JwHF2P1TH622&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D4-XFX9apUAv07_x-9p8VTqq_aeS0ioLEGdbeJ9pbZnt4bE2FzYxdUaAhELEALw_wcB
+
+https://www.douglas.de/de/p/5011469022?variant=1160095&trac=DO_DE.01.01_Shopping.P_Shopping.Google.22910248270.pla.1160095.local.PM&gad_source=1&gad_campaignid=22906118129&gbraid=0AAAAADy1nXlHs7qxi49h2TgCEagDZjHF2&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D5Kyw6SMHySQUEZi7HfvpajfPSBM9ZLIt8-JbQs5EuWzKqPRZG85A0aApfKEALw_wcB
+
+https://www.douglas.de/de/p/5010653031?trac=DO_DE.01.01_Shopping.P_Shopping.Google.22910248270.pla.456622.local.PM&gad_source=1&gad_campaignid=22906118129&gbraid=0AAAAADy1nXlHs7qxi49h2TgCEagDZjHF2&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D56-vVf65VuQX_T32UBSubvDLy2OTb05mqku20yUU6sd7t0zS3YB2oaAnMhEALw_wcB
+
+https://www.douglas.de/de/p/5001864000?variant=497559&trac=DO_DE.01.01_Shopping.P_Shopping.Google.22910248270.pla.497559.local.PM&gad_source=1&gad_campaignid=22906118129&gbraid=0AAAAADy1nXlHs7qxi49h2TgCEagDZjHF2&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D7eERQO-WSqeRVP4QWQlqQWCW8rkW_XTSTXHYcHjA19TCmA6c52QRMaAgUKEALw_wcB
+
+https://www.douglas.de/de/p/5011559060?trac=DO_DE.01.01_Shopping.P_Shopping.Google.22112608723.pla.1195850.online.PM&gad_source=1&gad_campaignid=22108893545&gbraid=0AAAAADy1nXkb_Id2pwUs3wGGEGLe-6Adq&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D7rkgpubR8Wz-Fr9DjD_17k-Bej0OueOf9nxwXpWRRleCbKpkmJHloaAlg-EALw_wcB
+
+https://www.zalando.de/la-roche-posay-gesichtsreinigung-l1u31g028-a11.html?ssku=L1U31G028-A110ONE000&lang=de&otid=default&wmc=SEM490_NB_GO._7713128529_677835352_33308218703.&opc=2211&mpp=google%7Cv1%7C%7Cpla-293946777986%7C%7C9043193%7C%7Cg%7Cc%7C%7C147910107582%7C%7Cpla%7CL1U31G028-A110ONE000%7C293946777986%7C1%7C&gclsrc=aw.ds&gad_source=1&gad_campaignid=677835352&gbraid=0AAAAADM_en8xnu5BjdtpeiD_hW7qL1Xuq&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D4_u-t24NceVY70ncHyRxz8uupDxM3WWeWdDFMBEtoWHg5Q37Hy3CEaAjlbEALw_wcB
+
+https://www.douglas.de/de/p/5010301008?trac=DO_DE.01.01_Shopping.P_Shopping.Google.22910248270.pla.949191.local.PM&gad_source=1&gad_campaignid=22906118129&gbraid=0AAAAADy1nXlHs7qxi49h2TgCEagDZjHF2&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D5G3desn-HE22-sMFK24uT84RbcATJ3OO2NwadP4sGy_E4kRgvw9hoaAuGBEALw_wcB
+
+https://www.zalando.de/vichy-gesichtscreme-v0g31g046-a11.html?ssku=V0G31G046-A110ONE000&lang=de&otid=default&wmc=SEM490_NB_GO._7713128529_677835352_33308218703.&opc=2211&mpp=google%7Cv1%7C%7Cpla-293946777986%7C%7C9043193%7C%7Cg%7Cc%7C%7C147910107582%7C%7Cpla%7CV0G31G046-A110ONE000%7C293946777986%7C1%7C&gclsrc=aw.ds&gad_source=1&gad_campaignid=677835352&gbraid=0AAAAADM_en8xnu5BjdtpeiD_hW7qL1Xuq&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D64R444-lqbtzz9iitiFQNtb_UNn3pCLkulfUuEtGrc6MQdVOA3-d0aAm7QEALw_wcB
+
+https://www.douglas.de/de/p/5011454181?trac=DO_DE.01.01_Shopping.P_Shopping.Google.22112608723.pla.1176467.online.PM&gad_source=1&gad_campaignid=22108893545&gbraid=0AAAAADy1nXkb_Id2pwUs3wGGEGLe-6Adq&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D6uOYNm9W4o8ST39znZgxB8PpysPZPqQUfoSAduvfbSyWOcePAikj8aAsbWEALw_wcB
+
+https://www.douglas.de/de/p/5010993087?trac=DO_DE.01.01_Shopping.P_Shopping.Google.22112608723.pla.1103981.local.PM&gad_source=1&gad_campaignid=22108893545&gbraid=0AAAAADy1nXkb_Id2pwUs3wGGEGLe-6Adq&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D6i_ev7U6Q0QlDPy7rc_ClWwqrEOnn4dQrXFsBR99Og9YhfXqxYfOEaAvJ3EALw_wcB
+
+https://www.douglas.de/de/p/m000030906?variant=122403&trac=DO_DE.01.01_Shopping.P_Shopping.Google.22112608723.pla.122403.online.PM&gad_source=1&gad_campaignid=22108893545&gbraid=0AAAAADy1nXkb_Id2pwUs3wGGEGLe-6Adq&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D6oiQOutP7GFtPH6MvVawT2D67itfstVwL9tvSvj_y816y8Te6MInEaAjbZEALw_wcB
+
+https://www.douglas.de/de/p/5010961118?trac=DO_DE.01.01_Shopping.P_Shopping.Google.22112608723.pla.049306.online.PM&gad_source=1&gad_campaignid=22108893545&gbraid=0AAAAADy1nXkb_Id2pwUs3wGGEGLe-6Adq&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D5GPbsQyPKfYbX2wCdPjwwfMkbBAmOD8-2MlWS6fgOf_YjaQmasSHYaAscNEALw_wcB
+
+https://www.douglas.de/de/p/5011201021?trac=DO_DE.01.01_Shopping.P_Shopping.Google.22910248270.pla.1112820.online.PM&gad_source=1&gad_campaignid=22906118129&gbraid=0AAAAADy1nXlHs7qxi49h2TgCEagDZjHF2&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D50rWl3Q3Zv8PMbru3581ucURGRU2vJUQhX9x-19vqBV8LRWZnX3jIaAqBhEALw_wcB
+
+https://www.douglas.de/de/p/3001043628?variant=430878&trac=DO_DE.01.01_Shopping.P_Shopping.Google.22112608723.pla.430878.local.PM&gad_source=1&gad_campaignid=22108893545&gbraid=0AAAAADy1nXkb_Id2pwUs3wGGEGLe-6Adq&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D63qk0wZZqXFTCcHtl3CgA5n3sHKTd_kmPR9uyxHvot8n7IWuwtSIQaAmC-EALw_wcB
+
+https://www.douglas.de/de/p/5011697125?trac=DO_DE.01.01_Shopping.P_Shopping.Google.22910248270.pla.1194201.online.PM&gad_source=1&gad_campaignid=22906118129&gbraid=0AAAAADy1nXlHs7qxi49h2TgCEagDZjHF2&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D7lU2XL8zuLwPlQ6PBVGr4WTE_ywwUZd6yOVKY8-eHN8KE9nd-btG4aAuLrEALw_wcB
+
+https://www.douglas.de/de/p/5010301032?trac=DO_DE.01.01_Shopping.P_Shopping.Google.22910248270.pla.884601.local.PM&gad_source=1&gad_campaignid=22906118129&gbraid=0AAAAADy1nXlHs7qxi49h2TgCEagDZjHF2&gclid=Cj0KCQiAhaHMBhD2ARIsAPAU_D5yWfEvqpVsU1Wj9wEcaktDVu927XcQ9U7_iudSMs_aMDPV-q3e24kaAqT3EALw_wcB
+
+
+
 
 ## UI-Screens 
 [https://stitch.withgoogle.com](https://stitch.withgoogle.com)
