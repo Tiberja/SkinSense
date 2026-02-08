@@ -1,5 +1,5 @@
 ---
-title: Value Proposition
+title: Wertversprechen
 nav_order: 1
 ---
 

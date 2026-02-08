@@ -1,5 +1,5 @@
 ---
-title: User Evaluation
+title: Benutzer Evaluation
 nav_order: 4
 ---
 
@@ -7,7 +7,7 @@ nav_order: 4
 [Jane Dane]
 
 {: .no_toc }
-# User evaluation
+# Benutzer Evaluation
 
 <details open markdown="block">
 {: .text-delta }

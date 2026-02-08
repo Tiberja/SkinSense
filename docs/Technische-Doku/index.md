@@ -1,5 +1,5 @@
 ---
-title: Technical Docs
+title: Technische-Doku
 has_children: true
 nav_order: 2
 ---
@@ -7,4 +7,4 @@ nav_order: 2
 {: .label }
 [Jane Dane]
 
-# Technical documentation
+# Technische Dokumentation

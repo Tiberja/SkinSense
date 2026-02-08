@@ -7,7 +7,7 @@ nav_order: 0
 
 SkinSense ist eine webbasierte Anwendung, die Nutzer/innen unterstützt, die passenden Produkte für ihren Hauttyp zu finden. Die Website bietet einfache, intuitive Benutzeroberflächen und soll langfristig zu einer personalisierten Hautpflegeplattform ausgebaut werden. 
 
-## Team members
+## Teammitglieder
 
 ### Acelya Calin
 

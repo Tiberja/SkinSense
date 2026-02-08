@@ -1,6 +1,6 @@
 ---
 title: Architektur
-parent: Technical Docs
+parent: Technische-Doku
 nav_order: 1
 ---
 
