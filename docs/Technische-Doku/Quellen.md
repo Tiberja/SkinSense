@@ -20,93 +20,117 @@ nav_order: 4
 ### Datenbank & Projektgrundlage 
 [https://hwrberlin.github.io/fswd/](https://hwrberlin.github.io/fswd/),
 07.02.2026,20:15 
+(Diente als Orientierung für den Einsatz von Flask, SQLAlchemy, Templatestruktur und Best Practices im Projekt.)
 
 [https://github.com/hwrberlin/fswd-app](https://github.com/hwrberlin/fswd-app),
 21.01.2026, 18:10
+(Referenzprojekt zur Orientierung bei der Struktur eines Flask-Projekts (Ordnerstruktur, Routen, Templates, Datenbankanbindung))
 
 ### SQLAlchemy (ORM und Datenbankzugriffe)
 
 [https://docs.sqlalchemy.org/en/20/orm/queryguide/query.html#sqlalchemy.orm.Query.join](https://docs.sqlalchemy.org/en/20/orm/queryguide/query.html#sqlalchemy.orm.Query.join),
 18.01.2026, 17:30
+(Verwendung für JOIN-Abfragen zwischen Tabellen (z. B. Verknüpfung von Bewertungen mit Benutzern und Produkten))
 
 [https://docs.sqlalchemy.org/en/20/orm/session_basics.html#deleting](https://docs.sqlalchemy.org/en/20/orm/session_basics.html#deleting),
 18.01.2026, 19:00 
+(Umsetzung von Löschoperationen (z. B. Entfernen von Bewertungen aus der Datenbank über session.delete())
 
 [https://docs.sqlalchemy.org/en/21/tutorial/data_select.html?](https://docs.sqlalchemy.org/en/21/tutorial/data_select.html?),
 20.01.2026, 22:30
+(Allgemeine Datenbankabfragen mit select(), Filtern, Sortieren (order_by) sowie Aggregatfunktionen zur Berechnung von Durchschnittswerten und Anzahlen)
 
 
 ### CSS (Layout, Modal, Sterne)
 [https://www.youtube.com/watch?v=wRNinF7YQqQ](https://www.youtube.com/watch?v=wRNinF7YQqQ),
 17.01.2026, 21:00
+(Grundlagen für CSS-Layout und Styling von Komponenten wie Karten, Buttons und Bewertungen)
 
 [https://www.youtube.com/watch?v=naTAFo2Gyus&list=PL0Zuz27SZ-6Mx9fd9elt80G1bPcySmWit&index=10](https://www.youtube.com/watch?v=naTAFo2Gyus&list=PL0Zuz27SZ-6Mx9fd9elt80G1bPcySmWit&index=11),
 19.01.2026, 22:00
+(Gestaltung von UI-Elemente und visuelle Effekte (Hover, Flexbox-Layout))
 
 [https://css-tricks.com/the-checkbox-hack/](https://css-tricks.com/the-checkbox-hack/),
 18.01.2026, 20:55
+(CSS-basierte Umsetzung eines Dialogfensters)
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:target](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:target),
 19.01.2026, 23:30
+(Alternative Steuerung von Dialogfenstern mittels :target-Selektor)
 
 [https://developer.mozilla.org/de/docs/Web/CSS](https://developer.mozilla.org/de/docs/Web/CSS),
 20.01.2026, 23:45
+(Allgemeine CSS-Referenz für Layout, Flexbox, Selektoren und Styling)
 
 
 ### HTML & Accessibility
 [https://developer.mozilla.org/de/docs/Web/HTML](https://developer.mozilla.org/de/docs/Web/HTML),
 15.01.2026, 15:00
+(Grundstruktur der HTML-Seiten (Formulare, Listen, Sections, Buttons))
 
 [https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role),
 17.01.2026, 18:45
+(Beschreibung, wie ein Dialogfenster im HTML eindeutig definiert wird)
 
 [https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm),
 19.01.2026, 22:40
+(Bestätigungsdialog beim Löschen von Bewertungen)
 
-+ Navigation
 [https://www.youtube.com/watch?v=XM7sEpl0f7c](https://www.youtube.com/watch?v=XM7sEpl0f7c), 
 20.01.2026, 18:15
+(Aufbau der Navigation und Seitenstruktur im Frontend)
 
-+ input/radio
 [https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/input](https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/input),
 18.01.2026, 13:20
+(Verwendung grundlegender HTML-Eingabeelemente zur Erfassung von Nutzereingaben in Formularen)
 
-[https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/input/radio](https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/input),
+[https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/input/radio](https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/input/radio),
 18.01.2026, 18:15
+(Einsatz von Radio-Buttons zur Auswahl genau einer Option innerhalb eines Formulars, z. B. bei der Auswahl einer Bewertung)
 
 
 
 ### Jinja (Templates & Logik)
 [https://jinja.palletsprojects.com/en/latest/templates/](https://jinja.palletsprojects.com/en/latest/templates/), 
 19.01.2026, 21:45
+(Verwendung von Variablen, Schleifen und Bedingungen zur dynamischen Darstellung von Produkten, Bewertungen und Sternen)
 
 [https://developer.mozilla.org/de/docs/Learn_web_development/Extensions/Forms](https://developer.mozilla.org/de/docs/Learn_web_development/Extensions/Forms),
 17.01.2026, 23:10
+(Grundlagen zu Formularen und deren Verarbeitung in Templates)
 
 [https://www.geeksforgeeks.org/python/flask-rendering-templates/](https://www.geeksforgeeks.org/python/flask-rendering-templates/),
 15.01.2026, 21:00
+(Verbindung zwischen Flask-Routen und Jinja-Templates (render_template))
 
 [https://ttl255.com/jinja2-tutorial-part-2-loops-and-conditionals/#loops:~:text=and%20%25%7D%20characters.-,Loops,-First%20of%20the](https://ttl255.com/jinja2-tutorial-part-2-loops-and-conditionals/#loops:~:text=and%20%25%7D%20characters.-,Loops,-First%20of%20the),
 15.01.2026, 21:15
+(Schleifen (for) und Bedingungen (if) zur Anzeige von Bewertungen und Fallbacks („Noch keine Bewertungen“))
 
 ### Flask/Python
 [https://flask.palletsprojects.com/en/stable/quickstart/#url-building](https://flask.palletsprojects.com/en/stable/quickstart/#url-building),
 18.01.2026, 21:30
+(Erstellung dynamischer URLs mit url_for())
 
 [https://flask.palletsprojects.com/en/latest/quickstart/#accessing-request-data](https://flask.palletsprojects.com/en/latest/quickstart/#accessing-request-data),
 19.01.2026, 23:45
+(Auslesen von Formulardaten (request.form) beim Absenden von Bewertungen)
 
 [https://flask.palletsprojects.com/en/latest/patterns/javascript/#receiving-json-in-views](https://flask.palletsprojects.com/en/latest/patterns/javascript/#receiving-json-in-views),
 19.01.2026, 23:50
+(Grundverständnis für Datenübertragung zwischen Frontend und Backend)
 
 [https://flask.palletsprojects.com/en/latest/quickstart/](https://flask.palletsprojects.com/en/latest/quickstart/),
 20.01.2026, 21:15
+(Allgemeine Flask-Grundlagen (Routing, Templates, Sessions))
 
 [https://docs.python.org/3/library/urllib.parse.html](https://docs.python.org/3/library/urllib.parse.html),
 17.01.2026, 01:10
+(Extraktion der Shop-Domain aus einer Produkt-URL (urlparse, netloc))
 
 [https://flask.palletsprojects.com/en/stable/errorhandling/](https://flask.palletsprojects.com/en/stable/errorhandling/),
 17.01.2026, 18:00
+(Fehlerbehandlung im Backend (abort(403), abort(404)))
 
 ### Sicherheit - Passwort-Hashing 
 [https://werkzeug.palletsprojects.com/en/stable/utils/](https://werkzeug.palletsprojects.com/en/stable/utils/),
@@ -119,11 +143,13 @@ nav_order: 4
 (Die KI wurde unterstützend zur Erklärung und zum besseren Verständnis von Konzepten wie Jinja-Templates, Flask-Routing, SQLAlchemy-Abfragen sowie der Umsetzung von Formularen und Bewertungsfunktionen genutzt. Die konkrete Implementierung und Integration in das Projekt erfolgte eigenständig.)
 
 ### Dokumentation 
-[https://jwt.io/introduction](https://www.jwt.io/introduction), (zum Vergleich mit sessionbasierter Authentifizierung),
+[https://jwt.io/introduction](https://www.jwt.io/introduction),
 07.02.2026, 16:15
+(zum Vergleich mit sessionbasierter Authentifizierung)
 
-[https://mermaid.js.org/config/configuration.html](https://mermaid.js.org/config/configuration.html), (für die Codemap),
+[https://mermaid.js.org/config/configuration.html](https://mermaid.js.org/config/configuration.html), 
 06.01.2026, 17:45
+(für die Codemap)
 
 ## Produkte
 [https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html](https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html)
