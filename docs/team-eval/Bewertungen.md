@@ -5,7 +5,7 @@ nav_order: 3
 ---
 
 {: .label }
-[Jane Dane] 
+[Acelya Calin, Tiberja Gündüz] 
 
 {: .no_toc }
 # Bewertung 
@@ -30,3 +30,23 @@ Durch ihre sorgfältige Arbeitsweise und ihr Engagement konnte ich mich gut auf 
 ### Wunsch
 
 Für zukünftige Projekte wäre es hilfreich, regelmäßige Feedbacks und Zwischenstände einzuplanen. Des Weiteren könnte eine klarere Abstimmung bei Git-Pull- und Push-Vorgängen die Zusammenarbeit verbessern. 
+
+
+
+
+## Tiberja Gündüz - Bewertet von Acelya Calin
+
+### Wahrnehmung 
+
+Sie hat sehr engagiert am Backend gearbeitet und sich intensiv mit der Datenbank beschäftigt. Dabei hat sie sich auch bei komplexeren Aufgaben bemüht und eigenständig nach Lösungen gesucht. Ihr Einsatz im technischen Bereich des Projekts war deutlich erkennbar.
+
+### Wirkung
+
+Tiberjas Zuverlässigkeit bildete eine wichtige Grundlage für die Planung der gemeinsamen Arbeit. Da klar war, dass sie ihre Aufgaben gewissenhaft bearbeitet und sich auch in anspruchsvollere Themen einarbeitet, konnte die Koordination der Deadlines strukturiert und ohne größeren Druck erfolgen. Die Zusammenarbeit war insgesamt sehr angenehm, da Absprachen verlässlich eingehalten wurden.
+
+### Wunsch
+
+Für zukünftige Projekte wünsche ich mir, dass Tiberja ihre verlässliche und angenehme Art der Zusammenarbeit beibehält. Diese hat wesentlich zu einer positiven Arbeitsatmosphäre beigetragen und den gemeinsamen Projektverlauf erleichtert
+
+
+
