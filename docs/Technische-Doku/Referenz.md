@@ -1,6 +1,6 @@
 ---
 title: Referenz
-parent: Technische Doku
+parent: Technische-Doku
 nav_order: 3
 ---
 
