@@ -20,5 +20,4 @@ Web-App
    + oder `flask --app app run`
 
 
-## PDF der Präsentation 
-+ `docs/assets/files`
+
