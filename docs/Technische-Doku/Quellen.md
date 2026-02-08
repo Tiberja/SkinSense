@@ -122,6 +122,9 @@ nav_order: 4
 [https://jwt.io/introduction](https://www.jwt.io/introduction), (zum Vergleich mit sessionbasierter Authentifizierung),
 07.02.2026, 16:15
 
+[https://mermaid.js.org/config/configuration.html](https://mermaid.js.org/config/configuration.html), (für die Codemap),
+06.01.2026, 17:45
+
 ## Produkte
 [https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html](https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html)
 
