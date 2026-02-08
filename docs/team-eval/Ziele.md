@@ -5,7 +5,7 @@ nav_order: 1
 ---
 
 {: .label }
-[Tiberja Gündüz]
+[Tiberja Gündüz, Acelya Calin]
 
 {: .no_toc }
 # Ziele
