@@ -5,10 +5,10 @@ nav_order: 4
 ---
 
 {: .label }
-[Jane Dane]
+[Acelya Calin, Tiberja Gündüz]
 
 {: .no_toc }
-# Summary of individual contributions
+# Aufgabenverteilung 
 
 <details open markdown="block">
 {: .text-delta }
@@ -19,10 +19,15 @@ nav_order: 4
 
 ## Acelya Calin
 
-Contributions
-: Lorem ipsum dolor
-: Consetetur sadipscing elitr
-: ...
+Aufgaben
+: Umsetzung der Login- und Registerseite
+: Implementierung der Produktübersicht (Home)
+: Kategoriesortierung integriert
+: Favoriten-Seite umgesetzt 
+Dokumentation
+: Wertversprechen (Problemstellung, Unsere Lösung, Zielperson, Kundenreise, UI-Designs)
+: Benutzer Evaluation (Meta, Ziel, Methode, Ergebnisse, Schlussfolgerung)
+: Team Evaluation (Ziele, Verbesserungen, Bewertung, Aufgaben)
 
 ## Tiberja Gündüz 
 
