@@ -113,7 +113,7 @@ nav_order: 4
 21.01.2026, 16:25
 
 ### KI 
-[https://www.perplexity.ai/search/erklare-mir-jinja-d5xWBnGjTCuPFzf9KBNQGQ#0](https://www.perplexity.ai/search/erklare-mir-jinja-d5xWBnGjTCuPFzf9KBNQGQ#0), (PDF: `assets/files`)
+[https://www.perplexity.ai/search/erklare-mir-jinja-d5xWBnGjTCuPFzf9KBNQGQ#0](https://www.perplexity.ai/search/erklare-mir-jinja-d5xWBnGjTCuPFzf9KBNQGQ#0), 
 08.01.2026, 02:20 
 
 (Die KI wurde unterstützend zur Erklärung und zum besseren Verständnis von Konzepten wie Jinja-Templates, Flask-Routing, SQLAlchemy-Abfragen sowie der Umsetzung von Formularen und Bewertungsfunktionen genutzt. Die konkrete Implementierung und Integration in das Projekt erfolgte eigenständig.)
