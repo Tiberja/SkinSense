@@ -55,9 +55,9 @@ graph TD
     app --> Templates
     Templates --> Static
 ```
-Die Codemap zeigt die grundlegende Struktur von SkinSense und die wichtigsten Codebestandteile. Die zentrale Komponente ist app.py, die alle Flask-Routen sowie die Anwendungslogik enthält. Sie verarbeitet eingehende Anfragen und koordiniert zwischen Datenbank und Templates.
+Die Codemap zeigt die grundlegende Struktur von SkinSense und die wichtigsten Codebestandteile. Die zentrale Komponente ist `app.py`, die alle Flask-Routen sowie die Anwendungslogik enthält. Sie verarbeitet eingehende Anfragen und koordiniert zwischen Datenbank und Templates.
 
-Die Datei db.py bildet die Datenbankschicht. Sie definiert SQLAlchemy-Modelle sowie deren Beziehungen, enthält Beispieldaten und stellt den Zugriff auf Daten bereit. 
+Die Datei `db.py` bildet die Datenbankschicht. Sie definiert SQLAlchemy-Modelle sowie deren Beziehungen, enthält Beispieldaten und stellt den Zugriff auf Daten bereit. 
 
 Die Jinja-Templates entsprechen jeweils einer Seite der Anwendung, wie zum Beispiel der Startseite, Produktliste oder der Favoritenliste. 
 
@@ -67,7 +67,7 @@ Statische Ressourcen wie Stylesheets und Bilder werden von den Templates eingebu
 
 ### Session-basierte Authentifizierung und Zugriffskontrolle
 
-SkinSense verwendet eine sessionbasierte Authentifizierung, um den Login-Zustand von Benutzern zu verwalten. Nach erfolgreicher Anmeldung wird die Benutzer-ID in der Session gespeichert und bei Anfragen verwendet, um den aktuellen Benutzer zu identifizieren. Dieser Mechanismus wird an mehreren Stellen genutzt, um zum Beispiel die favorisierten Produkte dem richtigen Benutzer zuzuordnen. Zudem setzen bestimmte Funktionen einen angemeldeten Benutzer voraus. Auf Basis dieses Session-Zustands wird der Zugriff geprüft und nicht eingeloggte Benutzer werden direkt zur Login-Seite weitergeleitet. Weiteres dazu in [design decisions](../design-decisions.md) zu sehen.
+SkinSense verwendet eine sessionbasierte Authentifizierung, um den Login-Zustand von Benutzern zu verwalten. Nach erfolgreicher Anmeldung wird die `Benutzer-ID` in der Session gespeichert und bei Anfragen verwendet, um den aktuellen Benutzer zu identifizieren. Dieser Mechanismus wird an mehreren Stellen genutzt, um zum Beispiel die favorisierten Produkte dem richtigen Benutzer zuzuordnen. Zudem setzen bestimmte Funktionen einen angemeldeten Benutzer voraus. Auf Basis dieses Session-Zustands wird der Zugriff geprüft und nicht eingeloggte Benutzer werden direkt zur Login-Seite weitergeleitet. Weiteres dazu in [design decisions](../design-decisions.md) zu sehen.
 
 ### Benutzerabhängige Inhalte
 
@@ -76,4 +76,4 @@ Unsere App basiert darauf benutzerspezifische Inhalte darzustellen. Funktionen w
 
 ### Zentrale Datenbankschicht in db.py
 
-SkinSense bündelt die gesamte Datenbankschicht in der Datei db.py. Dort befinden sich SQLAlchemy-Konfigurationen, die Datenmodelle sowie deren Beziehungen zueinander. Zusätzlich sind dort auch Beispieldaten hinterlegt. Durch diese zentrale Struktur greifen alle Routen aus app.py auf dieselben Modelle und dieselbe Datenbankanbindung zu. Das sorgt für einen einheitlichen Datenzugriff in der gesamten Anwendung und erleichtert Wartung und Erweiterungen, da Änderungen an Modellen oder Beziehungen an einer Stelle vorgenommen werden können. Weitere Hintergründe zu Wahl von SQLAlchemy sind bei [design decisions](../design-decisions.md) zu finden.
+SkinSense bündelt die gesamte Datenbankschicht in der Datei `db.py`. Dort befinden sich SQLAlchemy-Konfigurationen, die Datenmodelle sowie deren Beziehungen zueinander. Zusätzlich sind dort auch Beispieldaten hinterlegt. Durch diese zentrale Struktur greifen alle Routen aus `app.py` auf dieselben Modelle und dieselbe Datenbankanbindung zu. Das sorgt für einen einheitlichen Datenzugriff in der gesamten Anwendung und erleichtert Wartung und Erweiterungen, da Änderungen an Modellen oder Beziehungen an einer Stelle vorgenommen werden können. Weitere Hintergründe zu Wahl von SQLAlchemy sind bei [design decisions](../design-decisions.md) zu finden.
