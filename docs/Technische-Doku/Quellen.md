@@ -222,8 +222,7 @@ https://docs.python.org/3/library/urllib.parse.html#urllib.parse.urlencode, 19.0
 
 ### KI
 
-https://www.perplexity.ai/search/was-macht-eine-favoritenseite-sL2hgfvhRU66gGL_KexAxw#0
-
+https://www.perplexity.ai/search/was-macht-eine-favoritenseite-sL2hgfvhRU66gGL_KexAxw#0, 16.01.2026, 22:15
 
 ## Produkte
 [https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html](https://www.dm.de/cerave-cerave-feuchtigkeitsspendende-reinigungslotion-p3337875597180.html)
