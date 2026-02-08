@@ -18,3 +18,7 @@ Web-App
 5. Start
    + `flask run` 
    + oder `flask --app app run`
+
+
+## PDF der Präsentation 
++ `docs/assets/files`
